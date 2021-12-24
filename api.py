@@ -8,8 +8,8 @@ app = Flask(__name__)
 # auth = HTTPBasicAuth()
 
 # @auth.get_password
-# def getpassword(username):
-#     return spcall("getpassword", (username,))[0][0]
+# def get_password(username):
+#     return spcall("get_password", (username,))[0][0]
 
 # Products
 
@@ -93,9 +93,7 @@ def add_order():
     order_code = request.json['order_code']
     customer_name = request.json['customer_name']
     total = request.json['total']
-    sholder_phone = request.json['sholder_phone']
-
-    result = spcall("add_order", (order_code, customer_name, total, sholder_phone))
+    result = spcall("add_order", (order_code, customer_name, total))
 
     return jsonify(result)
 
@@ -160,22 +158,6 @@ def change_password():
 
     return jsonify(result)
 
-# Stallholders
-
-@app.route('/api/stallholders/', methods=['POST'])
-def register_phone():
-    sholder_phone = request.json['sholder_phone']
-    sholder_address = request.json['sholder_address']
-
-    result = spcall("register_phone", (sholder_phone, sholder_address))
-
-    return jsonify(result)
-
-@app.route('/api/stallholders/<string:sholder_phone>', methods=['DELETE'])
-def remove_stallphone(sholder_phone):
-    result = spcall("remove_stallphone", (sholder_phone,))
-
-    return jsonify(result)
 
 @app.after_request
 def add_cors(resp):
