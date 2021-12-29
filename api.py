@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 from modules.conndb import spcall
+from modules.sales import get_products, sales
 # from flask_httpauth import HTTPBasicAuth
 from settings import API_HOST, API_PORT
 import flask
@@ -61,8 +62,9 @@ def update_product_price():
 
     return jsonify(result)
 
-@app.route('/api/products/<string:product_code>', methods=['DELETE'])
-def delete_product(product_code):
+@app.route('/api/products/', methods=['DELETE'])
+def delete_product():
+    product_code = request.json['product_code']
 
     result = spcall("delete_product", (product_code,))
 
@@ -97,10 +99,23 @@ def add_order():
 
     return jsonify(result)
 
+@app.route('/api/sales/', methods=['GET'])
+def get_all_orders():
+    orders = spcall("get_all_orders", ())[0][0]['orders']
 
+    products = get_products(spcall("list_products", ())[0][0])
 
-@app.route('/api/orders/<string:order_code>/status/<string:order_status>', methods=['POST'])
-def update_order_status(order_code, order_status):
+    orderDetail = spcall("get_all_order_details", ())[0][0]
+
+    result = sales(orders, orderDetail, products)
+
+    return jsonify(result)
+
+@app.route('/api/orders/status/', methods=['POST'])
+def update_order_status():
+    order_code = request.json['order_code']
+    order_status = request.json['order_status']
+
     result = spcall("update_order_status", (order_code, order_status))
 
     return jsonify(result)
@@ -143,8 +158,10 @@ def add_user():
 
     return jsonify(result)
 
-@app.route('/api/users/<string:u_id>', methods=['DELETE'])
-def remove_user(u_id):
+@app.route('/api/users/', methods=['DELETE'])
+def remove_user():
+    u_id = request.json['u_id']
+    
     result = spcall("remove_user", (u_id,))
 
     return jsonify(result)

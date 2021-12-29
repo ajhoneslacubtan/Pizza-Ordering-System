@@ -9,6 +9,7 @@ flask = "*"
 sqlalchemy = "*"
 flask-httpauth = "*"
 requests = "*"
+python-dateutil = "*"
 
 [dev-packages]
 
