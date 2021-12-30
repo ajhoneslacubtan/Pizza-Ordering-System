@@ -69,17 +69,6 @@ begin
 end;
 $$;
 
--- select ADD_PRODUCT('PZ-AC', 'All Cheese', 'res/hw.jpeg', 'This is a description', 169, 420, 'admin');
--- select ADD_PRODUCT('PZ-HW', 'Hawaiian', 'res/hw.jpeg', 'This is a description', 170, 400, 'admin');
--- select ADD_PRODUCT('PZ-PE', 'Pepperoni', 'res/hw.jpeg', 'This is a description', 175, 350, 'admin');
--- select ADD_PRODUCT('PZ-HW', 'Hawaiian', 'res/hw.jpeg', 'This is a description', 170, 400, 'admin');
--- select ADD_PRODUCT('PZ-PE', 'Pepperoni', 'res/hw.jpeg', 'This is a description', 175, 350, 'admin');
--- select ADD_PRODUCT('PZ-PE', 'Pepperoni', 'res/hw.jpeg', 'This is a description', 175, 350, 'admin');
--- select ADD_PRODUCT('PZ-AC', 'All Cheese', 'res/hw.jpeg', 'This is a description', 169, 420, 'admin');
--- select ADD_PRODUCT('PZ-AC', 'All Cheese', 'res/hw.jpeg', 'This is a description', 169, 420, 'admin');
--- select ADD_PRODUCT('PZ-HW', 'Hawaiian', 'res/hw.jpeg', 'This is a description', 170, 400, 'admin');
--- select ADD_PRODUCT('PZ-AC', 'All Cheese', 'res/hw.jpeg', 'This is a description', 169, 420, 'admin');
-
 CREATE OR REPLACE FUNCTION UPDATE_PRODUCT(p_code varchar, p_name varchar, p_describe text, p_image text) RETURNS json
 	LANGUAGE plpgsql
 	AS $$
@@ -99,9 +88,6 @@ begin
 				'status', loc_res);
 end;
 $$;
-
--- select UPDATE_PRODUCT('PZ-HW', 'Hawaiian', 'This is a pizza', 'res/img/hw.jpeg');
--- select UPDATE_PRODUCT('PZ-HW', 'Hawaiian', 'This is a pizza (Updated)', 'res/img/hw.jpeg');
 
 CREATE OR REPLACE FUNCTION UPDATE_PRODUCT_STATUS(p_code varchar, u_id varchar, p_avail boolean, p_size varchar) RETURNS json
 	LANGUAGE plpgsql
@@ -135,8 +121,6 @@ begin
 end;
 $$;
 
--- select UPDATE_PRODUCT_STATUS('PZ-HW', 'admin', FALSE, '9');
-
 CREATE OR REPLACE FUNCTION UPDATE_PRODUCT_PRICE(p_code varchar, u_id varchar, p_price float, p_size varchar) RETURNS json
 	LANGUAGE plpgsql
 	AS $$
@@ -169,8 +153,6 @@ begin
 end;
 $$;
 
--- select UPDATE_PRODUCT_PRICE('PZ-HW', 'admin', 123, '12');
-
 CREATE OR REPLACE FUNCTION DELETE_PRODUCT(code varchar) RETURNS json
 	LANGUAGE plpgsql
 	AS $$
@@ -189,8 +171,6 @@ begin
 				'status', loc_res);
 end;
 $$;
-
--- select DELETE_PRODUCT('PZ-HW')
 
 CREATE OR REPLACE FUNCTION LIST_PRODUCTS() RETURNS json
 	LANGUAGE plpgsql
@@ -232,8 +212,6 @@ begin
 	);
 end;
 $$;
-
--- select LIST_PRODUCTS();
 
 CREATE OR REPLACE FUNCTION GET_PRODUCTS_BY_SIZE(prod_size varchar) RETURNS json
 	LANGUAGE plpgsql
@@ -325,7 +303,6 @@ begin
 end;
 $$;
 
--- select SEARCH_PRODUCT('hehe');
 -- -- USE CASE ON ORDERS --
 
 CREATE OR REPLACE FUNCTION ADD_ORDER(ord_code varchar, customer_name varchar, total float) RETURNS json
@@ -348,11 +325,6 @@ begin
 		'status', loc_res);
 end;
 $$;
-
--- select ADD_ORDER('02', 'Hehe', 500, '09753588375');
--- select ADD_ORDER('03', 'Ohno', 300, '09123456789');
--- select ADD_ORDER('01', 'Huhu', 500, '09753588375');
-
 
 CREATE OR REPLACE FUNCTION ADD_ORDER_DETAILS(ord_code varchar, p_code varchar, p_size varchar, qty integer) RETURNS json
 	LANGUAGE plpgsql
@@ -386,11 +358,6 @@ begin
 end;
 $$;
 
--- select ADD_ORDER_DETAILS('02', 'PZ-HW', '9', 2);
--- select ADD_ORDER_DETAILS('01', 'PZ-AC', '9', 2);
--- select ADD_ORDER_DETAILS('03', 'PZ-PP', '9', 2);
-
-
 CREATE OR REPLACE FUNCTION UPDATE_ORDER_STATUS(ord_code varchar, status varchar) RETURNS json
 	LANGUAGE plpgsql
 	AS $$
@@ -409,10 +376,6 @@ begin
 		'status', loc_res);
 end;
 $$;
-
--- select UPDATE_ORDER_STATUS('02', 'Preparing');
--- select UPDATE_ORDER_STATUS('01', 'Preparing');
--- select UPDATE_ORDER_STATUS('03', 'Preparing');
 
 CREATE OR REPLACE FUNCTION GET_LIST_ORDER_CODES(status varchar) RETURNS json
 	LANGUAGE plpgsql
@@ -447,18 +410,18 @@ begin
 end;
 $$;
 
--- select GET_LIST_ORDER_CODES('Preparing');
-
 CREATE OR REPLACE FUNCTION GET_ORDER_DETAILS(ord_code varchar) RETURNS json
 	LANGUAGE plpgsql
 	AS $$
 declare
 	detail_order record;
+	loc_order record;
 	loc_record record;
 	loc_json_arr json[];
 	loc_size int default 0;
 	loc_id text;
 begin
+	select into loc_order * from ORDERS where order_code = ord_code;
 	select into loc_id order_code from ORDERS where order_code = ord_code;
 	if loc_id is not null then
 		CREATE TEMP TABLE details ON COMMIT DROP AS
@@ -488,7 +451,11 @@ begin
 		return json_build_object(
 			'status', 'OK',
 			'size', loc_size,
-			'order_details', loc_json_arr
+			'ord_code', loc_order.order_code,
+			'order_status', loc_order.order_status,
+			'customer_name', loc_order.customer_name,
+			'order_total', loc_order.total_price,
+			'product', loc_json_arr
 		);
 	else
 		return json_build_object(
@@ -497,7 +464,6 @@ begin
 	end if;
 end;
 $$;
--- select GET_ORDER_DETAILS('02')
 
 CREATE OR REPLACE FUNCTION GET_ALL_ORDERS() RETURNS json
 	LANGUAGE plpgsql
@@ -526,8 +492,6 @@ begin
 	);
 end;
 $$;
-
--- select get_all_orders();
 
 CREATE OR REPLACE FUNCTION GET_ALL_ORDER_DETAILS() RETURNS json
 	LANGUAGE plpgsql
@@ -590,10 +554,6 @@ begin
 end;
 $$;
 
--- select ADD_USER('admin', 'passwordni', 'admin', 'res/admin.jpg');
--- select ADD_USER('admin02', 'passwordna', 'admin', 'res/admin.jpg');
--- select ADD_USER('admin03', 'passwordto', 'admin', 'res/admin.jpg');
-
 CREATE OR REPLACE FUNCTION REMOVE_USER(u_id varchar) RETURNS json
 	LANGUAGE plpgsql
 	AS $$
@@ -613,8 +573,6 @@ begin
 end;
 $$;
 
--- select REMOVE_USER('admin')
-
 CREATE OR REPLACE FUNCTION CHANGE_PASSWORD(u_id varchar, pass varchar) RETURNS json
 	LANGUAGE plpgsql
 	AS $$
@@ -633,9 +591,6 @@ begin
 		'status', loc_res);
 end;
 $$;
-
--- select change_password('admin', 'passpass')
--- select change_password('admin03', 'passcode')
 
 CREATE OR REPLACE FUNCTION GET_PASSWORD(u_id varchar) RETURNS json
 	LANGUAGE plpgsql
@@ -661,7 +616,74 @@ begin
 end;
 $$;
 
+--select ADD_USER('admin', 'passwordni', 'admin', 'resource/admin.jpg');
 
--- select GET_PASSWORD('admin')
--- select GET_PASSWORD('admin02')
--- select GET_PASSWORD('admin03')
+--select ADD_PRODUCT('PZ-ACH', 'All Cheese', 'resource/pizza1.jpeg', 'This is a description', 160, 250, 'admin');
+--select ADD_PRODUCT('PZ-HAW', 'Hawaiian', 'resource/pizza2.jpeg', 'This is a description', 180, 300, 'admin');
+--select ADD_PRODUCT('PZ-PEP', 'Pepperoni', 'resource/pizza3.jpeg', 'This is a description', 180, 300, 'admin');
+--select ADD_PRODUCT('PZ-VEG', 'Veggie', 'resource/pizza4.jpeg', 'This is a description', 150, 240, 'admin');
+--select ADD_PRODUCT('PZ-BBQ', 'Barbeque', 'resource/pizza5.jpeg', 'This is a description', 210, 360, 'admin');
+--select ADD_PRODUCT('PZ-SUP', 'Supreme', 'resource/pizza6.jpeg', 'This is a description', 250, 400, 'admin');
+
+--select UPDATE_PRODUCT('PZ-HAW', 'Hawaiian', 'This is an updated description.', 'resource/pizza2.jpeg');
+
+--select UPDATE_PRODUCT_STATUS('PZ-HAW', 'admin', FALSE, '9');
+
+--select UPDATE_PRODUCT_PRICE('PZ-HAW', 'admin', 280, '12');
+
+--select ADD_PRODUCT('PZ-TEM', 'Temporary', 'resource/pizza7.jpeg', 'This is a description', 0, 0, 'admin');
+--select DELETE_PRODUCT('PZ-TEM');
+
+--select SEARCH_PRODUCT('Hawaiian');
+--select SEARCH_PRODUCT('Temporary');
+
+-- select LIST_PRODUCTS();
+
+--select ADD_ORDER('00001', 'Person 1', 560);
+--select ADD_ORDER_DETAILS('00001', 'PZ-ACH', '9', 1);
+--select ADD_ORDER_DETAILS('00001', 'PZ-SUP', '12', 1);
+
+--select ADD_ORDER('00002', 'Person 2', 480);
+--select ADD_ORDER_DETAILS('00002', 'PZ-VEG', '12', 2);
+
+--select ADD_ORDER('00003', 'Person 3', 250);
+--select ADD_ORDER_DETAILS('00003', 'PZ-ACH', '12', 1);
+
+--select ADD_ORDER('00004', 'Person 4', 1220);
+--select ADD_ORDER_DETAILS('00004', 'PZ-BBQ', '12', 2);
+--select ADD_ORDER_DETAILS('00004', 'PZ-ACH', '12', 2);
+
+--select ADD_ORDER('00005', 'Person 5', 210);
+--select ADD_ORDER_DETAILS('00005', 'PZ-BBQ', '9', 1);
+
+--select ADD_ORDER('00006', 'Person 6', 160);
+--select ADD_ORDER_DETAILS('00006', 'PZ-ACH', '9', 1);
+
+--select ADD_ORDER('00007', 'Person 7', 210);
+--select ADD_ORDER_DETAILS('00007', 'PZ-BBQ', '9', 1);
+
+--select ADD_ORDER('00008', 'Person 8', 580);
+--select ADD_ORDER_DETAILS('00008', 'PZ-PEP', '9', 1);
+--select ADD_ORDER_DETAILS('00008', 'PZ-BBQ', '12', 1);
+
+--select ADD_ORDER('00009', 'Person 9', 180);
+--select ADD_ORDER_DETAILS('00009', 'PZ-PEP', '9', 1);
+
+--select UPDATE_ORDER_STATUS('00001', 'COMPLETED');
+--select UPDATE_ORDER_STATUS('00002', 'COMPLETED');
+--select UPDATE_ORDER_STATUS('00003', 'COMPLETED');
+--select UPDATE_ORDER_STATUS('00004', 'PREPARING');
+--select UPDATE_ORDER_STATUS('00005', 'PREPARING');
+
+--select GET_LIST_ORDER_CODES('PENDING');
+
+--select GET_ORDER_DETAILS('00001');
+
+--select get_all_orders();
+
+--select ADD_USER('temp', 'passwordtemp', 'temp', 'resource/temp.jpg');
+--select REMOVE_USER('temp');
+
+--select change_password('admin', 'passpass');
+
+--select GET_PASSWORD('admin')
