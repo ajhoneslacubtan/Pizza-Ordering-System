@@ -10,6 +10,8 @@ sqlalchemy = "*"
 flask-httpauth = "*"
 requests = "*"
 python-dateutil = "*"
+flask-login = "*"
+flask-sqlalchemy = "*"
 
 [dev-packages]
 

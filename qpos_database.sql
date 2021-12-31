@@ -1,5 +1,6 @@
 create table if not exists USERS(
-	user_id varchar(10) primary key,
+	user_id serial primary key,
+	user_name varchar(50),
 	user_pass varchar(20),
 	user_role varchar(5),
 	user_image text
@@ -568,100 +569,3 @@ begin
 	);
 end;
 $$;
-
--- -- User Setting
-
-CREATE OR REPLACE FUNCTION ADD_USER(u_id varchar, u_pass varchar, u_role varchar, u_image text) RETURNS json
-	LANGUAGE plpgsql
-	AS $$
-	DECLARE
-	loc_id text;
-	loc_res text;
-begin
-	select into loc_id user_id from USERS where user_id = u_id;
-	if loc_id isnull then
-		INSERT INTO USERS VALUES (u_id, u_pass, u_role, u_image);
-		loc_res = 'OK';
-	else
-		loc_res = 'User already exists.';
-	end if;
-	RETURN json_build_object(
-		'status', loc_res);
-end;
-$$;
-
--- select ADD_USER('admin', 'passwordni', 'admin', 'res/admin.jpg');
--- select ADD_USER('admin02', 'passwordna', 'admin', 'res/admin.jpg');
--- select ADD_USER('admin03', 'passwordto', 'admin', 'res/admin.jpg');
-
-CREATE OR REPLACE FUNCTION REMOVE_USER(u_id varchar) RETURNS json
-	LANGUAGE plpgsql
-	AS $$
-	DECLARE
-	loc_id text;
-	loc_res text;
-begin
-	select into loc_id user_id from USERS where user_id = u_id;
-	if loc_id is not null then
-		DELETE FROM USERS WHERE user_id=u_id;
-		loc_res = 'OK';
-	else
-		loc_res = 'User not found!';
-	end if;
-	RETURN json_build_object(
-		'status', loc_res);
-end;
-$$;
-
--- select REMOVE_USER('admin')
-
-CREATE OR REPLACE FUNCTION CHANGE_PASSWORD(u_id varchar, pass varchar) RETURNS json
-	LANGUAGE plpgsql
-	AS $$
-	DECLARE
-	loc_id text;
-	loc_res text;
-begin
-	select into loc_id user_id from USERS where user_id = u_id;
-	if loc_id is not null then
-		UPDATE USERS SET user_pass=pass WHERE user_id=u_id;
-		loc_res = 'OK';
-	else
-		loc_res = 'Phone not found!';
-	end if;
-	RETURN json_build_object(
-		'status', loc_res);
-end;
-$$;
-
--- select change_password('admin', 'passpass')
--- select change_password('admin03', 'passcode')
-
-CREATE OR REPLACE FUNCTION GET_PASSWORD(u_id varchar) RETURNS json
-	LANGUAGE plpgsql
-	AS $$
-	DECLARE
-	loc_pass text;
-	loc_json json;
-	loc_id text;
-begin
-	select into loc_id user_id from USERS where user_id = u_id;
-	if loc_id is not null then
-		select into loc_pass user_pass from USERS WHERE user_id=u_id;
-		loc_json = json_build_object(
-					'status', 'OK',
-					'user_pass', loc_pass
-		);
-	else
-		loc_json = json_build_object(
-					'status', 'User not found!'
-			);
-	end if;
-	RETURN loc_json;
-end;
-$$;
-
-
--- select GET_PASSWORD('admin')
--- select GET_PASSWORD('admin02')
--- select GET_PASSWORD('admin03')

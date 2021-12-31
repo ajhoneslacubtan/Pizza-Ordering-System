@@ -1,0 +1,180 @@
+body {
+  overflow-x: hidden;
+}
+
+.page-content-wrapper {
+  background: #353231;
+  display: inline-block;
+  position: static;
+  margin-top: 60px;
+  overflow-x: hidden;
+  width: calc(100vw - 225px);
+  margin-bottom: -10px;
+}
+
+@media (min-width:992px) {
+  .page-content-wrapper {
+    /*padding-left: 0px;*/
+    margin-left: 225px;
+    /*margin-top: -20px;*/
+    width: calc(100vw - 225px);
+  }
+}
+
+@media (min-width:575px) and (max-width:991px) {
+  .page-content-wrapper {
+    margin-left: 90px;
+    width: calc(100vw - 90px);
+  }
+}
+
+@media (max-width:574px) {
+  .page-content-wrapper {
+    margin-left: 70px;
+    width: calc(100vw - 70px);
+  }
+}
+
+#cards-wrapper {
+  background-color: #353231;
+}
+
+.title-sub {
+  width: 60rem;
+  background: #2c2827;
+  min-width: 25rem;
+  color: #fca162;
+  border-radius: 2rem;
+}
+
+.title-sub h2 {
+  padding-left: 1rem;
+  font-family: 'Poppins';
+  font-weight: 800;
+}
+
+#head button {
+  color: #2c2827;
+  background-color: #fca162;
+  border-radius: 1rem;
+}
+
+#head div {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.card-div {
+  height: 10rem;
+  width: 25rem;
+  background: #2c2827;
+  border-radius: 1rem;
+}
+
+.card-div {
+  height: 10rem;
+  width: 25rem;
+  background: #2c2827;
+  border-radius: 1rem;
+}
+
+#cards-wrapper h4 {
+  color: #ffffff;
+  font-family: 'Montserrat';
+  font-weight: 700;
+  padding: 1.5rem 0rem 1.75rem 0rem;
+}
+
+h4 img {
+  padding-right: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.php {
+  color: #9290FE;
+  font-family: 'Montserrat';
+  font-weight: 700;
+  width: 5rem;
+  min-width: 4rem;
+}
+
+.var-nos {
+  color: #ffffff;
+  font-family: 'Montserrat';
+  font-weight: bold;
+  text-align: right;
+  padding-right: 1rem;
+}
+
+#no-sales-growth {
+  color: #ffffff;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: bolder;
+}
+
+#head-1 h3 {
+  font-family: 'Poppins';
+  font-weight: bold;
+  color: #fca162;
+  margin-top: 1rem;
+  padding: 1.5rem 0rem 0.5rem 0rem;
+}
+
+.graph {
+  background: #2c2827;
+  border-radius: 2rem;
+  margin-top: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+#msl {
+  color: rgba(104, 243, 172, 0.8);
+  font-family: 'Montserrat';
+  padding: 1rem;
+  font-weight: 400;
+}
+
+.graph.min {
+  max-width: 27rem;
+}
+
+#left-col {
+  padding-left: 2rem;
+}
+
+.top-lab {
+  font-family: 'Montserrat';
+  color: #ffffff;
+  padding: 2rem 1rem 0.5rem 1rem;
+}
+
+#size {
+  color: rgb(221,194,66);
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+#head {
+  padding-right: 2rem;
+}
+
+#pie-wrapper .piegraph {
+  background: #2c2827;
+  border-radius: 2rem;
+  max-width: 25rem;
+}
+
+#main-cont {
+  margin-bottom: 2rem;
+}
+
+#dl-data:hover {
+  background: rgba(104,243,172,0.8);
+  color: #2c2827;
+}
+
+.graph, .card-div, .piegraph, .title-sub {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+

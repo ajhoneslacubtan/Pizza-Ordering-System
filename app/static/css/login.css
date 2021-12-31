@@ -1,0 +1,24 @@
+body, html {
+  height: 100%;
+}
+
+.bg {
+  background-image: url("/img/loginbg.png");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.row {
+  padding-top: 23%;
+}
+
+#pizza {
+  margin: -2rem;
+}
+
+#mayz {
+  margin-left: -0.8rem;
+}
+

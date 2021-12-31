@@ -1,20 +1,12 @@
-from flask import Flask, jsonify, request
+from flask import jsonify, request
 from modules.conndb import spcall
 from modules.sales import get_products, sales
-# from flask_httpauth import HTTPBasicAuth
-from settings import API_HOST, API_PORT
-import flask
+from flask_login import login_required
 
-app = Flask(__name__)
-# auth = HTTPBasicAuth()
-
-# @auth.get_password
-# def get_password(username):
-#     return spcall("get_password", (username,))[0][0]
-
-# Products
+from app import app
 
 @app.route('/api/products/', methods=['POST'])
+@login_required
 def add_product():
     product_code = request.json['product_code']
     product_name = request.json['product_name']
@@ -29,6 +21,7 @@ def add_product():
     return jsonify(result)
 
 @app.route('/api/products/', methods=['PUT'])
+@login_required
 def update_product():
     product_code = request.json['product_code']
     product_name = request.json['product_name']
@@ -41,6 +34,7 @@ def update_product():
     return jsonify(result)
 
 @app.route('/api/products/status/', methods=['PUT'])
+@login_required
 def update_product_status():
     product_code = request.json['product_code']
     u_id  = request.json['u_id']
@@ -52,6 +46,7 @@ def update_product_status():
     return jsonify(result)
 
 @app.route('/api/products/price/', methods=['PUT'])
+@login_required
 def update_product_price():
     product_code = request.json['product_code']
     u_id  = request.json['u_id']
@@ -63,6 +58,7 @@ def update_product_price():
     return jsonify(result)
 
 @app.route('/api/products/', methods=['DELETE'])
+@login_required
 def delete_product():
     product_code = request.json['product_code']
 
@@ -71,18 +67,21 @@ def delete_product():
     return jsonify(result)
 
 @app.route('/api/products/', methods=['GET'])
+@login_required
 def list_products():
     result = spcall("list_products", ())[0][0]
 
     return jsonify(result)
 
 @app.route('/api/products/size/<string:product_size>', methods=['GET'])
+@login_required
 def get_products_by_size(product_size):
     result = spcall("get_products_by_size", (product_size,))[0][0]
 
     return jsonify(result)
 
 @app.route('/api/products/<string:product_name>', methods=['GET'])
+@login_required
 def search_product(product_name):
     result = spcall("search_product", (product_name,))[0][0]
 
@@ -91,6 +90,7 @@ def search_product(product_name):
 # Orders
 
 @app.route('/api/orders/', methods=['POST'])
+@login_required
 def add_order():
     order_code = request.json['order_code']
     customer_name = request.json['customer_name']
@@ -99,7 +99,15 @@ def add_order():
 
     return jsonify(result)
 
+@app.route('/api/orders/', methods=['GET'])
+@login_required
+def get_orders():
+    result = spcall("get_all_orders", ())[0][0]
+
+    return jsonify(result)
+
 @app.route('/api/sales/', methods=['GET'])
+@login_required
 def get_all_orders():
     orders = spcall("get_all_orders", ())[0][0]['orders']
 
@@ -112,6 +120,7 @@ def get_all_orders():
     return jsonify(result)
 
 @app.route('/api/orders/status/', methods=['POST'])
+@login_required
 def update_order_status():
     order_code = request.json['order_code']
     order_status = request.json['order_status']
@@ -121,6 +130,7 @@ def update_order_status():
     return jsonify(result)
 
 @app.route('/api/orders/<string:order_status>', methods=['GET'])
+@login_required
 def get_list_order_codes(order_status):
     result = spcall("get_list_order_codes", (order_status,))[0][0]
 
@@ -128,7 +138,15 @@ def get_list_order_codes(order_status):
 
 # Order Details
 
+@app.route('/api/order_details/', methods=['GET'])
+@login_required
+def get_all_order_details():
+    result = spcall("get_all_order_details", ())[0][0]
+
+    return jsonify(result)
+
 @app.route('/api/order_details/', methods=['POST'])
+@login_required
 def add_order_details():
     order_code = request.json['order_code']
     product_code = request.json['product_code']
@@ -140,56 +158,8 @@ def add_order_details():
     return jsonify(result)
 
 @app.route('/api/order_details/<string:order_code>', methods=['GET'])
+@login_required
 def get_list_order_details(order_code):
     result = spcall("get_list_order_details", (order_code,))[0][0]
 
     return jsonify(result)
-
-# Users
-
-@app.route('/api/users/', methods=['POST'])
-def add_user():
-    u_id = request.json['u_id']
-    u_password = request.json['u_password']
-    u_role = request.json['u_role']
-    u_image = request.json['u_image']
-
-    result = spcall("add_user", (u_id, u_password, u_role, u_image))
-
-    return jsonify(result)
-
-@app.route('/api/users/', methods=['DELETE'])
-def remove_user():
-    u_id = request.json['u_id']
-    
-    result = spcall("remove_user", (u_id,))
-
-    return jsonify(result)
-
-@app.route('/api/users/', methods=['POST'])
-def change_password():
-    u_id = request.json['u_id']
-    u_password = request.json['u_password']
-
-    result = spcall("change_password", (u_id, u_password))
-
-    return jsonify(result)
-
-
-@app.after_request
-def add_cors(resp):
-    resp.headers['Access-Control-Allow-Origin'] = flask.request.headers.get('Origin', '*')
-    resp.headers['Access-Control-Allow-Credentials'] = True
-    resp.headers['Access-Control-Allow-Methods'] = 'POST, OPTIONS, GET, PUT, DELETE'
-    resp.headers['Access-Control-Allow-Headers'] = flask.request.headers.get('Access-Control-Request-Headers',
-                                                                             'Authorization')
-    # set low for debugging
-
-    if app.debug:
-        resp.headers["Access-Control-Max-Age"] = '1'
-    return resp
-
-
-if __name__ == '__main__':
-    app.debug=True
-    app.run(host=API_HOST, port=API_PORT)
