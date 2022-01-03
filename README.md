@@ -9,4 +9,4 @@ A pizza ordering system for a pizza business.
 
 For more info, [click here.](https://pipenv-fork.readthedocs.io/en/latest/basics.html)
 
-`python rup.py` to run the web application.
+`python run.py` to run the web application.
