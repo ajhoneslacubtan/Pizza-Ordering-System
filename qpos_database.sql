@@ -569,3 +569,30 @@ begin
 	);
 end;
 $$;
+
+CREATE OR REPLACE FUNCTION GET_USERS() RETURNS json
+	LANGUAGE plpgsql
+	AS $$
+declare
+	loc_prod_record record;
+	loc_prod_json json[];
+	loc_size int default 0;
+begin
+	for loc_prod_record in 
+	select * from users loop
+		loc_prod_json = loc_prod_json ||
+						json_build_object(
+						'user_name', loc_prod_record.user_name,
+						'user_role', loc_prod_record.user_role,
+						'user_image', loc_prod_record.user_image
+						);
+		loc_size = loc_size + 1;
+	end loop;
+	
+	return json_build_object(
+		'status', 'OK',
+		'size', loc_size,
+		'users', loc_prod_json
+	);
+end;
+$$;

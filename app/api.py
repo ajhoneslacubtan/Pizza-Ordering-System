@@ -163,3 +163,10 @@ def get_list_order_details(order_code):
     result = spcall("get_list_order_details", (order_code,))[0][0]
 
     return jsonify(result)
+
+@app.route('/api/users/', methods=['GET'])
+@login_required
+def get_users():
+    result = spcall("get_users", ())[0][0]
+
+    return jsonify(result)

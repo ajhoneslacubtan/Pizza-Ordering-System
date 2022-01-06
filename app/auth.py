@@ -1,8 +1,8 @@
 import re
-from flask import render_template, request, redirect, url_for, flash
+from flask import render_template, request, redirect, url_for, flash, Markup
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
-from flask_login import login_user, login_required, logout_user
+from flask_login import login_user, login_required, logout_user, current_user
 from .model import Users
 import os
 from . import db
@@ -13,12 +13,9 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-@app.route('/signup')
-def signup():
-    return render_template('public/signup.html')
-
-@app.route('/signup', methods=['POST'])
-def signup_post():
+@app.route('/users/', methods=['POST'])
+@login_required
+def add_user():
     # code to validate and add user to database goes here
     username = request.form.get('username')
     password = request.form.get('password')
@@ -28,24 +25,20 @@ def signup_post():
 
     if user: # if a user is found, we want to redirect back to signup page so user can try again
         flash('Username already exists')
-        print('Username already exists')
-        return redirect(url_for('signup'))
+        return redirect(url_for('users'))
 
     # check if the post request has the file part
     if 'file' not in request.files:
-        print('No file part')
         flash('No file part')
-        return redirect('signup')
+        return redirect('users')
 
     file = request.files['file']
-    print(file)
     # If the user does not select a file, the browser submits an
     # empty file without a filename
 
     if file.filename == '':
-        print('No selected file')
         flash('No selected file')
-        return redirect('signup')
+        return redirect('users')
 
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
@@ -60,8 +53,33 @@ def signup_post():
         # add the new user to the database
         db.session.add(new_user)
         db.session.commit()
+        
+        return redirect(url_for('users'))
 
-        return redirect(url_for('login'))
+@app.route('/changepassword/', methods=['POST'])
+@login_required
+def change_password():
+    # code to validate and add user to database goes here
+    password = request.form.get('curpassword')
+
+    # check if the password is valid
+    if not check_password_hash(current_user.user_pass, password):
+        message = Markup('<span id="alert-body" class="closebtn" onclick="this.parentElement.style.display='+ "`none`"+ ';">&times;</span>Invalid password!')
+        flash(message)
+        return redirect(url_for('changepassword'))
+
+    if request.form.get('newpassword') != request.form.get('confirmpassword'):
+        message = Markup('<span id="alert-body" class="closebtn" onclick="this.parentElement.style.display='+ "`none`"+ ';">&times;</span>Passwords do not match!')
+        flash(message)
+        return redirect(url_for('changepassword'))
+
+    # create a new user with the form data. Hash the password so the plaintext version isn't saved.
+    current_user.user_pass = generate_password_hash(request.form.get('newpassword'), method='sha256')
+
+    # add the new user to the database
+    db.session.commit()
+    
+    return redirect(url_for('index'))
 
 @app.route('/login')
 def login():
@@ -71,7 +89,7 @@ def login():
 def login_post():
     username = request.form.get('username')
     password = request.form.get('password')
-    remember = False
+    remember = True if request.form.get('remember') == 'on' else False
 
     user = Users.query.filter_by(user_name=username).first()
     

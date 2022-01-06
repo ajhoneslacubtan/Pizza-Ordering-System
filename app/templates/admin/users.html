@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>QPOS | Users</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&amp;display=swap">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
+    <link rel="stylesheet" href="/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/Sidebar-Menu.css">
+    <link rel="stylesheet" href="/css/users.css">
+</head>
+
+<body>
+    <div class="banner"><img id="banner-icon" class="banner-images" src="/img/Ellipse%206.png"><img id="name" class="banner-images" src="/img/MAYZ%20HOMEMADE.png">
+        <div class="right_banner"><div class="datetime">
+    <div class="time">
+        <span id="hour">00</span> :
+        <span id="minutes">00</span>  
+        <span id="period">AM</span>
+    </div>
+    <div class="date">
+        <span id="dayname">Day</span>, 
+        <span id="daynum">00</span> 
+        <span id="month">Month</span>, 
+        <span id="year">Year</span>
+    </div>
+</div><div id="user" onclick="userToggle();"><img class="avatar" src="{{ url_for('static', filename=user_image) }}" />
+    <div class="user_details"><span class="user-name">{{ user_name }}</span>
+        <div class="user-role"><span>{{ user_role }}</span></div>
+    </div>
+</div></div><!-- Start: dropdown for user -->
+        <div class="user-settings">
+            <div><span>Username</span>
+                <div><span>User Role</span></div>
+            </div><ul>
+    <li>
+        <a href="/users">
+        <i class="fas fa-user-circle user-icon"></i><span class="text">Users</span>
+        </a></li>
+    <li>
+        <a href="#">
+        <i class="material-icons user-icon">vpn_key</i>
+        <span class="text">Change Password</span>
+        </a></li>
+    <li>
+        <a href="#">
+        <i class="fa fa-sign-out user-icon"></i><span class="text">Log Out</span>
+        </a></li>
+</ul>
+        </div><!-- End: dropdown for user -->
+    </div><!-- Start: Sidebar Menu -->
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="list-nav"> <a href="add-order.html"><i class="material-icons icons">add_circle_outline</i><span class="sidebar-label" href="/sales/">Add Order</span></a></li>
+                <li class="list-nav"> <a href="index.html"><i class="material-icons icons">local_pizza</i><span class="sidebar-label">Queue</span></a></li>
+                <li class="list-nav"> <a href="products.html"><i class="fa fa-list icons"></i><span class="sidebar-label">Products</span></a></li>
+                <li class="list-nav"> <a href="#"><i class="icon-graph icons"></i><span class="sidebar-label">Sales</span></a></li>
+            </ul>
+        </div>
+        <div class="page-content-wrapper">
+            <div class="container m-xl-0">
+                <div class="row mb-5">
+                    <div class="col"><img id="head-img" src="/img/Group%2022.svg"></div>
+                </div>
+                <div class="row gap-5">
+                    <div class="col-xl-4" style="padding-left: 3rem">
+                        <div id="rg-user-wrapper" class="m-0">
+                            <div class="subtitle-bg d-inline-block">
+                                <h3>REGISTER USER</h3>
+                            </div>
+                            <form method="post" enctype="multipart/form-data">
+                                <div class="center container"><div class="form-group mb-3">
+                                    <div class="picture-container">
+                                        <div class="picture">
+                                            <img src="https://lh3.googleusercontent.com/LfmMVU71g-HKXTCP_QWlDOemmWg4Dn1rJjxeEsZKMNaQprgunDTtEuzmcwUBgupKQVTuP0vczT9bH32ywaF7h68mF-osUSBAeM6MxyhvJhG6HKZMTYjgEv3WkWCfLB7czfODidNQPdja99HMb4qhCY1uFS8X0OQOVGeuhdHy8ln7eyr-6MnkCcy64wl6S_S6ep9j7aJIIopZ9wxk7Iqm-gFjmBtg6KJVkBD0IA6BnS-XlIVpbqL5LYi62elCrbDgiaD6Oe8uluucbYeL1i9kgr4c1b_NBSNe6zFwj7vrju4Zdbax-GPHmiuirf2h86eKdRl7A5h8PXGrCDNIYMID-J7_KuHKqaM-I7W5yI00QDpG9x5q5xOQMgCy1bbu3St1paqt9KHrvNS_SCx-QJgBTOIWW6T0DHVlvV_9YF5UZpN7aV5a79xvN1Gdrc7spvSs82v6gta8AJHCgzNSWQw5QUR8EN_-cTPF6S-vifLa2KtRdRAV7q-CQvhMrbBCaEYY73bQcPZFd9XE7HIbHXwXYA=s200-no" class="picture-src" id="wizardPicturePreview" title="">
+                                            <input type="file" id="wizard-picture" name="file" class="">
+                                        </div>
+                                        <h6 class="pt-2" style="color: #D0ED84">Choose Picture</h6>
+                                    </div>
+                                </div></div>
+                                <div id="form-input" class="m-4">
+                                    <div class="mt-1">
+                                        <h6>USERNAME:</h6>
+                                        <input class="form-control" type="text" id="username" name="username" placeholder="Enter username">
+                                    </div>
+                                    <div class="mt-1">
+                                        <h6>PASSWORD</h6>
+                                        <input class="form-control" type="password" id="password" name="password" placeholder="Enter password">
+                                    </div>
+                                    <div class="mt-1">
+                                        <h6>ROLE</h6>
+                                        <select class="form-select" name="role" id="role">
+                                                <option value="Admin" selected>Admin</option>
+                                                <option value="User">User</option>
+                                        </select>
+                                    </div>
+                                    <div class="mt-1" style="padding: 3rem 0rem 1rem 0rem"><button class="btn btn-primary mx-auto d-block" value="submit" type="submit">Confirm</button></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col rgd-col">
+                        <div id="rgd-users-wrapper">
+                            <div id="no-2" class="d-inline-block">
+                                <h3>REGISTERED USERS</h3>
+                            </div>
+                            <div id="table-wrapper" class="mx-auto d-block" style="margin-top: 2rem">
+                                <div class="table-responsive table-wrapper-scroll-y my-custom-scrollbar">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Username</th>
+                                                <th style="word-wrap: break-word; max-width: 12rem">Role</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="users-table">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- End: Sidebar Menu -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/users.js"></script>
+</body>
+
+</html>
