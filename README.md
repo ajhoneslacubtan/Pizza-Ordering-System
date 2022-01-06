@@ -8,3 +8,5 @@ A pizza ordering system for a pizza business.
 3. `pipenv shell` - to activate the virtual environment
 
 For more info, [click here.](https://pipenv-fork.readthedocs.io/en/latest/basics.html)
+
+`python run.py` to run the web application.
