@@ -1,4 +1,5 @@
 from flask import jsonify, request
+from werkzeug.datastructures import MultiDict
 from modules.conndb import spcall
 from modules.sales import get_products, sales
 from flask_login import login_required
@@ -16,7 +17,7 @@ def add_product():
     price_12in = request.json['price_12in']
     u_id = request.json['u_id']
 
-    result = spcall("add_product", (product_code, product_name, product_image, product_describe, price_9in, price_12in, u_id))
+    result = spcall("add_product", (product_code, product_name, product_image, product_describe, price_9in, price_12in, u_id), True)
     
     return jsonify(result)
 
@@ -29,7 +30,7 @@ def update_product():
     product_image = request.json['product_image']
     size = request.json['price_9in']
 
-    result = spcall("update_product", (product_code, product_name, product_describe, product_image, size))
+    result = spcall("update_product", (product_code, product_name, product_describe, product_image, size), True)
     
     return jsonify(result)
 
@@ -41,7 +42,7 @@ def update_product_status():
     product_avail = request.json['product_avail']
     product_size = request.json['product_size']
 
-    result = spcall("update_product_status", (product_code, u_id, product_avail, product_size))
+    result = spcall("update_product_status", (product_code, u_id, product_avail, product_size), True)
 
     return jsonify(result)
 
@@ -53,7 +54,7 @@ def update_product_price():
     product_size = request.json['product_size']
     product_price = request.json['product_price']
 
-    result = spcall("update_product_price", (product_code, u_id, product_price, product_size))
+    result = spcall("update_product_price", (product_code, u_id, product_price, product_size), True)
 
     return jsonify(result)
 
@@ -62,7 +63,7 @@ def update_product_price():
 def delete_product():
     product_code = request.json['product_code']
 
-    result = spcall("delete_product", (product_code,))
+    result = spcall("delete_product", (product_code,), True)
 
     return jsonify(result)
 
@@ -95,7 +96,7 @@ def add_order():
     order_code = request.json['order_code']
     customer_name = request.json['customer_name']
     total = request.json['total']
-    result = spcall("add_order", (order_code, customer_name, total))
+    result = spcall("add_order", (order_code, customer_name, total), True)
 
     return jsonify(result)
 
@@ -119,13 +120,13 @@ def get_all_orders():
 
     return jsonify(result)
 
-@app.route('/api/orders/status/', methods=['POST'])
+@app.route('/api/orders/status/', methods=['PUT'])
 @login_required
 def update_order_status():
     order_code = request.json['order_code']
     order_status = request.json['order_status']
 
-    result = spcall("update_order_status", (order_code, order_status))
+    result = spcall("update_order_status", (order_code, order_status), True)
 
     return jsonify(result)
 
@@ -153,7 +154,7 @@ def add_order_details():
     product_size = request.json['product_size']
     product_qty = request.json['product_qty']
 
-    result = spcall("add_order_details", (order_code, product_code, product_size, product_qty))
+    result = spcall("add_order_details", (order_code, product_code, product_size, product_qty), True)
 
     return jsonify(result)
 
