@@ -276,18 +276,54 @@ body {
   color: #616F3C;
 }
 
-.order-details-panel div#itemlist::-webkit-scrollbar-track {
+#order-details-panel div#itemlist::-webkit-scrollbar-track {
   box-shadow: inset 0 0 2px #353231;
   border-radius: 8px;
 }
 
-.order-details-panel div#itemlist::-webkit-scrollbar-thumb {
+#order-details-panel div#itemlist::-webkit-scrollbar-thumb {
   background: white;
   border-radius: 10px;
 }
 
-.order-details-panel div#itemlist::-webkit-scrollbar-thumb:hover {
+#order-details-panel div#itemlist::-webkit-scrollbar-thumb:hover {
   background: #fee176;
+}
+
+#pizza-nine::-webkit-scrollbar {
+  height: 10px;
+}
+
+#pizza-nine::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px #353231;
+  border-radius: 8px;
+}
+
+#pizza-nine::-webkit-scrollbar-thumb {
+  background: #fee176;
+  border-radius: 10px;
+}
+
+#pizza-nine::-webkit-scrollbar-thumb:hover {
+  background: #fee1768c;
+}
+
+#pizza-twelve::-webkit-scrollbar {
+  height: 10px;
+}
+
+#pizza-twelve::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px #353231;
+  border-radius: 8px;
+}
+
+#pizza-twelve::-webkit-scrollbar-thumb {
+  background: #FDA765;
+  border-radius: 10px;
+}
+
+#pizza-twelve::-webkit-scrollbar-thumb:hover {
+  background: #fda7658c;
 }
 
 .total {
