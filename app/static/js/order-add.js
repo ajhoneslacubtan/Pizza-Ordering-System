@@ -9,9 +9,9 @@ function Add_Order_Code_List(){
   
   var month_text = ('0' + month).slice(-2);
   var day_text = ('0' + day).slice(-2);
-  var id = Math.random().toString(36).substring(2,6);
+  var numordid = generate_order_code();
   
-  code = year + "" + month_text + ""+ day_text + id;
+  code = year + "" + month_text + ""+ day_text + numordid;
   document.getElementById('order-code').value=code;
   order[code]=[];
 }
@@ -166,6 +166,7 @@ function displayOrderDetails(order_list){
     }
     else{
         document.getElementById('add-order').classList.remove('active');
+        document.getElementById('total-cost').value=(0).toFixed(2);
     }
     
 }
@@ -293,6 +294,40 @@ function Add_OrderDetails_to_Database(ord_code, prod_code, prod_size, prod_qty){
 Add_Order_Code_List();
 
 
+
+function generate_order_code(){
+    var startcode = 1;
+    var status_list = ['PENDING', 'PREPARING', 'COMPLETED'];
+    for (i=0; i<status_list.length; i++){
+        var numord = function(){
+            var numorders = 0;
+                $.ajax({
+                    async:false,
+                    url: 'http://localhost:8000/api/orders/' + status_list[i],
+                    type:"GET",
+                    dataType: "json",
+                    success: function(resp) {
+                        // Condition if "status" of request is okay
+                        if (resp.status  == 'OK') {
+                           numorders = resp.size;
+                           
+                         //  console.log(startcode);
+                        }
+                        else{
+    
+                        }
+                    },error: function(){
+                    // Function if request was unsuccessful
+                    alert("Request Error");
+                }
+                });
+                return numorders;
+            }();
+        startcode += numord;
+    }
+        var orde_code = String(startcode).padStart(4, '0');
+        return orde_code;
+    }
 
 
 
