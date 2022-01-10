@@ -119,13 +119,13 @@ def get_all_orders():
 
     return jsonify(result)
 
-@app.route('/api/orders/status/', methods=['POST'])
+@app.route('/api/orders/status/', methods=['PUT'])
 @login_required
 def update_order_status():
     order_code = request.json['order_code']
     order_status = request.json['order_status']
 
-    result = spcall("update_order_status", (order_code, order_status))
+    result = spcall("update_order_status", (order_code, order_status), True)[0][0]
 
     return jsonify(result)
 
@@ -160,7 +160,7 @@ def add_order_details():
 @app.route('/api/order_details/<string:order_code>', methods=['GET'])
 @login_required
 def get_list_order_details(order_code):
-    result = spcall("get_list_order_details", (order_code,))[0][0]
+    result = spcall("get_order_details", (order_code,))[0][0]
 
     return jsonify(result)
 

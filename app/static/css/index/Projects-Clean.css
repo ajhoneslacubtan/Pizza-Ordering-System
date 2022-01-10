@@ -1,0 +1,177 @@
+.menu-list {
+  color: #313437;
+  background-color: #353231;
+  width: 100%;
+  margin-top: 8%;
+  background-color: transparent;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+}
+
+.menu-list .menu-title {
+  align-items: center;
+  width: 100%;
+  height: 20px;
+  scale: 50%;
+  justify-content: center;
+  display: flex;
+  color: #FEE146;
+  font-family: 'Poppins', sans-serif;
+  font-size: 120px;
+  font-style: normal;
+  font-weight: bolder;
+  line-height: 83px;
+  letter-spacing: 0em;
+  margin-top: 10px;
+}
+
+.menu-list #nine-inch, .menu-list #twelve-inch {
+  width: 100%;
+  background: transparent;
+  margin-top: 30px;
+  height: auto;
+  margin-bottom: 60px;
+}
+
+.menu-list #nine-inch span#label {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 25px;
+  scale: 50%;
+  line-height: 46px;
+  color: #FEE146;
+}
+
+.menu-list #twelve-inch span#label {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 25px;
+  scale: 50%;
+  line-height: 46px;
+  color: #FCA162;
+}
+
+.menu-list .pizza-list {
+  width: 100%;
+  background: transparent;
+  box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  height: 227px;
+  position: static;
+}
+
+.pizza-list .item {
+  position: static;
+  height: 227px;
+  width: 204px;
+  background-color: white;
+  border-radius: 15px;
+}
+
+.pizza-list .item img {
+  height: 100px;
+  width: 100px;
+  border-radius: 50px;
+  margin-top: 13px;
+  margin-left: calc((100% - 100px) / 2);
+  margin-bottom: 14px;
+}
+
+.pizza-list .item .add-to-order {
+  position: absolute;
+  top: 0%;
+  height: 100%;
+  width: 100%;
+  background-color: #fee24662;
+  border-radius: 15px;
+  visibility: hidden;
+}
+
+.item:hover {
+  position: relative;
+}
+
+.item:hover .add-to-order {
+  visibility: visible;
+}
+
+.pizza-list .item .add-to-order a {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  height: 35px;
+  display: block;
+  background-color: #fee246;
+  margin-top: calc((50% - 35px)*2);
+  width: 150px;
+  margin-left: calc((100% - 150px) / 2);
+  border-radius: 25px;
+  box-shadow: 2px 2px 30px rgba(0,0,0, 0.2);
+  text-decoration: none;
+  color: #252525;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pizza-list .desc1 {
+  font-family: 'Poppins';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #2C2827;
+  margin-left: 16px;
+  margin-top: 10px;
+  height: 52px;
+  width: calc(100% - 16px);
+  left: 16px;
+}
+
+.pizza-list .desc2 {
+  height: 21px;
+  width: 171px;
+  margin-left: 16px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  color: #6F3C3C;
+  border-radius: 15px;
+}
+
+@media (max-width:767px) {
+  menu-list h2 {
+    margin-bottom: 25px;
+    padding-top: 25px;
+    font-size: 24px;
+  }
+}
+
+/* menu-list .item {
+  text-align: center;
+  padding-top: 50px;
+  min-height: 425px;
+}
+
+menu-list.item .name {
+  font-weight: bold;
+  margin-top: 28px;
+  margin-bottom: 8px;
+  color: inherit;
+}
+
+.projects-clean .item .description {
+  font-size: 15px;
+  margin-top: 15px;
+  margin-bottom: 0;
+} */
+
