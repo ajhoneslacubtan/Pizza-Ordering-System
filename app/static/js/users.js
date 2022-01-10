@@ -19,8 +19,6 @@ async function loadUsersData() {
     let response = await fetch('http://localhost:8000/api/users/');
     let data = await response.json();
 
-    console.log(data.users);
-
     // Populate the table body #user-table with the data
     for (let i = 0; i < data.users.length; i++) {
         let user = data.users[i];
