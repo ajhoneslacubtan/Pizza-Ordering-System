@@ -1,7 +1,6 @@
 # funtion that returns the total number of sales per month
 from dateutil import parser
 from datetime import date
-from collections import OrderedDict
 
 _dict1 = {1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June', 7: 'July', 8: 'August', 9: 'September', 10: 'October', 11: 'November', 12: 'December'}
 
@@ -12,17 +11,24 @@ def get_all_sales(data: list[dict]) -> dict:
     :return: dict
     """
 
+    from datetime import date
+
     tz = []
     sales = []
     years = []
 
-    for i in data:
-        date = parser.parse(i['order_date'])
-        years.append(date.year)
-        _dict = {'date' : date, 'month': date.month, 'year': date.year}
-        tz.append(_dict)
-        sales.append(i['total_price'])
+    if data is not None:
+        for i in data:
+            date = parser.parse(i['order_date'])
+            years.append(date.year)
+            _dict = {'date' : date, 'month': date.month, 'year': date.year}
+            tz.append(_dict)
+            sales.append(i['total_price'])
+    else:
+        year_now = date.today().year
+        return {year_now: {1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0, 10:0, 11:0, 12:0}}
 
+    
     return_dict = {}
 
     for k in years:
@@ -183,8 +189,12 @@ def sales(ordersData: dict, orderDetailsData: dict, productsData: list) -> dict:
     
     year_now = date.today().year
 
-    for i, j in get_all_sales(ordersData)[year_now].items():
-        temp[_dict[i]] = j
+    try:
+        for i, j in get_all_sales(ordersData)[year_now].items():
+            temp[_dict[i]] = j
+    except KeyError:
+        for i in range(1, 13):
+            temp[i] = 0
 
     for i, j in temp.items():
         glabels.append(_dict1[i])
@@ -212,11 +222,17 @@ def sales(ordersData: dict, orderDetailsData: dict, productsData: list) -> dict:
 
     # Sales this month
 
-    sales['sales_this_month'] = get_sales_this_month(get_all_sales(ordersData)[year_now])
+    try:
+        sales['sales_this_month'] = get_sales_this_month(get_all_sales(ordersData)[year_now])
+    except KeyError:
+        sales['sales_this_month'] = 0
 
     # Sales growth
 
-    sales['sales_growth'] = get_sales_growth(get_all_sales(ordersData)[year_now])
+    try:
+        sales['sales_growth'] = get_sales_growth(get_all_sales(ordersData)[year_now])
+    except KeyError:
+        sales['sales_growth'] = '0%'
 
     # Total sales
 

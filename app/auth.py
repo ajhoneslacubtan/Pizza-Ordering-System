@@ -94,7 +94,8 @@ def login_post():
     user = Users.query.filter_by(user_name=username).first()
     
     if not user or not check_password_hash(user.user_pass, password):
-        flash('Please check your login details and try again.')
+        message = Markup('<span id="alert-body" class="closebtn" onclick="this.parentElement.style.display='+ "`none`"+ ';">&times;</span>Please check your login details and try again.')
+        flash(message)
         return redirect(url_for('login'))
 
     login_user(user, remember=remember)
@@ -104,4 +105,4 @@ def login_post():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('index'))
+    return redirect(url_for('login'))
