@@ -24,6 +24,13 @@ def users():
 def changepassword():
     return render_template('admin/changepassword.html', user_name=current_user.user_name, user_role=current_user.user_role, user_image=current_user.user_image)
 
+@app.route('/addorders/')
+@login_required
+def add_order_page():
+    return render_template('admin/add-order.html', user_name=current_user.user_name, user_role=current_user.user_role, user_image=current_user.user_image)
+
+
+
 @app.after_request
 def add_cors(resp):
     resp.headers['Access-Control-Allow-Origin'] = request.headers.get('Origin', '*')

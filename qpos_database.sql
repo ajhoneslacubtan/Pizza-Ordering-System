@@ -1,7 +1,7 @@
 create table if not exists USERS(
-	user_id serial primary key,
+	user_id serial8 primary key,
 	user_name varchar(50),
-	user_pass varchar(20),
+	user_pass varchar(100),
 	user_role varchar(5),
 	user_image text
 );

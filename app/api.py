@@ -96,7 +96,7 @@ def add_order():
     order_code = request.json['order_code']
     customer_name = request.json['customer_name']
     total = request.json['total']
-    result = spcall("add_order", (order_code, customer_name, total), True)
+    result = spcall("add_order", (order_code, customer_name, total), True)[0][0]
 
     return jsonify(result)
 
@@ -154,11 +154,7 @@ def add_order_details():
     product_size = request.json['product_size']
     product_qty = request.json['product_qty']
 
-<<<<<<< HEAD
-    result = spcall("add_order_details", (order_code, product_code, product_size, product_qty))[0][0]
-=======
-    result = spcall("add_order_details", (order_code, product_code, product_size, product_qty), True)
->>>>>>> d4ee07b0f02a49df0dfb1d733d9b40483f011d1e
+    result = spcall("add_order_details", (order_code, product_code, product_size, product_qty), True)[0][0]
 
     return jsonify(result)
 

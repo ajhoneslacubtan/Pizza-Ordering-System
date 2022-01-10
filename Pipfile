@@ -6,7 +6,6 @@ name = "pypi"
 [packages]
 psycopg2 = "*"
 flask = "*"
-sqlalchemy = "*"
 flask-httpauth = "*"
 requests = "*"
 python-dateutil = "*"
