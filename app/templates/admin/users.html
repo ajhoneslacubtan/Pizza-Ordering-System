@@ -34,7 +34,7 @@
         <span id="year">Year</span>
     </div>
 </div><div id="user" onclick="userToggle();"><img class="avatar" src="{{ url_for('static', filename=user_image) }}" />
-    <div class="user_details"><span class="user-name">{{ user_name }}</span>
+    <div class="user_details"><span class="user-name" id="username">{{ user_name }}</span>
         <div class="user-role"><span>{{ user_role }}</span></div>
     </div>
 </div></div><!-- Start: dropdown for user -->
@@ -63,7 +63,7 @@
             <ul class="sidebar-nav">
                 <li class="list-nav"> <a href="/addorders/"><i class="material-icons icons">add_circle_outline</i><span class="sidebar-label" href="/sales/">Add Order</span></a></li>
                 <li class="list-nav"> <a href="/"><i class="material-icons icons">local_pizza</i><span class="sidebar-label">Queue</span></a></li>
-                <li class="list-nav"> <a href="products.html"><i class="fa fa-list icons"></i><span class="sidebar-label">Products</span></a></li>
+                <li class="list-nav"> <a href="/products_page/"><i class="fa fa-list icons"></i><span class="sidebar-label">Products</span></a></li>
                 <li class="list-nav"> <a href="/sales"><i class="icon-graph icons"></i><span class="sidebar-label">Sales</span></a></li>
             </ul>
         </div>
