@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>this (1)</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxanium&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&amp;display=swap">
+    <link rel="stylesheet" href="assets/css/Roboto.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/material-icons.min.css">
+    <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/add-order.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/Projects-Clean.css">
+    <link rel="stylesheet" href="assets/css/sidebar-menu.css">
+</head>
+
+<body>
+    <div class="banner"><img id="banner-icon" class="banner-images" src="assets/img/Ellipse%206.png"><img id="name" class="banner-images" src="assets/img/MAYZ%20HOMEMADE.png">
+        <div class="right_banner"><div class="datetime">
+    <div class="time">
+        <span id="hour">00</span> :
+        <span id="minutes">00</span>  
+        <span id="period">AM</span>
+    </div>
+    <div class="date">
+        <span id="dayname">Day</span>, 
+        <span id="daynum">00</span> 
+        <span id="month">Month</span>, 
+        <span id="year">Year</span>
+    </div>
+</div><div id="user" onclick="userToggle();"><img class="avatar" src="assets/img/avatar.png" />
+    <div class="user_details"><span class="user-name">Jhoebelle</span>
+        <div class="user-role"><span>Admin</span></div>
+    </div>
+</div></div><!-- Start: dropdown for user -->
+        <div class="user-settings">
+            <div><span>Username</span>
+                <div><span>User Role</span></div>
+            </div><ul>
+    <li>
+        <a href="#">
+        <i class="fas fa-user-circle user-icon"></i><span class="text">Users</span>
+        </a></li>
+    <li>
+        <a href="#">
+        <i class="material-icons user-icon">vpn_key</i>
+        <span class="text">Change Password</span>
+        </a></li>
+    <li>
+        <a href="#">
+        <i class="fa fa-sign-out user-icon"></i><span class="text">Log Out</span>
+        </a></li>
+</ul>
+        </div><!-- End: dropdown for user -->
+    </div><!-- Start: Sidebar Menu -->
+    <div id="wrapper">
+        <!-- Start: SideBar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="list-nav active"><a href="#"><i class="material-icons icons">add_circle_outline</i><span class="sidebar-label">Add Order</span></a> </li>
+                <li class="list-nav"> <a href="queue.html"><i class="material-icons icons">local_pizza</i><span class="sidebar-label">Queue</span></a></li>
+                <li class="list-nav"> <a href="products.html"><i class="fa fa-list icons"></i><span class="sidebar-label">Products</span></a></li>
+                <li class="list-nav"> <a href="sales.html"><i class="icon-graph icons"></i><span class="sidebar-label">Sales</span></a></li>
+            </ul>
+        </div><!-- End: SideBar -->
+        <!-- Start: Content -->
+        <div class="page-content-wrapper">
+            <!-- Start: Sidebar -->    <div class="row">
+        <div class="menu-panel">
+            <section class="menu-list">
+                <div class="container">
+                    <div class="menu-title">
+                    <h3>MENU</h3>
+                </div>
+                    <div id="nine-inch">
+                        <span id="label">9” PIZZAS</span>
+                        <div class="pizza-list">
+                            <ul class="list-of-ninein">
+                                <li class="proditem"><div class="item">
+                            <img src="assets/img/minibus.jpeg">
+                                <div class="add-to-order">
+                                <a href="#" class="btn-">Add to Order</a>
+                                </div>
+                                <div class="desc1">
+                                    <span class="pizza-name">Pizza Name</span></div>
+                                <div class="desc2"><span class="pizza-price">Price</span></div>
+                                </div></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="twelve-inch">
+                        <span id="label">12" PIZZAS</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="order-list-panel">
+            <div class="order-toggle"><img src="assets/img/order-icon.png" id="icon-order"></div>
+            <div class="order-summary">
+                <span id="label">CUSTOMER ORDER</span>
+                <div class="order-info">
+                <form action="#">
+                    <label for="order-code">CODE:</label>
+                    <input type="text" id="order-code" name="order-code" placeholder="Order Code">
+                    
+                    <label for="cust-name">NAME:</label>
+                    <input type="text" id="cust-name" name="cust-name" placeholder="Enter customer name">
+                </form>
+                </div>
+                <div class="order-details">
+                    <span id="label">ORDER DETAILS</span>
+                    <div class="order-list">
+                    insert list here
+                        <div></div>
+                    </div>
+                </div>
+                <div class="total">
+                    <form action="#">
+                        <label for="total-cost">TOTAL</label>
+                        <input type="text" id="total-cost" name="total-cost" placeholder=0.00>
+                    </form>
+                    </div>
+                <button type="button" id="add-order">ADD ORDER</button>
+        </div>
+    </div><!-- End: Sidebar -->
+        </div><!-- End: Content -->
+    </div><!-- End: Sidebar Menu -->
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
