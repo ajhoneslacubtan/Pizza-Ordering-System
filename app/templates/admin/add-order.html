@@ -38,11 +38,13 @@
         <span id="month">Month</span>, 
         <span id="year">Year</span>
     </div>
-</div><div id="user" onclick="userToggle();"><img class="avatar" src="{{ url_for('static', filename=user_image) }}" />
+</div>
+<div id="user" onclick="userToggle();"><img class="avatar" src="{{ url_for('static', filename=user_image) }}" />
     <div class="user_details"><span class="user-name" id="username">{{ user_name }}</span>
         <div class="user-role"><span>{{ user_role }}</span></div>
     </div>
-</div></div><!-- Start: dropdown for user -->
+</div></div>
+<!-- Start: dropdown for user -->
         <div class="user-settings">
             <div><span>Username</span>
                 <div><span>User Role</span></div>
@@ -62,7 +64,8 @@
         </a></li>
 </ul>
         </div><!-- End: dropdown for user -->
-    </div><!-- Start: Sidebar Menu -->
+    </div>
+    <!-- Start: Sidebar Menu -->
     <div id="wrapper">
         <!-- Start: SideBar -->
         <div id="sidebar-wrapper">
