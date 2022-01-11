@@ -63,7 +63,7 @@ def update_product_price():
 def delete_product():
     product_code = request.json['product_code']
 
-    result = spcall("delete_product", (product_code,), True)
+    result = spcall("delete_product", (product_code,), True)[0][0]
 
     return jsonify(result)
 
