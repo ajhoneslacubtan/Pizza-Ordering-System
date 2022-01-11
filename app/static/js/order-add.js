@@ -248,9 +248,11 @@ function Add_Order_to_Database(ord_code, cust_name, total, order_list){
                     document.getElementById('total-cost').value=(0).toFixed(2);
                     document.getElementById('cust-name').value="";
                     document.getElementById('itemlist').innerHTML = "";
-                    var order = {};
-                    var code = "";
+                    order = {};
+                    code = "";
+                    alert("Order has been added!");
                     Add_Order_Code_List();
+
                 }
                 // Request sucessful but "status" not okay
                 else{
@@ -278,7 +280,7 @@ function Add_OrderDetails_to_Database(ord_code, prod_code, prod_size, prod_qty){
     		success: function(resp) {
                 // Condition if "status" of request is okay
                 if (resp.status  == 'OK') {
-                    alert('Okay');
+                    //alert('Okay');
                 }
                 // Request sucessful but "status" not okay
                 else{
