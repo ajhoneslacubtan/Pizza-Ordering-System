@@ -37,7 +37,7 @@ def products_page():
 @app.route('/add_products_page/')
 @login_required
 def add_products_page():
-    return render_template('admin/add-products.html', user_name=current_user.user_name, user_role=current_user.user_role, user_image=current_user.user_image)
+    return render_template('admin/Add-product.html', user_name=current_user.user_name, user_role=current_user.user_role, user_image=current_user.user_image)
 
 
 
