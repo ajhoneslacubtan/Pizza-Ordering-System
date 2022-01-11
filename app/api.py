@@ -110,6 +110,7 @@ def get_orders():
 @app.route('/api/sales/', methods=['GET'])
 @login_required
 def get_all_orders():
+    print(spcall("get_all_orders", ())[0][0])
     orders = spcall("get_all_orders", ())[0][0]['orders']
 
     products = get_products(spcall("list_products", ())[0][0])

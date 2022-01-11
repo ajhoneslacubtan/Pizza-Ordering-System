@@ -47,7 +47,7 @@ create table if not exists PROD_PRICE_AVAILABILITY(
 );
 -- -- USE CASE ON PRODUCTS ---
 
-CREATE OR REPLACE FUNCTION ADD_PRODUCT(par_product_code varchar, product_name varchar, product_image text, product_describe text, price_9in float, price_12in float, u_id varchar) RETURNS json
+CREATE OR REPLACE FUNCTION ADD_PRODUCT(par_product_code varchar, product_name varchar, product_image text, product_describe text, price_9in float, price_12in float, u_id bigint) RETURNS json
 	LANGUAGE plpgsql
 	AS $$
 declare
@@ -596,3 +596,35 @@ begin
 	);
 end;
 $$;
+
+select ADD_ORDER('00002', 'Person 2', 480);
+select ADD_ORDER_DETAILS('00002', 'PZ-VEG', '12', 2);
+
+select ADD_ORDER('00003', 'Person 3', 250);
+select ADD_ORDER_DETAILS('00003', 'PZ-ACH', '12', 1);
+
+select ADD_ORDER('00004', 'Person 4', 1220);
+select ADD_ORDER_DETAILS('00004', 'PZ-BBQ', '12', 2);
+select ADD_ORDER_DETAILS('00004', 'PZ-ACH', '12', 2);
+
+select ADD_ORDER('00005', 'Person 5', 210);
+select ADD_ORDER_DETAILS('00005', 'PZ-BBQ', '9', 1);
+
+select ADD_ORDER('00006', 'Person 6', 160);
+select ADD_ORDER_DETAILS('00006', 'PZ-ACH', '9', 1);
+
+select ADD_ORDER('00007', 'Person 7', 210);
+select ADD_ORDER_DETAILS('00007', 'PZ-BBQ', '9', 1);
+
+select ADD_ORDER('00008', 'Person 8', 580);
+select ADD_ORDER_DETAILS('00008', 'PZ-PEP', '9', 1);
+select ADD_ORDER_DETAILS('00008', 'PZ-BBQ', '12', 1);
+
+select ADD_ORDER('00009', 'Person 9', 180);
+select ADD_ORDER_DETAILS('00009', 'PZ-PEP', '9', 1);
+
+select UPDATE_ORDER_STATUS('00001', 'COMPLETED');
+select UPDATE_ORDER_STATUS('00002', 'COMPLETED');
+select UPDATE_ORDER_STATUS('00003', 'COMPLETED');
+select UPDATE_ORDER_STATUS('00004', 'PREPARING');
+select UPDATE_ORDER_STATUS('00005', 'PREPARING');
