@@ -132,7 +132,9 @@ function update_list(order_code)
                     document.getElementById('specific-code').textContent=resp.ord_code;
                     document.getElementById('custo-name').textContent=resp.customer_name;
                     document.getElementById('ord-status').textContent=resp.order_status;
-                    document.getElementById('ord-total').textContent=resp.order_total;
+                    document.getElementById('ord-status').classList.add(resp.order_status);
+                    document.getElementById('ord-total').textContent=("Total: " + resp.order_total.toFixed(2));
+                    document.getElementById('num_items').textContent=(resp.size + " items (Qty. " + resp.size + ")");
                     document.getElementById('order-details').innerHTML = "";
                     // Loop through order details
                     for (var i=0; i<resp.size; i++){
@@ -142,15 +144,14 @@ function update_list(order_code)
                         ord_detail.setAttribute('class', 'ord-detail');
                         document.getElementById('order-details').append(ord_detail);
                         
-                        ord_detail.append("x"+prod.quantity+"\t");
-                        ord_detail.append("\t"+prod.product_name+"\t");
-                        ord_detail.append("\t"+prod.product_size+'"');
+                        ord_detail.append(prod.quantity+ "x" +"\t");
+                        ord_detail.append("\t\t"+prod.product_size+'"'+"\t");
+                        ord_detail.append("\t"+prod.product_name);
                         
                         var price_div = document.createElement('div');
                         ord_detail.append(price_div);
                         price_div.setAttribute('style','float:right');
-                        price_div.append(prod.product_prize+'\t'+'x'+'\t'+
-                                         prod.quantity+'\t'+'='+'\t'+prod.subtotal);
+                        price_div.append(prod.subtotal.toFixed(2));
                     }
                     
 				}
