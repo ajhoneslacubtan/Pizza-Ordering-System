@@ -156,10 +156,10 @@
 
 #custo-name{
   font-family: 'Poppins', sans-serif;
-font-style: normal;
-font-weight: bold;
-font-size: 1.1em;
-line-height: 23px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.1em;
+  line-height: 23px;
 }
 
 
@@ -177,11 +177,11 @@ line-height: 23px;
 #ord-status{
   border-radius: 30px;
   font-family: 'Poppins', sans-serif;
-font-style: normal;
-font-weight: bold;
-padding: 1% 2% 1% 2%;
-color: #000000; 
-font-size: 0.8em;
+  font-style: normal;
+  font-weight: bold;
+  padding: 1% 2% 1% 2%;
+  color: #000000; 
+  font-size: 0.8em;
 }
 
 span .PENDING{
@@ -218,7 +218,6 @@ span .COMPLETED{
 }
 
 .ord-detail {
-  /*background: #fca162;*/
   margin: 5px;
   padding-left: 10px;
   padding-right: 10px;
@@ -244,7 +243,6 @@ span .COMPLETED{
   display: block;
   outline: none;
   border: none;
-  /*margin-right: 0.5vw;*/
   margin-bottom: 0.5vh;
 }
 
