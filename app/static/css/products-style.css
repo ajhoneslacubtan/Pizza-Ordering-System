@@ -1,0 +1,417 @@
+body {
+  overflow-x: hidden;
+  background-color: #353231;
+}
+
+/* width */
+
+::-webkit-scrollbar {
+  width: 10px;
+  margin-right: 10px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #353231;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FDA765;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #fda765bb;
+}
+
+.page-content-wrapper {
+  display: inline-block;
+  position: static;
+  margin-top: 60px;
+  overflow-x: hidden;
+  /*height: calc(100vh-60px;*/
+}
+
+.product-panel {
+  display: block;
+  width: 90%;
+  margin: 2% auto 2% auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  height: 110%;
+}
+
+.product-panel::-webkit-scrollbar {
+  height: 10px;
+}
+
+.product-panel::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #353231;
+  border-radius: 8px;
+}
+
+.product-panel::-webkit-scrollbar-thumb {
+  background: #fee176;
+  border-radius: 10px;
+}
+
+.product-panel::-webkit-scrollbar-thumb:hover {
+  background: #fee176bb;
+}
+
+.product-div {
+  height: fit-content;
+  padding-top: 2%;
+  padding-bottom: 1%;
+  display: inline-block;
+  background-color: #2c2827;
+  border-radius: 10px;
+  width: 250px;
+  margin-right: 10px;
+  margin-bottom: 2%;
+}
+
+.pizza-image {
+  content: url("../../assets/img/OIP-removebg-preview.png");
+  display: block;
+  margin-top: 2%;
+  margin: 5% auto 3% auto;
+  width: 80px;
+  background-color: aqua;
+  border-radius: 100%;
+  height: 80px;
+}
+
+.pizza-title {
+  display: block;
+  font-family: Poppins;
+  font-size: 120%;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 48px;
+  letter-spacing: 0em;
+  color: #D0ED84;
+  margin: auto;
+  height: 10%;
+  text-align: center;
+}
+
+.pizza-description {
+  /*border: 1px solid #fff;*/
+  width: 90%;
+  margin: 1vh 0vw 2.5vh 2vw;
+  height: 120px;
+  font-size: 12px;
+}
+
+.pizza-price {
+  color: #2c2827;
+  display: block;
+  border-radius: 10%;
+  font-family: 'Montserrat';
+  font-weight: bold;
+  width: 60px;
+  font-size: 10px;
+  border-radius: 15px;
+  text-align: center;
+  padding-top: 6%;
+  padding-bottom: 6%;
+}
+
+.pizza-size {
+  font-size: 11px;
+  display: block;
+  margin: auto;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: bold;
+  text-align: center;
+  width: 20px;
+}
+
+.pizza-descriptionlbl {
+  font-family: 'Montserrat';
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.pizza-pricelbl {
+  display: inline-block;
+  width: fit-content;
+}
+
+.price-size {
+  display: inline-block;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.pizza-1 {
+  display: inline-block;
+  padding: 1%;
+  margin-right: 10px;
+  margin-left: 62px;
+}
+
+.pizza-1.notavail .pizza-price {
+  background-color: grey;
+}
+
+.pizza-1.notavail .pizza-size {
+  color: grey;
+}
+
+.pizza-1 .pizza-size {
+  color: #fee146;
+}
+
+.pizza-1 .pizza-price {
+  background-color: #fee146;
+}
+
+.pizza-2 {
+  display: inline-block;
+  padding: 1%;
+}
+
+.pizza-2 .pizza-size {
+  color: #FDA765;
+}
+
+.pizza-2 .pizza-price {
+  background-color: #FDA765;
+}
+
+.pizza-2.notavail .pizza-price {
+  background-color: grey;
+}
+
+.pizza-2.notavail .pizza-size {
+  color: grey;
+}
+
+.pizza-size {
+  color: #9C9C94;
+}
+
+.pizza-price {
+  background-color: #9C9C94;
+}
+
+.product-div button {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.update-details {
+  display: inline-block;
+  background-color: #2c2827;
+  color: #fca162;
+  border-color: #fca162;
+  border-radius: 7px;
+  margin-left: 6%;
+  height: fit-content;
+  width: 41%;
+  font-family: 'Montserrat';
+  font-weight: bold;
+  font-size: 9px;
+}
+
+.del-product {
+  font-family: 'Montserrat';
+  font-size: 9px;
+  display: inline-block;
+  background-color: #2c2827;
+  color: #fca162;
+  border-color: #fca162;
+  border-radius: 7px;
+  margin-left: 6%;
+  /*display: inline-flex;*/
+  height: fit-content;
+  width: 41%;
+  font-weight: bold;
+}
+
+.update-price {
+  font-family: 'Montserrat';
+  font-size: 9px;
+  display: inline-block;
+  color: #2c2827;
+  background-color: #fca162;
+  border-color: #fca162;
+  border-radius: 7px;
+  height: fit-content;
+  width: 41%;
+  margin: 6%;
+  font-weight: bold;
+}
+
+.pizza-description {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 17px;
+  color: #FFFFFF;
+  font-size: 12px;
+}
+
+.update-avail {
+  font-family: 'Montserrat';
+  font-size: 8px;
+  display: inline-block;
+  color: #2c2827;
+  background: #fca162;
+  border-color: #fca162;
+  border-radius: 8px;
+  height: fit-content;
+  width: 41%;
+  font-weight: bold;
+}
+
+.prod-status {
+  display: block;
+  margin: 0vh 4.5vw;
+  color: #2c2827;
+  height: fit-content;
+  width: fit-content;
+  border-radius: 3vw;
+  font-size: 60%;
+  text-align: center;
+  font-family: 'Montserrat';
+  font-weight: 700;
+  padding: 1% 3% 1% 3%;
+  margin: auto;
+}
+
+.prod-status.available {
+  background-color: #50D18B;
+}
+
+.prod-status.not-available {
+  background-color: #E54D4D;
+}
+
+.pizza-pricelbl {
+  color: #fca162;
+  margin: 0vh 1vw 0vh 1vw;
+  display: inline-flex;
+  display: block;
+}
+
+.pizza-descriptionlbl {
+  color: #fca162;
+  display: block;
+  margin: 0vh 1vw 0vh 1vw;
+}
+
+#queue-icon {
+  color: #fca162;
+  margin: 0vh 1.5vw 0vh -0.1vw;
+  font-size: 6vh;
+  height: 5vh;
+  width: 3vw;
+}
+
+#Add-order {
+  margin: 0vh 0vw 0vh 0vw;
+}
+
+#add-orderbtn {
+  margin: 0.5vh -0.5vw 1vh 0.5vw;
+  font-size: 6vh;
+  height: 5vh;
+  width: 3vw;
+}
+
+#queue {
+  margin: 0vh 0vw 1vh -1.5vw;
+}
+
+#products-link {
+  margin: 1.5vh;
+}
+
+#sales-link {
+  margin: 0vh 0vw 0vh 0vw;
+}
+
+#sales-btn {
+  margin: 0vh 1vw 0vh -0.7vw;
+  font-size: 5vh;
+  height: 5vh;
+  width: 3vw;
+}
+
+#products-btn {
+  margin: 0vh -0.5vw 0vh -0.2vw;
+  font-size: 6vh;
+  height: 5vh;
+  width: 3vw;
+}
+
+#searchbar {
+  margin: 5vh 0vw 0vh 60vw;
+  border-color: #fee146;
+  background-color: #353231;
+  border-radius: 3vh;
+  height: 5vh;
+  width: 15vw;
+}
+
+#time-div {
+  background-color: #2c2827;
+}
+
+#name-div {
+  background-color: #2c2827;
+}
+
+#admin-span {
+  background-color: #2c2827;
+}
+
+#admin-div {
+  background-color: #2c2827;
+}
+
+#name-div1 {
+  background-color: #2c2827;
+}
+
+#products-img {
+  height: 3.1vw;
+  margin: 4vh 1vw 1vh 1vw;
+}
+
+#price-img {
+  height: 4vh;
+  margin: 2vh 0vw 0vh 2vw;
+}
+
+#wrapper1 {
+  height: 130vh;
+}
+
+#se-add-div {
+  width: 30vw;
+}
+
+#add-icon {
+  color: #fbde46;
+  font-size: 30px;
+}
+
+#sear-in {
+  border-color: #fbde46;
+  background-color: #353231;
+  border-radius: 2vh;
+  width: 20vw;
+  height: 30px;
+}
+
+#search-icon {
+  color: #fbde46;
+  font-size: 20px;
+}
+
