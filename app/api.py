@@ -34,7 +34,7 @@ def update_product():
     
     return jsonify(result)
 
-@app.route('/api/products/status/', methods=['PUT'])
+@app.route('/api/products/status/', methods=['POST'])
 @login_required
 def update_product_status():
     product_code = request.json['product_code']
@@ -42,11 +42,11 @@ def update_product_status():
     product_avail = request.json['product_avail']
     product_size = request.json['product_size']
 
-    result = spcall("update_product_status", (product_code, u_id, product_avail, product_size), True)
+    result = spcall("update_product_status", (product_code, u_id, product_avail, product_size), True)[0][0]
 
     return jsonify(result)
 
-@app.route('/api/products/price/', methods=['PUT'])
+@app.route('/api/products/price/', methods=['POST'])
 @login_required
 def update_product_price():
     product_code = request.json['product_code']
@@ -54,13 +54,13 @@ def update_product_price():
     product_size = request.json['product_size']
     product_price = request.json['product_price']
 
-    result = spcall("update_product_price", (product_code, u_id, product_price, product_size), True)
+    result = spcall("update_product_price", (product_code, u_id, product_price, product_size), True)[0][0]
 
     return jsonify(result)
 
-@app.route('/api/products/', methods=['DELETE'])
+@app.route('/api/products/<string:product_code>', methods=['DELETE'])
 @login_required
-def delete_product():
+def delete_product(product_code):
     product_code = request.json['product_code']
 
     result = spcall("delete_product", (product_code,), True)[0][0]
