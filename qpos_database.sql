@@ -298,7 +298,7 @@ begin
 				) tm on t.product_code = tm.product_code and t.date_modified = tm.MaxDate and t.product_size = tm.product_size
 	LEFT JOIN PRODUCTS 
 		ON PRODUCTS.product_code= t.product_code
-	WHERE PRODUCTS.product_name LIKE keyword;
+	WHERE lower(PRODUCTS.product_name) LIKE lower(keyword);
 	for loc_prod_record in select * from table_products loop
 		loc_prod_json = loc_prod_json ||
 						json_build_object(
