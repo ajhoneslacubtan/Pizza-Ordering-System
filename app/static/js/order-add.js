@@ -19,7 +19,7 @@ function Add_Order_Code_List(){
 
 function showProductBySize(size_type, pizza_size){
     $.ajax({
-                url: 'http://localhost:8000/api/products/size/'+ pizza_size,
+                url: 'https://mayz-pizza.herokuapp.com/api/products/size/'+ pizza_size,
                 type:"GET",
                 dataType: "json",
                 success: function(resp){
@@ -225,7 +225,7 @@ function Add_Order(order_list){
 
 function Add_Order_to_Database(ord_code, cust_name, total, order_list){
     $.ajax({
-    		url: 'http://localhost:8000/api/orders/',
+    		url: 'https://mayz-pizza.herokuapp.com/api/orders/',
     		type: "POST",
     		contentType: "application/json; charset=utf-8",
             data: JSON.stringify({
@@ -265,7 +265,7 @@ function Add_Order_to_Database(ord_code, cust_name, total, order_list){
 
 function Add_OrderDetails_to_Database(ord_code, prod_code, prod_size, prod_qty){
     $.ajax({
-    		url: 'http://localhost:8000/api/order_details/',
+    		url: 'https://mayz-pizza.herokuapp.com/api/order_details/',
     		type:"POST",
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify({
@@ -303,7 +303,7 @@ function generate_order_code(){
             var numorders = 0;
                 $.ajax({
                     async:false,
-                    url: 'http://localhost:8000/api/orders/' + status_list[i],
+                    url: 'https://mayz-pizza.herokuapp.com/api/orders/' + status_list[i],
                     type:"GET",
                     dataType: "json",
                     success: function(resp) {
