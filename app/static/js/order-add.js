@@ -38,6 +38,9 @@ function showProductBySize(size_type, pizza_size){
                 
                             item_div = document.createElement('div');
                             item_div.setAttribute('class','item');
+                            if (i == resp.size -1){
+                                item_div.classList.add('last');
+                            }
                             
                             item_img = document.createElement('img');
                             document.getElementById(size_type).append(item_div);

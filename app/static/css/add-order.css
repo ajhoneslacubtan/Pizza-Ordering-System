@@ -32,7 +32,7 @@ body {
   margin-bottom: -10px;
 }
 
-.order-list-panel {
+#order-list-panel {
   background: transparent;
   width: 300px;
   direction: left;
@@ -42,7 +42,7 @@ body {
   overflow-x: hidden;
 }
 
-.order-list-panel div.order-summary {
+#order-list-panel div.order-summary {
   width: 100%;
   height: auto;
   margin-top: 5px;
@@ -69,7 +69,7 @@ body {
   color: #FFFFFF;
 }
 
-.order-list-panel .order-toggle {
+#order-list-panel .order-toggle {
   background-color: #2C2827;
   border-radius: 25px;
   width: 3rem;
@@ -82,7 +82,7 @@ body {
   justify-content: center;
 }
 
-.order-list-panel #icon-order {
+#order-list-panel #icon-order {
   width: 25px;
   height: 25px;
   /*visibility: hidden;*/
@@ -90,6 +90,11 @@ body {
 
 .order-summary .order-info {
   padding: 20px;
+}
+
+
+#order-list-panel.active #menu-panel{
+  visibility: hidden;
 }
 
 .order-summary label {
@@ -346,7 +351,7 @@ body {
   margin-top: 4%;
 }
 
-.order-list-panel input#add-order {
+#order-list-panel input#add-order {
   background: #FEE146;
   border-radius: 15px;
   width: 64%;
@@ -364,11 +369,11 @@ body {
   visibility: hidden;
 }
 
-.order-list-panel input#add-order.active {
+#order-list-panel input#add-order.active {
   visibility: visible;
 }
 
-.menu-panel {
+#menu-panel {
   height: 9%;
   background-color: transparent;
   width: calc(98% - 300px);
@@ -447,6 +452,10 @@ body {
   border-radius: 15px;
   display: inline-block;
   margin-right: 2%;
+}
+
+.pizza-list .item.last {
+  margin-right: 0%;
 }
 
 .pizza-list .item img {
@@ -547,52 +556,51 @@ menu-list.item .name {
   margin-top: 15px;
   margin-bottom: 0;
 } */
-
+/*
 @media (max-width: 767px) {
-  .order-list-panel {
+  #order-list-panel {
     width: 80px;
     background-color: transparent;
   }
 }
 
 @media (max-width: 767px) {
-  .order-list-panel div.order-summary {
+  #order-list-panel div.order-summary {
     width: 0px;
     visibility: hidden;
   }
 }
 
 @media (max-width: 767px) {
-  .order-list-panel .order-toggle, .order-list-panel #icon-order {
+  #order-list-panel .order-toggle, #order-list-panel #icon-order {
     visibility: visible;
   }
 }
 
 @media (max-width: 767px) {
-  .order-list-panel .order-toggle {
+  #order-list-panel .order-toggle {
     margin-left: 5px;
     width: 45px;
   }
 }
 
 @media (max-width: 767px) {
-  .order-list-panel.active {
+  #order-list-panel.active {
     visibility: visible;
     width: 300px;
   }
 }
 
 @media (max-width: 767px) {
-  .menu-panel {
+  #menu-panel {
     width: calc(100% - 85px);
   }
 }
-
+*/
 @media (min-width:992px) {
   .page-content-wrapper {
-    /*padding-left: 0px;*/
+    padding-left: 0px;
     margin-left: 225px;
-    /*margin-top: -20px;*/
     width: calc(100vw - 225px);
   }
 }
