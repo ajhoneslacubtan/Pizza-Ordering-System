@@ -34,7 +34,7 @@ create table if not exists ORDER_DETAILS(
 );
 create table if not exists PROD_PRICE_AVAILABILITY(
 	product_code varchar(10),
-	user_id varchar(10),
+	user_id bigint,
 	product_price float,
 	product_avail boolean,
 	product_size varchar(5),

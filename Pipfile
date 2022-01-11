@@ -11,6 +11,7 @@ requests = "*"
 python-dateutil = "*"
 flask-login = "*"
 flask-sqlalchemy = "*"
+gunicorn = "*"
 
 [dev-packages]
 
