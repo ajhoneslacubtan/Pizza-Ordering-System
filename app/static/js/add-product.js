@@ -1,16 +1,34 @@
 
 var p_photo;
 
+$(document).ready(function(){
+    // Prepare the preview for profile picture
+        $("#wizard-picture").change(function(){
+            readURL(this);
+        });
+    });
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
+        }
+        p_photo = reader.readAsDataURL(input.files[0]);
+        console.log(p_photo);
+    }
+}
+
+
 function addProduct(){
     var p_name = document.getElementById("name-input").value;
     var p_code = document.getElementById("code-input").value;
     var p_desc = document.getElementById("desc-input").value;
-    
+    readFile();
     var p_inch9 = document.getElementById("size1-input").value;
     var p_inch12 = document.getElementById("size2-input").value;
     var p_id = document.getElementById("username").innerHTML;
-    
-    console.log(p_id);
     
     $.ajax({
     		url: 'http://localhost:8000/api/products/',
@@ -43,8 +61,6 @@ function readFile(){
     var baseString;
     reader.onloadend = function () {
         baseString = reader.result;
-        p_photo = baseString;
     };
-    reader.readAsDataURL(file);
-    return baseString;
+    p_photo = reader.readAsDataURL(file);
 }
