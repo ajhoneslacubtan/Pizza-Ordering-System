@@ -1,5 +1,5 @@
 from flask import Flask
-from settings import DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME
+from settings import DB_URI
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from os.path import join, dirname, realpath
@@ -11,7 +11,7 @@ app = Flask(__name__, static_url_path='', static_folder='static', template_folde
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['SECRET_KEY'] = 'secretranatoniha'
-app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}'
+app.config['SQLALCHEMY_DATABASE_URI'] = DB_URI
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy()

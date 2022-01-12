@@ -1,10 +1,10 @@
 import sys
 from sqlalchemy import create_engine
-from settings import DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME
+from settings import DB_URI
 
 class DBconn:
     def __init__(self):
-        engine = create_engine(f'postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}', echo=False)
+        engine = create_engine(DB_URI, echo=False)
         self.conn = engine.connect()
         self.trans = self.conn.begin()
 
