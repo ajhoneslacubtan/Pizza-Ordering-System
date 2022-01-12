@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>isend-3-1 (1)</title>
+    <title>QPOS | Add Product</title>
+    <link rel="icon" href="/img/qpos-icon.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans&amp;display=swap">
@@ -14,12 +15,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
     <link rel="stylesheet" href="/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/add-product.css">
     <link rel="stylesheet" href="/css/Sidebar-Menu.css">
 </head>
 
 <body>
-    <div class="banner"><img id="banner_icon" class="banner-images" src="/img/Ellipse%206.png"><img id="name" class="banner-images" src="/img/MAYZ%20HOMEMADE.png">
+    <div class="banner"><img id="banner-icon" class="banner-images" src="/img/Ellipse%206.png"><img id="name" class="banner-images" src="/img/MAYZ%20HOMEMADE.png">
         <div class="right_banner"><div class="datetime">
     <div class="time">
         <span id="hour">00</span> :
@@ -32,27 +34,47 @@
         <span id="month">Month</span>, 
         <span id="year">Year</span>
     </div>
-</div><img class="avatar" src="/img/avatar.png">
-            <div class="user">
-                <div class="user-name"><span id="username">Jhoebelle</span></div>
-                <div class="user-role"><span>Admin</span></div>
-            </div>
-            <div class="dropdown drop"><button class="btn btn-primary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button"></button>
-                <div class="dropdown-menu drop-menu"><a class="dropdown-item" href="#">Users</a><a class="dropdown-item" href="#">Change Password</a><a class="dropdown-item" href="#">Logout</a></div>
-            </div>
-        </div>
+</div>
+<div id="user" onclick="userToggle();"><img class="avatar" src="{{ url_for('static', filename=user_image) }}" />
+    <div class="user_details"><span class="user-name" id="username">{{ user_name }}</span>
+        <div class="user-role"><span>{{ user_role }}</span></div>
+    </div>
+</div></div>
+<!-- Start: dropdown for user -->
+        <div class="user-settings">
+            <div><span>Username</span>
+                <div><span>User Role</span></div>
+            </div><ul>
+    <li>
+        <a href="/users/">
+        <i class="fas fa-user-circle user-icon"></i><span class="text">Users</span>
+        </a></li>
+    <li>
+        <a href="#">
+        <i class="material-icons user-icon">vpn_key</i>
+        <span class="text">Change Password</span>
+        </a></li>
+    <li>
+        <a href="#">
+        <i class="fa fa-sign-out user-icon"></i><span class="text">Log Out</span>
+        </a></li>
+</ul>
+        </div><!-- End: dropdown for user -->
     </div><!-- Start: Sidebar Menu -->
     <div id="wrapper">
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li class="list-nav"> <a href="add-order.html"><i class="far fa-edit icons"></i><span class="sidebar-label">Add Order</span></a></li>
-                <li class="list-nav"> <a href="#"><i class="material-icons icons">local_pizza</i><span class="sidebar-label">Queue</span></a></li>
-                <li class="list-nav"> <a href="products.html"><i class="fa fa-list icons"></i><span class="sidebar-label">Products</span></a></li>
-                <li class="list-nav"> <a href="sales.html"><i class="far fa-money-bill-alt icons"></i><span class="sidebar-label">Sales</span></a></li>
+                <li class="list-nav active"><a href="#"><i class="material-icons icons">add_circle_outline</i><span class="sidebar-label">Add Order</span></a> </li>
+                <li class="list-nav"> <a href="/"><i class="material-icons icons">local_pizza</i><span class="sidebar-label">Queue</span></a></li>
+                <li class="list-nav"> <a href="/products_page/"><i class="fa fa-list icons"></i><span class="sidebar-label">Products</span></a></li>
+                <li class="list-nav"> <a href="/sales/"><i class="icon-graph icons"></i><span class="sidebar-label">Sales</span></a></li>
             </ul>
         </div>
-        <div class="page-content-wrapper"><i class="material-icons" id="back-icon">arrow_back</i><img id="add-prodimg" src="/img/AddProduct.png">
-            <div id="addproduct-form"><img id="name-img" src="/img/name1.png"><input class="form-control-plaintext" type="text" id="name-input" value="Plain Text Value"><img id="code-img" src="/img/code.png"><input class="form-control-plaintext" type="text" id="code-input" value="Plain Text Value">
+        <div class="page-content-wrapper">
+            <i class="material-icons" id="back-icon">arrow_back</i>
+            <img id="add-prodimg" src="/img/AddProduct.png">
+            <div id="addproduct-form">
+                <img id="name-img" src="/img/name1.png"><input class="form-control-plaintext" type="text" id="name-input" value="Plain Text Value"><img id="code-img" src="/img/code.png"><input class="form-control-plaintext" type="text" id="code-input" value="Plain Text Value">
                 <div id="desc_div"><img id="desc-img" src="/img/desc.png">
                     <div class="tempDiv"><textarea id="desc-input"></textarea>
                         <div id="photo-div"><img id="photo-img" src="/img/photo.png"><img id="photo1" src="/img/ellipse7.png"><input type="file" id="imageSelected" onchange="readFile()"></div>
@@ -63,6 +85,7 @@
             </div>
         </div>
     </div><!-- End: Sidebar Menu -->
+</div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/js/add-product.js"></script>
     <script src="/js/jQuery-2.1.4.min.js"></script>
