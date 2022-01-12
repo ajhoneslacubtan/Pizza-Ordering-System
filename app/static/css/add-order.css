@@ -379,6 +379,11 @@
   margin-top: 5%;
 }
 
+.item_image{
+  height: 100px;
+  width: 100px;
+}
+
 .menu-list #nine-inch span#label {
   font-family: 'Poppins', sans-serif;
   font-style: normal;

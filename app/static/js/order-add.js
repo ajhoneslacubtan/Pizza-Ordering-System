@@ -41,9 +41,12 @@ function showProductBySize(size_type, pizza_size){
                             if (i == resp.size -1){
                                 item_div.classList.add('last');
                             }
-                            
-                            item_img = document.createElement('img');
                             document.getElementById(size_type).append(item_div);
+
+                            item_img = document.createElement('img');
+                            item_img.setAttribute('class', 'item_image');
+                            item_img.setAttribute('src', '/' + image + '');
+                            
                             item_div.appendChild(item_img);
 
                             desc1_item = document.createElement('div');
@@ -114,6 +117,7 @@ function displayOrderDetails(order_list){
 
         var pzimage = document.createElement('img');
         pzimage.setAttribute('class', 'pz_img');
+        pzimage.setAttribute('src', '/' + prod_image);
         row_item_div.append(pzimage);
         var pzname = document.createElement('span');
         pzname.setAttribute('class', 'pz_name');
