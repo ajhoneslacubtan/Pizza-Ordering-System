@@ -82,9 +82,11 @@ function displayProducts(resp){
 
                         var pizza_image = document.createElement('img');
                         pizza_image.setAttribute('class','pizza-image');
-                        pizza_image.setAttribute('src', product.product_image);
-                        //pizza_image.setAttribute('alt',product.product_name);
+                        pizza_image.setAttribute('src', '/' + product.product_image + '');
+                        //pizza_image.setAttribute('id',product.product_code+"image");
                         product_div.append(pizza_image);
+                        //$('.pizza_image').attr('src', product.product_image);
+                        //document.getElementById(product.product_code+"image").src =  '/' + product.product_image + '';
 
                         var pizza_title = document.createElement('heading');
                         pizza_title.setAttribute('class','pizza-title');
