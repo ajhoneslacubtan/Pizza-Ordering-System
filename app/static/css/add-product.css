@@ -1,78 +1,89 @@
 #addproduct-form {
-  height: 80%;
-  width: 85%;
-  margin: 2vh 0vw 0vh 7vh;
+  height: fit-content;
+  width: 90%;
+  display: block;
+  margin: auto;
   background-color: #2c2827;
-  border-radius: 3vh;
+  border-radius: 30px;
+  padding: 2%;
+}
+
+.Entry{
+  margin-bottom: 2.5%;
 }
 
 #name-img {
-  margin: 4vh 0vw 0vh 2vw;
-  height: 4vh;
+  height: 26px;
 }
 
 #name-input {
-  width: 50vw;
-  height: 4.5vh;
+  width: 90%;
+  height: auto;
   background-color: #ffffff;
-  border-radius: 3vh;
-  margin: -4.5vh 0vw 0vh 10vw;
-  padding: 2vh 2vw 2vh 2vw;
+  border-radius: 40px;
+  display: inline-block;
+  /*margin: -4.5vh 0vw 0vh 10vw;*/
+  /*padding: 2vh 2vw 2vh 2vw;*/
+  padding-left: 3%;
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
-  font-size: 2vh;
+  font-size: 12px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 #code-img {
-  height: 4vh;
-  margin: 3vh 0vw 0vh 2vw;
+  height: 26px;
+  width: auto;
 }
 
 #code-input {
-  height: 4.5vh;
+  height: auto;
   background-color: #ffffff;
-  border-radius: 3vh;
-  margin: -4vh 0vw 0vh 10vw;
-  width: 40vw;
-  padding: 2vh 2vw 2vh 2vw;
+  border-radius: 40px;
+  display: inline-block;
+  /*margin: -4vh 0vw 0vh 10vw;*/
+  padding-left: 2%;
+  width: 50%;
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
-  font-size: 2vh;
+  font-size: 12px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 #desc-img {
-  height: 4vh;
-  margin: 3vh 0vw 0vh 2vw;
+  height: 26px;
+  /*margin: 3vh 0vw 0vh 2vw;*/
 }
 
 #desc-input {
   background-color: #ffffff;
   border-radius: 3vh;
   height: 30vh;
-  margin: 2vh 0vw 0vh 2.5vw;
+  margin-top: 2%;
+  /*margin: 2vh 0vw 0vh 2.5vw;*/
   width: 40vw;
-  display: block;
+  /*display: block;*/
   padding: 2vh 1vw 2vh 1vw;
   resize: none;
   display: inline-block;
 }
 
 #photo-div {
-  height: 30.5vh;
-  width: 17vw;
+  height: fit-content;
+  padding: 1.5%;
+  width: 38%;
   border-radius: 4vh;
   display: inline-block;
-  margin-left: 3vw;
-  margin-top: 2vh;
+  /*margin-left: 3vw;
+  margin-top: 2vh;*/
+  background-color: #353231;
 }
 
 #photo-img {
   height: 4vh;
-  margin: 2vh 0vw 0vh 1vw;
+  display: block;
 }
 
 #photo1 {
@@ -152,19 +163,17 @@
 
 #desc_div {
   background: inherit;
-}
-
-.page-content-wrapper {
-  background: #353231;
   display: inline-block;
-  height: calc(100vh - 60px);
-  position: absolute;
-  margin-top: 60px;
-}
+  width: fit-content;
 
-.tempDiv {
-  background-color: inherit;
-  display: flex;
+}
+.column{
+  float: left;
+  display: block;
+}
+#tempDiv {
+  display: inline-block;
+  width: 60%;
 }
 
 #imageSelected {
@@ -201,4 +210,6 @@
   display: block;
   background-color: inherit;
 }
+
+
 

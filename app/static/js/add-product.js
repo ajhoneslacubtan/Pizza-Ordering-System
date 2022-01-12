@@ -17,8 +17,8 @@ function addProduct(){
     		type:"POST",
     		contentType: "application/json; charset=utf-8",
             data: JSON.stringify({
-                product_code: p_name,
-                product_name: p_code,
+                product_code: p_code,
+                product_name: p_name,
                 product_image: p_photo,
                 product_describe: p_desc,
                 price_9in: parseFloat(p_inch9),

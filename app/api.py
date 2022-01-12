@@ -43,8 +43,9 @@ def update_product():
     product_code = request.json['product_code']
     product_name = request.json['product_name']
     product_describe = request.json['product_describe']
-    product_image = request.json['product_image']
-    size = request.json['price_9in']
+    #product_image = request.json['product_image']
+
+    product_image = 'uploads/' + product_code + '.jpg'
 
     # handle the filename and directory
     extension = guess_extension(guess_type("data:image/png;base64,")[0])
@@ -55,7 +56,7 @@ def update_product():
         im = Image.open(BytesIO(base64.b64decode(product_image.split(",")[1])))
         im.save(fh)
     
-    result = spcall("update_product", (product_code, product_name, product_describe, product_image, size), True)
+    result = spcall("update_product", (product_code, product_name, product_describe, product_image), True)[0][0]
     
     return jsonify(result)
 
@@ -86,7 +87,7 @@ def update_product_price():
 @app.route('/api/products/<string:product_code>', methods=['DELETE'])
 @login_required
 def delete_product(product_code):
-    product_code = request.json['product_code']
+    #product_code = request.json['product_code']
 
     result = spcall("delete_product", (product_code,), True)[0][0]
 

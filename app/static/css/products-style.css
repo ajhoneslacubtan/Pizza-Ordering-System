@@ -1,37 +1,3 @@
-body {
-  overflow-x: hidden;
-  background-color: #353231;
-}
-
-/* width */
-
-::-webkit-scrollbar {
-  width: 10px;
-  margin-right: 10px;
-}
-
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px #353231;
-  border-radius: 8px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #FDA765;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #fda765bb;
-}
-
-.page-content-wrapper {
-  display: inline-block;
-  position: static;
-  margin-top: 60px;
-  overflow-x: hidden;
-  /*height: calc(100vh-60px;*/
-}
-
 .product-panel {
   display: block;
   width: 90%;
@@ -106,6 +72,7 @@ body {
 }
 
 .pizza-price {
+  background-color: #9C9C94;
   color: #2c2827;
   display: block;
   border-radius: 10%;
@@ -124,10 +91,10 @@ body {
   display: block;
   margin: auto;
   font-family: 'Montserrat';
-  font-style: normal;
   font-weight: bold;
   text-align: center;
   width: 20px;
+  color: #9C9C94;
 }
 
 .pizza-descriptionlbl {
@@ -191,14 +158,6 @@ body {
   color: grey;
 }
 
-.pizza-size {
-  color: #9C9C94;
-}
-
-.pizza-price {
-  background-color: #9C9C94;
-}
-
 .product-div button {
   text-decoration: none;
   cursor: pointer;
@@ -248,12 +207,16 @@ body {
 }
 
 .pizza-description {
-  font-family: Montserrat;
-  font-style: normal;
+  font-family: 'Montserrat';
   font-weight: bold;
   line-height: 17px;
   color: #FFFFFF;
   font-size: 12px;
+  background-color: transparent;
+  margin:2% auto 4% auto;
+  display: block;
+  border:none;
+  resize: none;
 }
 
 .update-avail {
