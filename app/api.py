@@ -1,8 +1,12 @@
 from flask import jsonify, request
-from werkzeug.datastructures import MultiDict
 from modules.conndb import spcall
 from modules.sales import get_products, sales
 from flask_login import login_required
+from PIL import Image
+from io import BytesIO
+import base64, os
+from mimetypes import guess_extension, guess_type
+from .model import Users
 
 from app import app
 
@@ -16,8 +20,20 @@ def add_product():
     price_9in = request.json['price_9in']
     price_12in = request.json['price_12in']
     u_id = request.json['u_id']
+    
+    # handle the filename and directory
+    extension = guess_extension(guess_type("data:image/png;base64,")[0])
+    path = os.path.join(app.config['UPLOAD_FOLDER'], product_code + extension)
 
-    result = spcall("add_product", (product_code, product_name, product_image, product_describe, price_9in, price_12in, u_id), True)
+    # Find the user id
+    user = Users.query.filter_by(user_name=u_id).first().user_id
+
+    # Save the image to uploads folder
+    with open(path, "wb") as fh:
+        im = Image.open(BytesIO(base64.b64decode(product_image.split(",")[1])))
+        im.save(fh)
+
+    result = spcall("add_product", (product_code, product_name, "uploads/" + product_code + extension, product_describe, price_9in, price_12in, user), True)
     
     return jsonify(result)
 
@@ -30,6 +46,15 @@ def update_product():
     product_image = request.json['product_image']
     size = request.json['price_9in']
 
+    # handle the filename and directory
+    extension = guess_extension(guess_type("data:image/png;base64,")[0])
+    path = os.path.join(app.config['UPLOAD_FOLDER'], product_code + extension)
+
+    # Save the image to uploads folder
+    with open(path, "wb") as fh:
+        im = Image.open(BytesIO(base64.b64decode(product_image.split(",")[1])))
+        im.save(fh)
+    
     result = spcall("update_product", (product_code, product_name, product_describe, product_image, size), True)
     
     return jsonify(result)
