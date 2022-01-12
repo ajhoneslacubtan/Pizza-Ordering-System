@@ -455,11 +455,13 @@ CREATE OR REPLACE FUNCTION GET_ORDER_DETAILS(ord_code varchar) RETURNS json
 	AS $$
 declare
 	detail_order record;
+	loc_order record;
 	loc_record record;
 	loc_json_arr json[];
 	loc_size int default 0;
 	loc_id text;
 begin
+	select into loc_order * from ORDERS where order_code = ord_code;
 	select into loc_id order_code from ORDERS where order_code = ord_code;
 	if loc_id is not null then
 		CREATE TEMP TABLE details ON COMMIT DROP AS
@@ -489,7 +491,11 @@ begin
 		return json_build_object(
 			'status', 'OK',
 			'size', loc_size,
-			'order_details', loc_json_arr
+			'ord_code', loc_order.order_code,
+			'order_status', loc_order.order_status,
+			'customer_name', loc_order.customer_name,
+			'order_total', loc_order.total_price,
+			'product', loc_json_arr
 		);
 	else
 		return json_build_object(
