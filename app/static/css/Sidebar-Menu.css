@@ -157,3 +157,62 @@
   }
 }
 
+
+/* CSS for body */
+
+body {
+  overflow-x: hidden;
+  background-color: rgba(53,50,49,1.0);
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+  width: 10px;
+  margin-right: 10px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #353231;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FDA765;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #fda765bb;
+}
+
+.page-content-wrapper {
+  display: inline-block;
+  position: static;
+  margin-top: 60px;
+  overflow-x: hidden;
+}
+
+
+@media (min-width:992px) {
+  .page-content-wrapper {
+    padding-left: 0px;
+    margin-left: 225px;
+    width: calc(100vw - 225px);
+  }
+}
+
+@media (min-width:575px) and (max-width:991px) {
+  .page-content-wrapper {
+    margin-left: 90px;
+    width: calc(100vw - 90px);
+    overflow-x: hidden;
+  }
+}
+
+@media (max-width:574px) {
+  .page-content-wrapper {
+    margin-left: 70px;
+    width: calc(100vw - 70px);
+  }
+}

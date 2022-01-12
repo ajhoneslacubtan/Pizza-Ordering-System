@@ -1,14 +1,3 @@
-.page-content-wrapper {
-  background: #353231;
-  display: flex;
-  flex-flow: column;
-  flex-grow: 1;
-  height: calc(100vh - 60px);
-  align-items: center;
-  justify-content: center;
-  margin-top: 60px;
-}
-
 .update-container {
   width: 60vw;
   height: 60vh;
@@ -152,28 +141,6 @@
   font-size: 2.5vh;
   font-style: normal;
   font-weight: 700;
-}
-
-@media (min-width:992px) {
-  .page-content-wrapper {
-    margin-left: 225px;
-    width: calc(100vw - 225px);
-  }
-}
-
-@media (max-width:574px) {
-  .page-content-wrapper {
-    margin-left: 70px;
-    width: calc(100vw - 70px);
-  }
-}
-
-@media (min-width:575px) and (max-width:991px) {
-  .page-content-wrapper {
-    margin-left: 90px;
-    width: calc(100vw - 90px);
-    overflow-x: hidden;
-  }
 }
 
 #price_pop {
