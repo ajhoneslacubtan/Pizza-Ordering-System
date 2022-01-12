@@ -44,7 +44,8 @@ function addProduct(){
             dataType: "json",
     		success: function(resp) {
                 if (resp.status == 'OK'){
-                    alert("OK");
+                    alert("Product added");
+                    clearEntryAdd();
                 } else {
                     alert(resp.status); 
                 }
@@ -65,4 +66,12 @@ function readFile(){
     };
 
     lainreader.readAsDataURL(file);
+}
+
+function clearEntryAdd(){
+     document.getElementById("name-input").value="";
+    document.getElementById("code-input").value="";
+    document.getElementById("desc-input").value="";
+    document.getElementById("size1-input").value="";
+    document.getElementById("size2-input").value="";
 }

@@ -1,11 +1,16 @@
 #addproduct-form {
   height: fit-content;
   width: 90%;
-  display: block;
   margin: 1% auto 2% auto;
   background-color: #2c2827;
   border-radius: 15px;
-  padding:3% 3% 0% 3%;
+  padding:2% 1% 0% 3%;
+}
+
+#heading_row{
+  margin: 3% auto 15px 5%;
+  width: 90%;
+
 }
 
 #addproduct-form .row{
@@ -14,64 +19,79 @@
 
 #back-icon {
   color: #fbde46;
-  font-size: 5vh;
-  margin: 5vh 0vw 0vh 5vw;
+  font-size: 25px;
+  height: 40px;
+  width: 40px;
+  border-width:2px;
+  line-height: 40px;
+  border-radius: 60px;
+  box-shadow: 0 0 2px #fbde46;
+  padding-left: 7px;
   display: inline-block;
 }
 
 #add-prodimg {
-  height: 3vw;
-  display: inline-block;
-  margin: -3vh 0vw 0vh 1vw;
+  height: auto;
+  width: 250px;
+  display: inline;
+  margin-top: -15px;
+  margin-left: .5%;
 }
 
 #name-img {
   height: 26px;
   width: auto;
-  margin-bottom: 1%;
   display: inline;
+  align-self: center;
+  margin-top:1%;
+  margin-bottom: 1%;
 }
 
 #name-input {
   width: 80%;
+  margin-top:1%;
+  margin-bottom: 1%;
   height: auto;
+  align-self: center;
   background-color: #ffffff;
   border-radius: 40px;
-  margin-bottom: 2%;
   margin-left:2%;
   display: inline-block;
   padding-left: 3%;
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
-  font-size: 12px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 #code-img {
-  height: 26px;
+  height: 24px;
   width: auto;
   display: inline;
+  align-self: center;
+  margin-top:1%;
+  margin-bottom: 1%;
 }
 
 #code-input {
+  margin-left:2%;
   height: auto;
   background-color: #ffffff;
   border-radius: 40px;
   display: inline-block;
-  margin-bottom: 2%;
+  margin-top:1%;
+  margin-bottom: 1%;
   padding-left: 2%;
   width: 50%;
   font-family: Montserrat;
-  font-style: normal;
   font-weight: bold;
-  font-size: 12px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 #desc-div {
   display: inline-block;
   height: 300px;
+  margin-top: 2%;
 }
 
 #desc-img {
@@ -84,8 +104,10 @@
   border-radius: 3vh;
   height: 250px;
   margin-top: 2%;
+  padding: 3%;
   width: 100%;
-  padding: 2vh 1vw 2vh 1vw;
+  font-family: Montserrat;
+  font-weight: bold;
   resize: none;
   display: inline-block;
 }
@@ -96,7 +118,7 @@
   display: inline-block;
   background-color: #353231;
   height: 283px;
-  margin-bottom: 2%;
+  margin: 2%;
 }
 
 #photo-img {
@@ -111,7 +133,9 @@
 
 #price-img {
   height: 26px;
+  margin-top: 2%;
   margin-bottom: 2%;
+  align-self: center;
 }
 
 #size1-img {
@@ -129,7 +153,6 @@
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
-  font-size: 2vh;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   display: inline-block;
 }
@@ -150,7 +173,6 @@
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
-  font-size: 2vh;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin-left: 0.5vw;
 }
@@ -238,4 +260,13 @@
 
 .picture-src {
   width: 100%;
+}
+
+@media (max-width:768px) {
+  #photo-div {
+    width: 96%;
+  }
+  input, textarea{
+    font-size: 11px;
+  }
 }

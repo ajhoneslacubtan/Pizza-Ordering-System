@@ -84,8 +84,10 @@
             </ul>
         </div>
         <div class="page-content-wrapper">
-            <a href="/products_page/"><i class="material-icons" id="back-icon">arrow_back</i></a>
-            <img id="add-prodimg" src="/img/AddProduct.png">
+            <div id="heading_row">
+                <a href="/products_page/"><i class="material-icons" id="back-icon">arrow_back</i></a>
+                <img id="add-prodimg" src="/img/AddProduct.png">
+            </div>
             <div id="addproduct-form" class="container">
                 <div class="row">
                     <img id="name-img" src="/img/name1.png">
@@ -96,11 +98,11 @@
                     <input class="form-control-plaintext" type="text" id="code-input" placeholder="Enter product code">
                 </div>
                 <div id="desc_photodiv" class="row">
-                    <div id="desc-div" class="col-md-6 col-xl-8">
+                    <div id="desc-div" class="col-md-5 col-xl-7">
                         <img id="desc-img" src="/img/desc.png">
                         <textarea id="desc-input" placeholder="Enter description here"></textarea>
                     </div>
-                    <div id="photo-div" class="col-md-6 col-xl-4">
+                    <div id="photo-div" class="col-md-5 col-xl-4">
                         <img id="photo-img" src="/img/photo.png">
                         <div class="picture-container">
                             <div class="picture">
@@ -124,7 +126,7 @@
                 </div>
                 <div id="divButtons" class="row">
                     <button class="btn btn-primary" id="confirm-btn" type="button" onclick="addProduct()">Confirm</button>
-                    <button class="btn btn-primary" id="clear-btn" type="button">Clear</button>
+                    <button class="btn btn-primary" id="clear-btn" type="button" onclick="clearEntryAdd()">Clear</button>
                 </div>
             </div>
         </div>
