@@ -62,7 +62,7 @@ def update_product_price():
 @app.route('/api/products/<string:product_code>', methods=['DELETE'])
 @login_required
 def delete_product(product_code):
-    product_code = request.json['product_code']
+    #product_code = request.json['product_code']
 
     result = spcall("delete_product", (product_code,), True)[0][0]
 
