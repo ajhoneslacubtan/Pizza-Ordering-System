@@ -1,7 +1,6 @@
 var p_photo;
 //function for getting the current details of the product
 function getDetails(product_name){
-    document.getElementById('details_pop').style.display = 'block';
     $.ajax({
     		url: 'http://localhost:8000/api/products/' + product_name,
     		type:"GET",
@@ -13,6 +12,7 @@ function getDetails(product_name){
                     document.getElementById("product_name").value = product.product_name;
                     document.getElementById("code_name").value = product.product_code;
                     document.getElementById("desc_name").value = product.product_describe;
+                    document.getElementById('details_pop').style.display = 'block';
                     
 				} else
 				{
@@ -52,6 +52,7 @@ function updateDetails(product_name){
                 if (resp.status == 'OK'){
                     alert("Product details successfully updated.");
                     document.getElementById('details_pop').style.display = 'none';
+                    loadProducts();
                 } else {
                     alert(resp.status); 
                 }
@@ -65,5 +66,7 @@ function clDetails(){
 }
 //function for back button
 function detailBack(){
+    clDetails();
+    document.getElementById("code_name").value = "";
     document.getElementById("details_pop").style.display = "none";
 }
