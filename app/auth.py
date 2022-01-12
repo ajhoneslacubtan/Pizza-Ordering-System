@@ -69,7 +69,7 @@ def change_password():
         flash(message)
         return redirect(url_for('changepassword'))
 
-    if request.form.get('newpassword') != request.form.get('confirmpassword'):
+    if request.form.get('newpassword') != request.form.get('confirmPassword'):
         message = Markup('<span id="alert-body" class="closebtn" onclick="this.parentElement.style.display='+ "`none`"+ ';">&times;</span>Passwords do not match!')
         flash(message)
         return redirect(url_for('changepassword'))
