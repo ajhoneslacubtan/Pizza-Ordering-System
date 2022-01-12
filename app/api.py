@@ -33,7 +33,7 @@ def add_product():
         im = Image.open(BytesIO(base64.b64decode(product_image.split(",")[1])))
         im.save(fh)
 
-    result = spcall("add_product", (product_code, product_name, "uploads/" + product_code + extension, product_describe, price_9in, price_12in, user), True)
+    result = spcall("add_product", (product_code, product_name, "uploads/" + product_code + extension, product_describe, price_9in, price_12in, user), True)[0][0]
     
     return jsonify(result)
 

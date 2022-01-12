@@ -82,7 +82,7 @@ function displayProducts(resp){
 
                         var pizza_image = document.createElement('img');
                         pizza_image.setAttribute('class','pizza-image');
-                        //pizza_image.setAttribute('src', '"'+ product.product_image +'"');
+                        pizza_image.setAttribute('src', product.product_image);
                         //pizza_image.setAttribute('alt',product.product_name);
                         product_div.append(pizza_image);
 
