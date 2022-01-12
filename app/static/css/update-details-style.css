@@ -1,0 +1,132 @@
+.details_container {
+  width: 60vw;
+  height: 70vh;
+  border: 3px solid #FCA162;
+  padding: 2vh 1vw 1vh 1vw;
+  border-radius: 1vw;
+}
+
+.b-update {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  display: inline-block;
+}
+
+.b-image {
+  height: 7vh;
+}
+
+.product-update {
+  display: inline-block;
+  width: 30vw;
+  height: 6vh;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+  border-radius: 2vw;
+  padding-left: 1vw;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2.5vh;
+  line-height: 1rem;
+}
+
+.upd-div {
+  width: 100%;
+  height: 82%;
+  margin-top: 3vh;
+  background: #2C2827;
+  border-radius: 1vw;
+}
+
+.udetails_heading {
+  margin-left: 3vw;
+  margin-top: 3vh;
+  height: 6vh;
+  margin-bottom: 1vh;
+}
+
+.nc_line {
+  display: flex;
+  height: 5vh;
+  align-items: center;
+  margin-left: 4vw;
+  margin-bottom: 1vh;
+}
+
+.user {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.4vw;
+  color: #9290FE;
+}
+
+.input_line {
+  background-color: white;
+  width: 45vw;
+  border-radius: 2vw;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  height: 4vh;
+  padding-left: 2vw;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2.5vh;
+}
+
+.desc_pic {
+  /*height: 25vh;*/
+  /*width: 45vh;*/
+  /*display: inline-block;*/
+  /*border: 1px solid white;*/
+  margin-left: 3vw;
+}
+
+#desc_name {
+  display: block;
+  resize: none;
+  width: 22vw;
+  height: 18vh;
+  border-radius: 1vw;
+  padding: 1vh 1vw 1vh 1vw;
+}
+
+#product_pic {
+  /*display: block;*/
+  height: 18vh;
+  width: 20vw;
+}
+
+.buttons_update_details {
+  float: right;
+  margin-right: 2.5vw;
+  margin-top: 2vh;
+}
+
+.bottom_buttons {
+  border-radius: 1vw;
+  width: 12vw;
+  margin-right: 1vw;
+  height: 4vh;
+  font-size: 0.8vw;
+  font-family: 'Poppins';
+  font-style: normal;
+  line-height: 0vh;
+}
+
+.temp {
+  font-size: 0.8vw;
+  width: 15vw;
+  height: 3vh;
+}
+
+#details_pop {
+  top: 25%;
+  left: 25%;
+  position: absolute;
+  display: none;
+  background: #353231;
+}
+

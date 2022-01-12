@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="/css/Page%20Content.css">
     <link rel="stylesheet" href="/css/products-style.css">
     <link rel="stylesheet" href="/css/sidebar-menu.css">
+    <link rel="stylesheet" href="/css/update-availability.css">
+    <link rel="stylesheet" href="/css/update-details-style.css">
+    <link rel="stylesheet" href="/css/update-price-style.css">
 </head>
 
 <body><div class="banner"><img id="banner-icon" class="banner-images" src="/img//img/Ellipse%206.png"><img id="name" class="banner-images" src="/img//img/MAYZ%20HOMEMADE.png">
@@ -82,17 +85,50 @@
             </svg><input type="search" id="sear-in"><i class="fa fa-search" id="search-icon"></i>
             <div id="product-panel" class="product-panel"></div>
             
+            <!-- Start: Pop-up Div -->
             
-            
-           
+            <div id="price_pop" class="update-container">
+                <div class="update-top"><button class="b-update"><img class="b-image" src="/img/back-button.png" onclick="backButton()"/></button><input id="prod_name" class="form-control-plaintext product-update" type="text" value="Plain Text Value" readonly /></div>
+                <div class="update-div"><img class="uprice-heading" src="/img/uprice-heading.png" />
+                    <div class="option-price"><i class="material-icons yellow-icon">local_pizza</i><label class="form-label yellow-inch">9&#39;&#39;</label><input id="inch9" class="form-control-plaintext price-inch" type="text" value="Plain Text Value" /><button id="button-inch9" class="btn btn-primary button-inch9" type="button">UPDATE</button></div>
+                    <div class="option-price"><i class="material-icons orange-icon">local_pizza</i><label class="form-label orange-inch">12&#39;&#39;</label><input id="inch12" class="form-control-plaintext price-inch" type="text" value="Plain Text Value" /><button id="button-inch12" class="btn btn-primary button-inch12" type="button">UPDATE</button></div>
+                </div>
+            </div>
 
 
-           
+            <div id="details_pop" class="details_container">
+                <div class="update-top"><button class="b-update"><img class="b-image" src="/img/back-button.png" onclick="detailBack()"/></button><input id="produ_name" class="form-control-plaintext product-update" type="text" value="Plain Text Value" readonly /></div>
+                <div class="upd-div"><img class="udetails_heading" src="/img/update%20details.png" />
+                    <div class="nc_line"><label class="form-label user">Name :  </label><input id="product_name" class="form-control-plaintext input_line" type="text" value="Plain Text Value" /></div>
+                    <div class="nc_line"><label class="form-label user">Code  :  </label><input id="code_name" class="form-control-plaintext input_line" type="text" value="Plain Text Value" readonly /></div>
+                    <div class="container desc_pic">
+                        <div class="row">
+                            <div class="col-md-6"><label class="form-label user">Description :  </label><textarea id="desc_name"></textarea></div>
+                            <div class="col-md-6"><label class="form-label user">Photo :  <input class="temp" type="file" onchange="readFile()" /></label><img id="product_pic" /></div>
+                        </div>
+                    </div>
+                    <div id="pick_pic" class="desc_pic"></div>
+                    <div class="buttons_update_details"><button class="btn btn-primary bottom_buttons" type="button" onclick="updateDetails(product_name)">Confirm</button><button class="btn btn-primary bottom_buttons" type="button">Clear</button></div>
+                </div>
+            </div>
 
 
+            <div id="avail_pop" class="update-container">
+                <div class="update-top"><button class="b-update"><img class="b-image" src="/img/back-button.png" onclick="availBack()"/></button><input id="avail_prod_name" class="form-control-plaintext product-update" type="text" value="Plain Text Value" readonly /></div>
+                <div class="update-div"><img class="uavail_heading" src="/img/prod_availbility.png" />
+                    <div></div>
+                    <div id="9pContainer" class="option-price"><i class="material-icons yellow-icon">local_pizza</i><label id="label_inch" class="form-label yellow-inch">9&#39;&#39;</label><select id="avail9" class="avail_options">
+                            <option value="Available">Available</option>
+                            <option value="Unavailable">Unavailable</option>
+                        </select><button id="avail_button-inch9" class="btn btn-primary button-inch9" type="button">UPDATE</button></div>
+                    <div id="12pContainer" class="option-price"><i class="material-icons orange-icon">local_pizza</i><label id="label_inch" class="form-label orange-inch">12&#39;&#39;</label><select id="avail12" class="avail_options">
+                            <option value="Available">Available</option>
+                            <option value="Unavailable">Unavailable</option>
+                        </select><button id="avail_button-inch12" class="btn btn-primary button-inch12" type="button">UPDATE</button></div>
+                </div>
+            </div>
             
-            
-            
+            <!-- End: Pop-up Div -->
             
         </div>
     </div><!-- End: Sidebar Menu -->
@@ -100,6 +136,10 @@
     <script src="/js/add-product.js"></script>
     <script src="/js/jQuery-2.1.4.min.js"></script>
     <script src="/js/products-script.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/script-updateAvailability.js"></script>
+    <script src="/js/script-updateDetails.js"></script>
+    <script src="/js/script-updatePrice.js"></script>
     <script src="/js/script.js"></script>
 </body>
 
