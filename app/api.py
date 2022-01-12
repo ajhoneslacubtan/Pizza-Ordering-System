@@ -68,7 +68,10 @@ def update_product_status():
     product_avail = request.json['product_avail']
     product_size = request.json['product_size']
 
-    result = spcall("update_product_status", (product_code, u_id, product_avail, product_size), True)[0][0]
+    # Find the user id
+    user = Users.query.filter_by(user_name=u_id).first().user_id
+
+    result = spcall("update_product_status", (product_code, user, product_avail, product_size), True)[0][0]
 
     return jsonify(result)
 
@@ -80,7 +83,10 @@ def update_product_price():
     product_size = request.json['product_size']
     product_price = request.json['product_price']
 
-    result = spcall("update_product_price", (product_code, u_id, product_price, product_size), True)[0][0]
+    # Find the user id
+    user = Users.query.filter_by(user_name=u_id).first().user_id
+
+    result = spcall("update_product_price", (product_code, user, product_price, product_size), True)[0][0]
 
     return jsonify(result)
 

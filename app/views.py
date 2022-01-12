@@ -1,4 +1,3 @@
-import re
 from flask import request, render_template
 from flask_login import login_required, current_user
 
@@ -53,8 +52,3 @@ def add_cors(resp):
     if app.debug:
         resp.headers["Access-Control-Max-Age"] = '1'
     return resp
-
-
-# if __name__ == '__main__':
-#     app.debug=True
-#     app.run(host=API_HOST, port=API_PORT)

@@ -15,6 +15,7 @@ function readURL(input) {
     }
 }
 
+// load Users from the database to the page
 async function loadUsersData() {
     let response = await fetch('http://localhost:8000/api/users/');
     let data = await response.json();

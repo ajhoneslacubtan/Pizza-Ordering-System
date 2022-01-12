@@ -203,3 +203,27 @@ td {
   padding-top: 2rem;
   padding-left: 2rem;
 }
+
+.alert {
+  padding: 15px;
+  background-color: #2c2827; /* Red */
+  color: #f44336;
+  margin-bottom: 15px;
+}
+
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
+}
