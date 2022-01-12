@@ -1,7 +1,9 @@
+// Load data to the sales page
 async function loadData() {
             let response = await fetch('http://localhost:8000/api/sales/');
             let data = await response.json();
     
+    // Chart for the monthly sales
     new Chart(document.getElementById("monthlysales"), {
         type: 'line',
         data: {
@@ -47,7 +49,7 @@ async function loadData() {
     });
 
 
-
+    // Chart for the top of the month sales
     new Chart(document.getElementById("topMonth"), {
         type: 'bar',
         data: {
@@ -91,6 +93,7 @@ async function loadData() {
     }
     });
 
+    // Chart for the top of all time
     new Chart(document.getElementById("topAll"), {
         type: 'bar',
         data: {
@@ -134,6 +137,7 @@ async function loadData() {
     }
     });
 
+    // Chart for the sizes sold
     new Chart(document.getElementById("pie"), {
         type: 'doughnut',
         data: {
@@ -167,7 +171,7 @@ async function loadData() {
 
 loadData();
 
-
+// function to export data to excel
 async function genData() {
             let orderResponse = await fetch('http://localhost:8000/api/orders/');
             let orderData = await orderResponse.json();

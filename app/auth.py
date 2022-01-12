@@ -24,12 +24,14 @@ def add_user():
     user = Users.query.filter_by(user_name=username).first() # if this returns a user, then the email already exists in database
 
     if user: # if a user is found, we want to redirect back to signup page so user can try again
-        flash('Username already exists')
+        message = Markup('<span id="alert-body" class="closebtn" onclick="this.parentElement.style.display='+ "`none`"+ ';">&times;</span>Username already exists!')
+        flash(message)
         return redirect(url_for('users'))
 
     # check if the post request has the file part
     if 'file' not in request.files:
-        flash('No file part')
+        message = Markup('<span id="alert-body" class="closebtn" onclick="this.parentElement.style.display='+ "`none`"+ ';">&times;</span>Please attach an image!')
+        flash(message)
         return redirect('users')
 
     file = request.files['file']
@@ -37,15 +39,14 @@ def add_user():
     # empty file without a filename
 
     if file.filename == '':
-        flash('No selected file')
+        message = Markup('<span id="alert-body" class="closebtn" onclick="this.parentElement.style.display='+ "`none`"+ ';">&times;</span>No selected file!')
+        flash(message)
         return redirect('users')
 
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
-        print(filename)
         path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(path)
-        print(path)
 
         # create a new user with the form data. Hash the password so the plaintext version isn't saved.
         new_user = Users(user_name=username,user_pass=generate_password_hash(password, method='sha256'), user_role=user_role, user_image='/uploads/'+filename)

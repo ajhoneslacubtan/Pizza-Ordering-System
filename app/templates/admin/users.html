@@ -106,6 +106,11 @@
                                                 <option value="User">User</option>
                                         </select>
                                     </div>
+                                    <div class="alert">
+                                        {% for message in get_flashed_messages()%}
+                                            {{ message }}
+                                        {% endfor %}
+                                    </div>
                                     <div class="mt-1" style="padding: 3rem 0rem 1rem 0rem"><button class="btn btn-primary mx-auto d-block" value="submit" type="submit">Confirm</button></div>
                                 </div>
                             </form>
@@ -140,6 +145,10 @@
     <script src="/js/jQuery-2.1.4.min.js"></script>
     <script src="/js/script.js"></script>
     <script src="/js/users.js"></script>
+    <script>
+        if (document.getElementById("alert-body") == null) {
+    document.getElementsByClassName("alert")[0].style.display = "none";}
+    </script>
 </body>
 
 </html>
