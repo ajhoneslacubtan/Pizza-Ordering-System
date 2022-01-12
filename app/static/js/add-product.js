@@ -15,8 +15,8 @@ function readURL(input) {
         reader.onload = function (e) {
             $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
         }
-        p_photo = reader.readAsDataURL(input.files[0]);
-        console.log(p_photo);
+        reader.readAsDataURL(input.files[0]);
+        readFile();
     }
 }
 
@@ -25,11 +25,9 @@ function addProduct(){
     var p_name = document.getElementById("name-input").value;
     var p_code = document.getElementById("code-input").value;
     var p_desc = document.getElementById("desc-input").value;
-    readFile();
     var p_inch9 = document.getElementById("size1-input").value;
     var p_inch12 = document.getElementById("size2-input").value;
     var p_id = document.getElementById("username").innerHTML;
-    
     $.ajax({
     		url: 'http://localhost:8000/api/products/',
     		type:"POST",
@@ -50,17 +48,21 @@ function addProduct(){
                 } else {
                     alert(resp.status); 
                 }
-                //alert("Product succesfully added.");
-    		}
+    		}, error: function(){
+                alert("Error Function");
+            }
 		});
 }
 
 function readFile(){ 
     var file = document.querySelector('input[type=file]')['files'][0];
-    var reader = new FileReader();
+    var lainreader = new FileReader();
     var baseString;
-    reader.onloadend = function () {
-        baseString = reader.result;
+
+    lainreader.onloadend = function () {
+        baseString = lainreader.result;
+        p_photo = baseString;
     };
-    p_photo = reader.readAsDataURL(file);
+
+    lainreader.readAsDataURL(file);
 }
