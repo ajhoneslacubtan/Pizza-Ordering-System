@@ -45,9 +45,11 @@
 </div></div>
 <!-- Start: dropdown for user -->
         <div class="user-settings">
-            <div><span>Username</span>
-                <div><span>User Role</span></div>
-            </div><ul>
+            <div>
+                <span>{{ user_name }}</span>
+                <div><span>{{ user_role }}</span></div>
+            </div>
+            <ul>
     <li>
         <a href="/users/">
         <i class="fas fa-user-circle user-icon"></i><span class="text">Users</span>
@@ -82,23 +84,23 @@
             </ul>
         </div>
         <div class="page-content-wrapper">
-            <i class="material-icons" id="back-icon">arrow_back</i>
+            <a href="/products_page/"><i class="material-icons" id="back-icon">arrow_back</i></a>
             <img id="add-prodimg" src="/img/AddProduct.png">
-            <div id="addproduct-form">
-                <div class="Entry">
+            <div id="addproduct-form" class="container">
+                <div class="row">
                     <img id="name-img" src="/img/name1.png">
                     <input class="form-control-plaintext" type="text" id="name-input" placeholder="Enter product name">
                 </div>
-                <div class="Entry">
+                <div class="row">
                     <img id="code-img" src="/img/code.png">
                     <input class="form-control-plaintext" type="text" id="code-input" placeholder="Enter product code">
                 </div>
-                <div id="desc_div" class="row">
-                    <div id="tempDiv" class="column">
+                <div id="desc_photodiv" class="row">
+                    <div id="desc-div" class="col-md-6 col-xl-8">
                         <img id="desc-img" src="/img/desc.png">
                         <textarea id="desc-input" placeholder="Enter description here"></textarea>
                     </div>
-                    <div id="photo-div" class="column">
+                    <div id="photo-div" class="col-md-6 col-xl-4">
                         <img id="photo-img" src="/img/photo.png">
                         <div class="picture-container">
                             <div class="picture">
@@ -109,14 +111,18 @@
                         </div>
                     </div>
                 </div>
-                <img id="price-img" src="/img/price1.png">
-                <div class="priceDiv">
-                    <img id="size1-img" src="/img/9%20size.png">
-                    <input class="form-control-plaintext" type="text" id="size1-input" placeholder="Enter price">
-                    <img id="size2-img" src="/img/12%20size.png">
-                    <input class="form-control-plaintext" type="text" id="size2-input" placeholder="Enter price">
+                <div class="row" id="priceDiv">
+                    <div class="col-xl-2"><img id="price-img" src="/img/price1.png"></div>
+                    <div class="col">
+                        <img id="size1-img" src="/img/9%20size.png">
+                        <input class="form-control-plaintext" type="text" id="size1-input" placeholder="Enter price">
+                    </div>
+                    <div class="col">
+                        <img id="size2-img" src="/img/12%20size.png">
+                        <input class="form-control-plaintext" type="text" id="size2-input" placeholder="Enter price">
+                    </div>
                 </div>
-                <div class="divButtons">
+                <div id="divButtons" class="row">
                     <button class="btn btn-primary" id="confirm-btn" type="button" onclick="addProduct()">Confirm</button>
                     <button class="btn btn-primary" id="clear-btn" type="button">Clear</button>
                 </div>
