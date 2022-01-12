@@ -27,10 +27,11 @@ def update_product():
     product_code = request.json['product_code']
     product_name = request.json['product_name']
     product_describe = request.json['product_describe']
-    product_image = request.json['product_image']
-    size = request.json['price_9in']
+    #product_image = request.json['product_image']
 
-    result = spcall("update_product", (product_code, product_name, product_describe, product_image, size), True)
+    product_image = 'uploads/' + product_code + '.jpg'
+
+    result = spcall("update_product", (product_code, product_name, product_describe, product_image), True)[0][0]
     
     return jsonify(result)
 
