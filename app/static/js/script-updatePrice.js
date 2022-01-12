@@ -2,7 +2,7 @@
 function getProduct(product_name)
 {
     $.ajax({
-    		url: 'http://localhost:8000/api/products/' + product_name,
+    		url: 'https://mayz-pizza.herokuapp.com/api/products/' + product_name,
     		type:"GET",
     		dataType: "json",
     		success: function(resp) {
@@ -41,7 +41,7 @@ function updatePrice(button_inch, product_code)
         var size = (button_inch == 'inch9') ? ('9') : (button_inch == 'inch12') ? ('12') :"";
         var price = parseFloat(input_field.value);
         $.ajax({
-    		url: 'http://localhost:8000/api/products/price/',
+    		url: 'https://mayz-pizza.herokuapp.com/api/products/price/',
     		type:"POST",
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify({

@@ -2,7 +2,7 @@ var p_photo;
 //function for getting the current details of the product
 function getDetails(product_name){
     $.ajax({
-    		url: 'http://localhost:8000/api/products/' + product_name,
+    		url: 'https://mayz-pizza.herokuapp.com/api/products/' + product_name,
     		type:"GET",
     		dataType: "json",
     		success: function(resp) {
@@ -38,7 +38,7 @@ function updateDetails(product_name){
     var p_desc =  document.getElementById("desc_name").value;
     
     $.ajax({
-    		url: 'http://localhost:8000/api/products/',
+    		url: 'https://mayz-pizza.herokuapp.com/api/products/',
     		type:"PUT",
     		contentType: "application/json; charset=utf-8",
             data: JSON.stringify({

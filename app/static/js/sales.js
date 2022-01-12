@@ -1,6 +1,6 @@
 // Load data to the sales page
 async function loadData() {
-            let response = await fetch('http://localhost:8000/api/sales/');
+            let response = await fetch('https://mayz-pizza.herokuapp.com/api/sales/');
             let data = await response.json();
     
     // Chart for the monthly sales
@@ -173,10 +173,10 @@ loadData();
 
 // function to export data to excel
 async function genData() {
-            let orderResponse = await fetch('http://localhost:8000/api/orders/');
+            let orderResponse = await fetch('https://mayz-pizza.herokuapp.com/api/orders/');
             let orderData = await orderResponse.json();
     
-            let odResponse = await fetch('http://localhost:8000/api/order_details/');
+            let odResponse = await fetch('https://mayz-pizza.herokuapp.com/api/order_details/');
             let odData = await odResponse.json();
     
 document.getElementById("dl-data").onclick = function exportWS() {

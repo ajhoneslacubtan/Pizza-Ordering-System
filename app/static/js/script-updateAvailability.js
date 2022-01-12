@@ -2,7 +2,7 @@
 function getAvailability(product_name)
 {
     $.ajax({
-    		url: 'http://localhost:8000/api/products/' + product_name,
+    		url: 'https://mayz-pizza.herokuapp.com/api/products/' + product_name,
     		type:"GET",
     		dataType: "json",
     		success: function(resp) {
@@ -35,7 +35,7 @@ function updateAvailability(product_code, field_inch, product_size)
     var product_avail = (avail_text == 'Available') ? (true):false;
     var u_id =  document.getElementById("username").innerHTML;
     $.ajax({
-        url: 'http://localhost:8000/api/products/status/',
+        url: 'https://mayz-pizza.herokuapp.com/api/products/status/',
         type:"POST",
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify({

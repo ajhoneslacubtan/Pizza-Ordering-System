@@ -29,7 +29,7 @@ function addProduct(){
     var p_inch12 = document.getElementById("size2-input").value;
     var p_id = document.getElementById("username").innerHTML;
     $.ajax({
-    		url: 'http://localhost:8000/api/products/',
+    		url: 'https://mayz-pizza.herokuapp.com/api/products/',
     		type:"POST",
     		contentType: "application/json; charset=utf-8",
             data: JSON.stringify({

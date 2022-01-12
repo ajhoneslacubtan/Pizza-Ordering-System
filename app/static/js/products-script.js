@@ -1,7 +1,7 @@
 //function that will load the products
 function loadProducts(){ 
     $.ajax({
-        url: "http://localhost:8000/api/products/",
+        url: "https://mayz-pizza.herokuapp.com/api/products/",
         type: "GET",
         dataType: "json",
         success: function(resp) {
@@ -205,7 +205,7 @@ function displayProducts(resp){
 // function that will delete the product
 function deleteProduct(product_code){
      $.ajax({
-        url: "http://localhost:8000/api/products/" + product_code,
+        url: "https://mayz-pizza.herokuapp.com/api/products/" + product_code,
         type: "DELETE",
         data: product_code,
         success: function(resp) {
@@ -224,7 +224,7 @@ function deleteProduct(product_code){
 // function for search
 function LoadSearchResult(keyword){
     $.ajax({
-        url: "http://localhost:8000/api/products/" + keyword,
+        url: "https://mayz-pizza.herokuapp.com/api/products/" + keyword,
         type: "GET",
         dataType: "json",
         success: function(resp){

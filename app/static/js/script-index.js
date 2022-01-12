@@ -2,7 +2,7 @@
 function loadOrders(order_status, order_frame, order_total)
 {
 $.ajax({
-    		url: 'http://localhost:8000/api/orders/' + order_status,
+    		url: 'https://mayz-pizza.herokuapp.com/api/orders/' + order_status,
     		type:"GET",
     		dataType: "json",
     		success: function(resp) {
@@ -87,7 +87,7 @@ $.ajax({
 function moveOrder(order_code, order_status)
 {
     $.ajax({
-    		url: 'http://localhost:8000/api/orders/status/',
+    		url: 'https://mayz-pizza.herokuapp.com/api/orders/status/',
     		type:"PUT",
     		contentType: "application/json; charset=utf-8",
             data: JSON.stringify({
@@ -121,7 +121,7 @@ function toggle_pop(){
 function update_list(order_code)
 {
     $.ajax({
-    		url: 'http://localhost:8000/api/order_details/' + order_code,
+    		url: 'https://mayz-pizza.herokuapp.com/api/order_details/' + order_code,
     		type:"GET",
     		dataType: "json",
     		success: function(resp) {
