@@ -192,7 +192,8 @@ body {
 
 #itemlist .pz_name {
   font-family: 'Poppins';
-  font-style: normal;
+  white-space: normal;
+  word-break: break-word;
   font-weight: bold;
   font-size: 11px;
   line-height: 21px;
@@ -431,6 +432,11 @@ body {
   color: #FCA162;
 }
 
+.desc1 .pizza-name{
+  white-space: normal;
+  word-break: break-word;
+}
+
 .menu-list .pizza-list {
   width: 100%;
   margin-top: 2%;
@@ -619,4 +625,3 @@ menu-list.item .name {
     width: calc(100vw - 70px);
   }
 }
-
