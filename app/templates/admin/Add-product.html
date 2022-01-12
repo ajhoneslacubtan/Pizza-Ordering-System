@@ -37,26 +37,43 @@
         <span id="month">Month</span>, 
         <span id="year">Year</span>
     </div>
-</div><img class="avatar" src="/img/avatar.png">
-            <div class="user">
-                <div class="user-name"><span id="username">Jhoebelle</span></div>
-                <div class="user-role"><span>Admin</span></div>
-            </div>
-            <div class="dropdown drop"><button class="btn btn-primary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button"></button>
-                <div class="dropdown-menu drop-menu"><a class="dropdown-item" href="#">Users</a><a class="dropdown-item" href="#">Change Password</a><a class="dropdown-item" href="#">Logout</a></div>
-            </div>
+</div><div id="user" onclick="userToggle();"><img class="avatar" src="{{ url_for('static', filename=user_image) }}" />
+    <div class="user_details"><span class="user-name" id="username">{{ user_name }}</span>
+        <div class="user-role"><span>{{ user_role }}</span></div>
+    </div>
+</div></div>
+    <!-- Start: dropdown for user -->
+        <div class="user-settings">
+            <div><span>Username</span>
+                <div><span>User Role</span></div>
+            </div><ul>
+    <li>
+        <a href="/users/">
+        <i class="fas fa-user-circle user-icon"></i><span class="text">Users</span>
+        </a></li>
+    <li>
+        <a href="/changepassword/">
+        <i class="material-icons user-icon">vpn_key</i>
+        <span class="text">Change Password</span>
+        </a></li>
+    <li>
+        <a href="#">
+        <i class="fa fa-sign-out user-icon"></i><span class="text">Log Out</span>
+        </a></li>
+</ul>
+        </div><!-- End: dropdown for user -->
         </div>
     </div><!-- Start: Sidebar Menu -->
     <div id="wrapper">
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li class="list-nav"> <a href="add-order.html"><i class="far fa-edit icons"></i><span class="sidebar-label">Add Order</span></a></li>
-                <li class="list-nav"> <a href="#"><i class="material-icons icons">local_pizza</i><span class="sidebar-label">Queue</span></a></li>
-                <li class="list-nav"> <a href="products.html"><i class="fa fa-list icons"></i><span class="sidebar-label">Products</span></a></li>
-                <li class="list-nav"> <a href="sales.html"><i class="far fa-money-bill-alt icons"></i><span class="sidebar-label">Sales</span></a></li>
+                <li class="list-nav"> <a href="/addorders/"><i class="far fa-edit icons"></i><span class="sidebar-label">Add Order</span></a></li>
+                <li class="list-nav"> <a href="/"><i class="material-icons icons">local_pizza</i><span class="sidebar-label">Queue</span></a></li>
+                <li class="list-nav"> <a href="/products_page/"><i class="fa fa-list icons"></i><span class="sidebar-label">Products</span></a></li>
+                <li class="list-nav"> <a href="/sales/"><i class="far fa-money-bill-alt icons"></i><span class="sidebar-label">Sales</span></a></li>
             </ul>
         </div>
-        <div class="page-content-wrapper"><i class="material-icons" id="back-icon">arrow_back</i><img id="add-prodimg" src="/img/AddProduct.png">
+        <div class="page-content-wrapper"><a href="/products_page"><i class="material-icons" id="back-icon">arrow_back</i></a><img id="add-prodimg" src="/img/AddProduct.png">
             <div id="addproduct-form"><img id="name-img" src="/img/name1.png"><input class="form-control-plaintext" type="text" id="name-input" value="Plain Text Value"><img id="code-img" src="/img/code.png"><input class="form-control-plaintext" type="text" id="code-input" value="Plain Text Value">
                 <div id="desc_div"><img id="desc-img" src="/img/desc.png"><textarea id="desc-input"></textarea></div><img id="price-img" src="/img/price1.png"><img id="size1-img" src="/img/9%20size.png"><input class="form-control-plaintext" type="text" id="size1-input" value="Plain Text Value"><img id="size2-img" src="/img/12%20size.png"><input class="form-control-plaintext" type="text" id="size2-input" value="Plain Text Value"><button class="btn btn-primary" id="confirm-btn" type="button" onclick="addProduct()">Confirm</button><button class="btn btn-primary" id="clear-btn" type="button">Clear</button>
                 <div id="photo-div"><img id="photo-img" src="/img/photo.png"><img id="photo1" src="/img/ellipse7.png"><input type="file" id="imageSelected" onchange="readFile()"></div>
