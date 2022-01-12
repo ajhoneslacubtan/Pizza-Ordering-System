@@ -248,12 +248,16 @@ body {
 }
 
 .pizza-description {
-  font-family: Montserrat;
-  font-style: normal;
+  font-family: 'Montserrat';
   font-weight: bold;
   line-height: 17px;
   color: #FFFFFF;
   font-size: 12px;
+  background-color: transparent;
+  margin:2% auto 4% auto;
+  display: block;
+  border:none;
+  resize: none;
 }
 
 .update-avail {
