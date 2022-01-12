@@ -15,8 +15,9 @@ function readURL(input) {
     }
 }
 
+// load Users from the database to the page
 async function loadUsersData() {
-    let response = await fetch('https://mayz-pizza.herokuapp.com/api/users/');
+    let response = await fetch('http://localhost:8000/api/users/');
     let data = await response.json();
 
     // Populate the table body #user-table with the data

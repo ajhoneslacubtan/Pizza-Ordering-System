@@ -19,7 +19,7 @@ function Add_Order_Code_List(){
 
 function showProductBySize(size_type, pizza_size){
     $.ajax({
-                url: 'https://mayz-pizza.herokuapp.com/api/products/size/'+ pizza_size,
+                url: 'http://localhost:8000/api/products/size/'+ pizza_size,
                 type:"GET",
                 dataType: "json",
                 success: function(resp){
@@ -38,9 +38,15 @@ function showProductBySize(size_type, pizza_size){
                 
                             item_div = document.createElement('div');
                             item_div.setAttribute('class','item');
-                            
-                            item_img = document.createElement('img');
+                            if (i == resp.size -1){
+                                item_div.classList.add('last');
+                            }
                             document.getElementById(size_type).append(item_div);
+
+                            item_img = document.createElement('img');
+                            item_img.setAttribute('class', 'item_image');
+                            item_img.setAttribute('src', '/' + image + '');
+                            
                             item_div.appendChild(item_img);
 
                             desc1_item = document.createElement('div');
@@ -111,6 +117,7 @@ function displayOrderDetails(order_list){
 
         var pzimage = document.createElement('img');
         pzimage.setAttribute('class', 'pz_img');
+        pzimage.setAttribute('src', '/' + prod_image);
         row_item_div.append(pzimage);
         var pzname = document.createElement('span');
         pzname.setAttribute('class', 'pz_name');
@@ -225,7 +232,7 @@ function Add_Order(order_list){
 
 function Add_Order_to_Database(ord_code, cust_name, total, order_list){
     $.ajax({
-    		url: 'https://mayz-pizza.herokuapp.com/api/orders/',
+    		url: 'http://localhost:8000/api/orders/',
     		type: "POST",
     		contentType: "application/json; charset=utf-8",
             data: JSON.stringify({
@@ -248,9 +255,11 @@ function Add_Order_to_Database(ord_code, cust_name, total, order_list){
                     document.getElementById('total-cost').value=(0).toFixed(2);
                     document.getElementById('cust-name').value="";
                     document.getElementById('itemlist').innerHTML = "";
-                    var order = {};
-                    var code = "";
+                    order = {};
+                    code = "";
+                    alert("Order has been added!");
                     Add_Order_Code_List();
+
                 }
                 // Request sucessful but "status" not okay
                 else{
@@ -265,7 +274,7 @@ function Add_Order_to_Database(ord_code, cust_name, total, order_list){
 
 function Add_OrderDetails_to_Database(ord_code, prod_code, prod_size, prod_qty){
     $.ajax({
-    		url: 'https://mayz-pizza.herokuapp.com/api/order_details/',
+    		url: 'http://localhost:8000/api/order_details/',
     		type:"POST",
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify({
@@ -278,7 +287,7 @@ function Add_OrderDetails_to_Database(ord_code, prod_code, prod_size, prod_qty){
     		success: function(resp) {
                 // Condition if "status" of request is okay
                 if (resp.status  == 'OK') {
-                    alert('Okay');
+                    //alert('Okay');
                 }
                 // Request sucessful but "status" not okay
                 else{
@@ -303,7 +312,7 @@ function generate_order_code(){
             var numorders = 0;
                 $.ajax({
                     async:false,
-                    url: 'https://mayz-pizza.herokuapp.com/api/orders/' + status_list[i],
+                    url: 'http://localhost:8000/api/orders/' + status_list[i],
                     type:"GET",
                     dataType: "json",
                     success: function(resp) {

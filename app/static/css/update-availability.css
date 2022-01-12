@@ -1,0 +1,28 @@
+#avail_pop {
+  display: none;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  background: #353231;
+}
+
+.avail_options {
+  margin-left: 2vw;
+  width: 30vw;
+  height: 6vh;
+  border-radius: 2.5vw;
+  padding-left: 1vw;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2.4vh;
+  text-align: center;
+}
+
+.uavail_heading {
+  margin-left: 3vw;
+  margin-top: 3vh;
+  height: 5vh;
+  margin-bottom: 3vh;
+}
+

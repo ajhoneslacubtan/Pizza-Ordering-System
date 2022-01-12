@@ -103,16 +103,17 @@
   color: #2c2827;
   background: #ffffff;
   width: 30vw;
-  height: 80vh;
+  height: 85vh;
   padding: 20px;
   box-sizing: border-box;
+  border-radius: 15px;
   font-size: 1vw;
 }
 
 .popup .close-btn {
   cursor: pointer;
   position: absolute;
-  right: 1vw;
+  /*right: 1vw;*/
   top: 2vh;
   width: 1.5vw;
   height: 3vh;
@@ -134,19 +135,95 @@
   display: block;
 }
 
-.order-details {
-  height: 79%;
+#order-details-head{
+  display: block;
+  margin-top: 2vw;
+  height: 9%;
+  margin-bottom: 1vw;
+}
+
+#specific-code{
+  font-size: 1.2em;
+  display: block;
+  float: right;
+  font-family: 'JetBrains Mono', sans-serif;
+  background-color: #FEE146;
+  padding: 1% 3% 1% 3%;
+  font-style: normal;
+  font-weight: bold;
+  border-radius: 30px;
+}
+
+#custo-name{
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.1em;
+  line-height: 23px;
+}
+
+
+#show-order-details{
+  margin-top: 7%;
+  height: 65%;
+}
+#num_items{
+  font-size: 85%;
+  font-family: 'JetBrains Mono', sans-serif;
+  display: block;
+  margin-bottom: -2%;
+}
+
+#ord-status{
+  border-radius: 30px;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  padding: 1% 2% 1% 2%;
+  color: #000000; 
+  font-size: 0.8em;
+}
+
+span .PENDING{
+  background-color: #FFE047;
+  
+}
+
+span .PREPARING{
+  background-color: #9290fe;
+  
+}
+
+span .COMPLETED{
+  background-color: #50d1aa;
+}
+
+#order-details {
+  height: 85%;
   border: 1px solid #000;
   margin-top: 10px;
   margin-bottom: 5px;
 }
 
+#show-ord-total{
+  display: block;
+  float: right;
+  margin-top: 2%;
+  margin-right: 3%;
+}
+
+#ord-total{
+  font-family: 'JetBrains Mono', sans-serif;
+  font-weight: bold;
+}
+
 .ord-detail {
-  background: #fca162;
   margin: 5px;
   padding-left: 10px;
   padding-right: 10px;
   box-sizing: border-box;
+  font-size: 90%;
+  font-family: 'JetBrains Mono', sans-serif;
 }
 
 .dis-button {
@@ -166,7 +243,6 @@
   display: block;
   outline: none;
   border: none;
-  /*margin-right: 0.5vw;*/
   margin-bottom: 0.5vh;
 }
 
@@ -177,17 +253,58 @@
   background-color: transparent;
 }
 
+#pending-orders::-webkit-scrollbar {
+  width: 10px;
+}
+
 #pending-orders::-webkit-scrollbar-thumb {
   background: #FFE047;
 }
 
+#pending-orders::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px rgba(196, 196, 196, 0.3);
+  border-radius: 8px;
+}
+
+#pending-orders::-webkit-scrollbar-thumb:hover {
+  background: #FFE0478c;
+}
+
+#preparing-orders::-webkit-scrollbar {
+  width: 10px;
+}
+
 #preparing-orders::-webkit-scrollbar-thumb {
   background: #9290fe;
+  border-radius: 10px;
+}
+
+#preparing-orders::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px rgba(196, 196, 196, 0.3);
+  border-radius: 8px;
+}
+
+#preparing-orders::-webkit-scrollbar-thumb:hover {
+  background: #9290fe8c;
+}
+
+#completed-orders::-webkit-scrollbar {
+  width: 10px;
 }
 
 #completed-orders::-webkit-scrollbar-thumb {
   background: #50d1aa;
 }
+
+#completed-orders::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px rgba(196, 196, 196, 0.3);
+  border-radius: 8px;
+}
+
+#completed-orders::-webkit-scrollbar-thumb:hover {
+  background: #50d1aa8c;
+}
+
 
 ::-webkit-scrollbar {
   width: 10px;
