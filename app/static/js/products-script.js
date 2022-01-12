@@ -149,7 +149,7 @@ function displayProducts(resp){
                              document.getElementById(product.product_code+'pizza-'+product.product_size).classList.add('notavail');
                         }
                         
-                        var desclabel = document.createElement("Label");
+                        var desclabel = document.createElement("Span");
                         desclabel.setAttribute('class','pizza-descriptionlbl');
                         desclabel.innerHTML = 'Description:';
                         product_div.append(desclabel);

@@ -1,3 +1,14 @@
+#show-prod-header {
+  width: 90%;
+  margin: 2% auto 0% auto;
+}
+
+#add-search{
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 1%;
+}
+
 .product-panel {
   display: block;
   width: 90%;
@@ -99,6 +110,9 @@
   font-family: 'Montserrat';
   font-size: 13px;
   font-weight: bold;
+  width: 90%;
+  display: block;
+  margin: auto;
 }
 
 .pizza-pricelbl {
@@ -341,8 +355,8 @@
 }
 
 #products-img {
-  height: 3.1vw;
-  margin: 4vh 1vw 1vh 1vw;
+  margin-left: -25px;
+  height: 100%;
 }
 
 #price-img {
@@ -360,15 +374,18 @@
 
 #add-icon {
   color: #fbde46;
-  font-size: 30px;
+  font-size: 35px;
+  align-self: center;
+  margin-right: 2%;
 }
 
 #sear-in {
   border-color: #fbde46;
   background-color: #353231;
-  border-radius: 2vh;
-  width: 20vw;
-  height: 30px;
+  border-radius: 30px;
+  width: 65%;
+  height: 35px;
+  margin-right: 2%;
 }
 
 #search-icon {
@@ -376,3 +393,17 @@
   font-size: 20px;
 }
 
+@media (max-width:768px) {
+  #sear-in{
+    width: 78%;
+  }
+  #add-search{
+    margin-top: 2%;
+    margin-bottom: 4%;
+  }
+  #products-img{
+    display: block;
+    margin: 4% auto 5% auto;
+    height: 50px;
+  }
+}
