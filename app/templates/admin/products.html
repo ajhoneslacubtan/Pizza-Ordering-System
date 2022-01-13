@@ -131,20 +131,25 @@
                     <input id="produ_name" class="form-control-plaintext product-update" type="text" readonly />
                 </div>
                 <div class="upd-div">
-                    <img class="udetails_heading" src="/img/update%20details.png" />
-                    <div class="nc_line"><label class="form-label user">Name :  </label>
-                        <input id="product_name" class="form-control-plaintext input_line" type="text" placeholder="Enter product name"/>
-                    </div>
-                    <div class="nc_line"><label class="form-label user">Code  :  </label>
-                        <input id="code_name" class="form-control-plaintext input_line" type="text" readonly />
-                    </div>
-                    <div class="container desc_pic">
+                    <div class="container" id="updetails-container">
+                        <img class="udetails_heading" src="/img/update%20details.png" />
                         <div class="row">
-                            <div class="col-md-6">
-                                <label class="form-label user">Description :  </label>
-                                <textarea id="desc_name" placeholder="Enter product description"></textarea>
+                            <div class="nc_line"><label class="form-label user">NAME :  </label>
+                                <input id="product_name" class="form-control-plaintext input_line" type="text" placeholder="Enter product name"/>
                             </div>
-                            <div class="col-md-6">
+                        </div>
+                        <div class="row">
+                            <div class="nc_line"><label class="form-label user">CODE :  </label>
+                                <input id="code_name" class="form-control-plaintext input_line" type="text" readonly />
+                            </div>
+                        </div>
+                        <div id="container desc_pic" class="row">
+                            <div class="col-md-5 col-xl-7" id="desc_div_details">
+                                <label class="form-label user">DESCRIPTION :  </label>
+                                <textarea id="desc_name" placeholder="Enter product description"></textarea>
+                             </div>
+                            <div class="col-md-5 col-xl-4" id="photo-div-updetails">
+                                <label class="form-label user">PHOTO :  </label>
                                 <div class="picture-container">
                                     <div class="picture">
                                         <img src="https://lh3.googleusercontent.com/LfmMVU71g-HKXTCP_QWlDOemmWg4Dn1rJjxeEsZKMNaQprgunDTtEuzmcwUBgupKQVTuP0vczT9bH32ywaF7h68mF-osUSBAeM6MxyhvJhG6HKZMTYjgEv3WkWCfLB7czfODidNQPdja99HMb4qhCY1uFS8X0OQOVGeuhdHy8ln7eyr-6MnkCcy64wl6S_S6ep9j7aJIIopZ9wxk7Iqm-gFjmBtg6KJVkBD0IA6BnS-XlIVpbqL5LYi62elCrbDgiaD6Oe8uluucbYeL1i9kgr4c1b_NBSNe6zFwj7vrju4Zdbax-GPHmiuirf2h86eKdRl7A5h8PXGrCDNIYMID-J7_KuHKqaM-I7W5yI00QDpG9x5q5xOQMgCy1bbu3St1paqt9KHrvNS_SCx-QJgBTOIWW6T0DHVlvV_9YF5UZpN7aV5a79xvN1Gdrc7spvSs82v6gta8AJHCgzNSWQw5QUR8EN_-cTPF6S-vifLa2KtRdRAV7q-CQvhMrbBCaEYY73bQcPZFd9XE7HIbHXwXYA=s200-no" class="picture-src" id="wizardPicturePreview" title="">
@@ -154,12 +159,13 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        <div id="buttons_update_details" class="row">
+                            <button class="btn btn-primary bottom_buttons" type="button" onclick="updateDetails(product_name)">Confirm</button>
+                            <button class="btn btn-primary bottom_buttons" type="button">Clear</button>
+                        </div>
                     </div>
-                    <div id="pick_pic" class="desc_pic"></div>
-                    <div class="buttons_update_details">
-                        <button class="btn btn-primary bottom_buttons" type="button" onclick="updateDetails(product_name)">Confirm</button>
-                        <button class="btn btn-primary bottom_buttons" type="button">Clear</button>
-                    </div>
+                   
                 </div>
             </div>
 
