@@ -19,7 +19,7 @@ create table if not exists ORDERS(
 
 create table if not exists PRODUCTS(
 	product_code varchar(10) primary key,
-	product_name varchar(20),
+	product_name varchar(50),
 	product_describe text,
 	product_image text
 );
@@ -606,14 +606,14 @@ begin
 end;
 $$;
 
-select ADD_PRODUCT('PZZ-AC', 'All Cheese', 'PZZ-AC.png', 'Topped with cheddar and mozarella cheese', 115, 215, 1);
-select ADD_PRODUCT('PZZ-HW', 'Hawaiian', 'PZZ-HW.png', 'Topped with cheddar, mozarella cheese, choice of chicken hotdog/chicken ham slices, mushroom, white onions, pineapple, and bell pepper', 150, 235, 1);
-select ADD_PRODUCT('PZZ-BP', 'Beef Pepperoni', 'PZZ-BP.png', 'Topped with cheddar, mozarella cheese, and beef pepperoni', 150, 235, 1);
-select ADD_PRODUCT('PZZ-TD', 'Tuna Delight', 'PZZ-TD.png', 'Topped with cheddar, mozarella cheese, tuna flakes, white onions, and black olives', 135, 215, 1);
-select ADD_PRODUCT('PZZ-CH', 'Chicken Hotdog', 'PZZ-CH.png', 'Topped with cheddar, mozarella cheese, and chicken hotdog slices', 135, 215, 1);
-select ADD_PRODUCT('PZZ-HC', 'Chicken Ham and Cheese', 'PZZ-HC.png', 'Topped with cheddar, mozarella cheese, and chicken ham slices', 135, 215, 1);
-select ADD_PRODUCT('PZZ-BM', 'Beef and Mushroom', 'PZZ-BM.png', 'Topped with cheddar, mozarella cheese, beef, mushroom, white onions, and black olives', 135, 215, 1);
-select ADD_PRODUCT('MIS-DH', 'Dough 3-in-1 set', 'MIS-DH.png', '3 pieces plain 12" dough or 9" dough', 100, 150, 1);
+select ADD_PRODUCT('PZZ-AC', 'All Cheese', '/uploads/PZZ-AC.png', 'Topped with cheddar and mozarella cheese', 115, 215, 1);
+select ADD_PRODUCT('PZZ-HW', 'Hawaiian', '/uploads/PZZ-HW.png', 'Topped with cheddar, mozarella cheese, choice of chicken hotdog/chicken ham slices, mushroom, white onions, pineapple, and bell pepper', 150, 235, 1);
+select ADD_PRODUCT('PZZ-BP', 'Beef Pepperoni', '/uploads/PZZ-BP.png', 'Topped with cheddar, mozarella cheese, and beef pepperoni', 150, 235, 1);
+select ADD_PRODUCT('PZZ-TD', 'Tuna Delight', '/uploads/PZZ-TD.png', 'Topped with cheddar, mozarella cheese, tuna flakes, white onions, and black olives', 135, 215, 1);
+select ADD_PRODUCT('PZZ-CH', 'Chicken Hotdog', '/uploads/PZZ-CH.png', 'Topped with cheddar, mozarella cheese, and chicken hotdog slices', 135, 215, 1);
+select ADD_PRODUCT('PZZ-HC', 'Chicken Ham and Cheese', '/uploads/PZZ-HC.png', 'Topped with cheddar, mozarella cheese, and chicken ham slices', 135, 215, 1);
+select ADD_PRODUCT('PZZ-BM', 'Beef and Mushroom', '/uploads/PZZ-BM.png', 'Topped with cheddar, mozarella cheese, beef, mushroom, white onions, and black olives', 135, 215, 1);
+select ADD_PRODUCT('MIS-DH', 'Dough 3-in-1 set', '/uploads/MIS-DH.png', '3 pieces plain 12" dough or 9" dough', 100, 150, 1);
 
 -- select ADD_ORDER('00001', 'Person 1', 560);
 -- select ADD_ORDER_DETAILS('00001', 'PZ-ACH', '9', 1);
