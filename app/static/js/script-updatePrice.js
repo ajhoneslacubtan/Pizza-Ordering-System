@@ -25,7 +25,9 @@ function getProduct(product_name)
 				{
 					alert(resp.status);
 				}
-    		}
+    		},error:function(){
+                alert("Request Error!");
+            }
 		}); 
 }
 //function for updating price of the product
@@ -61,7 +63,9 @@ function updatePrice(button_inch, product_code)
                     console.log("else");
 					alert(resp.status);
 				}
-    		}, error: function(){console.log("error");}
+    		},error:function(){
+                alert("Request Error!");
+            }
 		}); 
     }
 }

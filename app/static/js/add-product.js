@@ -49,8 +49,9 @@ function addProduct(){
                 } else {
                     alert(resp.status); 
                 }
-    		}, error: function(){
-                alert("Error Function");
+    		},error:function(){
+                
+                alert("Request Error!");
             }
 		});
 }
