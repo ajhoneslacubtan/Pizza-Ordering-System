@@ -255,10 +255,14 @@
   }
 }
 
+.user-settings li a{
+  text-decoration: none;
+}
+
 @media (min-width:768px) {
   .user-settings li a {
     display: inline-block;
-    text-decoration: none;
+    
     color: #fff;
     position: relative;
     text-align: left;

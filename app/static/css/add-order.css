@@ -367,7 +367,7 @@
 .menu-title h3 {
   color: #FEE146;
   font-family: 'Poppins', sans-serif;
-  font-size: 4ex;
+  font-size: 150%;
   font-style: normal;
   font-weight: bolder;
   letter-spacing: 0em;
@@ -388,7 +388,7 @@
   font-family: 'Poppins', sans-serif;
   font-style: normal;
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 3vw;
   line-height: 46px;
   color: #FEE146;
 }
@@ -398,7 +398,6 @@
   font-style: normal;
   font-weight: bold;
   font-size: 25px;
-  scale: 50%;
   line-height: 46px;
   color: #FCA162;
 }
@@ -453,7 +452,6 @@
   background-color: #fee246;
   border-radius: 100%;
   visibility: hidden;
-  display: inline-block;
   float: right;
 }
 
@@ -515,25 +513,7 @@
   }
 }
 
-/* menu-list .item {
-  text-align: center;
-  padding-top: 50px;
-  min-height: 425px;
-}
 
-menu-list.item .name {
-  font-weight: bold;
-  margin-top: 28px;
-  margin-bottom: 8px;
-  color: inherit;
-}
-
-.projects-clean .item .description {
-  font-size: 15px;
-  margin-top: 15px;
-  margin-bottom: 0;
-} */
-/*
 @media (max-width: 767px) {
   #order-list-panel {
     width: 80px;
@@ -573,7 +553,7 @@ menu-list.item .name {
     width: calc(100% - 85px);
   }
 }
-*/
+
 @media (min-width:992px) {
   .page-content-wrapper {
     padding-left: 0px;

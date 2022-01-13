@@ -9,6 +9,10 @@
   padding: 1%;
 }
 
+#add-search a{
+  text-decoration: none;
+}
+
 .product-panel {
   display: block;
   width: 90%;
@@ -379,6 +383,7 @@
   margin-right: 2%;
 }
 
+
 #sear-in {
   border-color: #fbde46;
   background-color: #353231;
@@ -386,6 +391,18 @@
   width: 65%;
   height: 35px;
   margin-right: 2%;
+  color: #fbde46;
+  padding-left: 4%;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+  background-color: #C4C4C433;
+  ;
+
 }
 
 #search-icon {
