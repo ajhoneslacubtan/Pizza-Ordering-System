@@ -25,7 +25,9 @@ function getAvailability(product_name)
 				{
 					alert(resp.status);
 				}
-    		}
+    		},error:function(){
+                alert("Request Error!");
+            }
 		}); 
 }
 //function for updating the availability of the product
@@ -52,10 +54,11 @@ function updateAvailability(product_code, field_inch, product_size)
                 loadProducts();
             } else
             {
-                console.log("else");
                 alert(resp.status);
             }
-        }, error: function(){console.log("error");}
+        },error:function(){
+            alert("Request Error!");
+        }
     }); 
 }
 //functiopn for back button

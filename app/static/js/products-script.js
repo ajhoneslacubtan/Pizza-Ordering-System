@@ -82,11 +82,8 @@ function displayProducts(resp){
 
                         var pizza_image = document.createElement('img');
                         pizza_image.setAttribute('class','pizza-image');
-                        pizza_image.setAttribute('src', '/' + product.product_image + '');
-                        //pizza_image.setAttribute('id',product.product_code+"image");
+                        pizza_image.setAttribute('src', product.product_image + '');
                         product_div.append(pizza_image);
-                        //$('.pizza_image').attr('src', product.product_image);
-                        //document.getElementById(product.product_code+"image").src =  '/' + product.product_image + '';
 
                         var pizza_title = document.createElement('heading');
                         pizza_title.setAttribute('class','pizza-title');
@@ -149,7 +146,7 @@ function displayProducts(resp){
                              document.getElementById(product.product_code+'pizza-'+product.product_size).classList.add('notavail');
                         }
                         
-                        var desclabel = document.createElement("Label");
+                        var desclabel = document.createElement("Span");
                         desclabel.setAttribute('class','pizza-descriptionlbl');
                         desclabel.innerHTML = 'Description:';
                         product_div.append(desclabel);

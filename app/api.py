@@ -33,7 +33,7 @@ def add_product():
         im = Image.open(BytesIO(base64.b64decode(product_image.split(",")[1])))
         im.save(fh)
 
-    result = spcall("add_product", (product_code, product_name, "uploads/" + product_code + extension, product_describe, price_9in, price_12in, user), True)[0][0]
+    result = spcall("add_product", (product_code, product_name, "/uploads/" + product_code + extension, product_describe, price_9in, price_12in, user), True)[0][0]
     
     return jsonify(result)
 
@@ -43,9 +43,7 @@ def update_product():
     product_code = request.json['product_code']
     product_name = request.json['product_name']
     product_describe = request.json['product_describe']
-    #product_image = request.json['product_image']
-
-    product_image = 'uploads/' + product_code + '.jpg'
+    product_image = request.json['product_image']
 
     # handle the filename and directory
     extension = guess_extension(guess_type("data:image/png;base64,")[0])
@@ -56,7 +54,7 @@ def update_product():
         im = Image.open(BytesIO(base64.b64decode(product_image.split(",")[1])))
         im.save(fh)
     
-    result = spcall("update_product", (product_code, product_name, product_describe, product_image), True)[0][0]
+    result = spcall("update_product", (product_code, product_name, product_describe, "/uploads/" + product_code + extension), True)[0][0]
     
     return jsonify(result)
 

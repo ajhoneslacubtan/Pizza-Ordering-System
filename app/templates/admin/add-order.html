@@ -53,8 +53,8 @@
 <!-- Start: dropdown for user -->
     <div class="user-settings">
         <div>
-            <span>Username</span>
-            <div><span>User Role</span></div>
+            <span>{{ user_name }}</span>
+            <div><span>{{ user_role }}</span></div>
         </div>
         <ul>
             <li>
@@ -69,15 +69,35 @@
         </ul>
     </div><!-- End: dropdown for user -->
     </div>
-    <!-- Start: Sidebar Menu -->
+<!-- Start: Sidebar Menu -->
     <div id="wrapper">
         <!-- Start: SideBar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li class="list-nav active"><a href="#"><i class="material-icons icons">add_circle_outline</i><span class="sidebar-label">Add Order</span></a> </li>
-                <li class="list-nav"> <a href="/"><i class="material-icons icons">local_pizza</i><span class="sidebar-label">Queue</span></a></li>
-                <li class="list-nav"> <a href="/products_page/"><i class="fa fa-list icons"></i><span class="sidebar-label">Products</span></a></li>
-                <li class="list-nav"> <a href="/sales/"><i class="icon-graph icons"></i><span class="sidebar-label">Sales</span></a></li>
+                <li class="list-nav active">
+                    <a href="#">
+                        <i class="material-icons icons">add_circle_outline</i>
+                        <span class="sidebar-label">Add Order</span>
+                    </a> 
+                </li>
+                <li class="list-nav"> 
+                    <a href="/">
+                        <i class="material-icons icons">local_pizza</i>
+                        <span class="sidebar-label">Queue</span>
+                    </a>
+                </li>
+                <li class="list-nav"> 
+                    <a href="/products_page/">
+                        <i class="fa fa-list icons"></i>
+                        <span class="sidebar-label">Products</span>
+                    </a>
+                </li>
+                <li class="list-nav"> 
+                    <a href="/sales/">
+                        <i class="icon-graph icons"></i>
+                        <span class="sidebar-label">Sales</span>
+                    </a>
+                </li>
             </ul>
         </div><!-- End: SideBar -->
         <!-- Start: Content -->
@@ -123,6 +143,7 @@
             </div><!-- End: Content -->
         </div><!-- End: Sidebar Menu -->
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/js/jQuery-2.1.4.min.js"></script>
     <script src="/js/order-add.js"></script>

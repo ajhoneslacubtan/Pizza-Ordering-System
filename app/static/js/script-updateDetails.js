@@ -1,4 +1,24 @@
 var p_photo;
+
+$(document).ready(function(){
+    // Prepare the preview for profile picture
+        $("#wizard-picture").change(function(){
+            readURL(this);
+        });
+    });
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
+        }
+        reader.readAsDataURL(input.files[0]);
+        readFile();
+    }
+}
+
 //function for getting the current details of the product
 function getDetails(product_name){
     $.ajax({
@@ -12,24 +32,31 @@ function getDetails(product_name){
                     document.getElementById("product_name").value = product.product_name;
                     document.getElementById("code_name").value = product.product_code;
                     document.getElementById("desc_name").value = product.product_describe;
+                    document.getElementById("desc_name").value = product.product_describe;
+                    document.getElementById("wizardPicturePreview").src = product.product_image;
                     document.getElementById('details_pop').style.display = 'block';
                     
 				} else
 				{
 					alert(resp.status);
 				}
-    		}
+    		},error:function(){
+                alert("Request Error!");
+            }
 		}); 
 }
 //function for reading a file
 function readFile(){ 
     var file = document.querySelector('input[type=file]')['files'][0];
-    var reader = new FileReader();
+    var lainreader = new FileReader();
     var baseString;
-    reader.onloadend = function () {
-        baseString = reader.result;
+
+    lainreader.onloadend = function () {
+        baseString = lainreader.result;
+        p_photo = baseString;
     };
-    p_photo = reader.readAsDataURL(file);
+
+    lainreader.readAsDataURL(file);
 }
 //function for updating the details of the product
 function updateDetails(product_name){
@@ -37,7 +64,13 @@ function updateDetails(product_name){
     var p_code =  document.getElementById("code_name").value;
     var p_desc =  document.getElementById("desc_name").value;
     
-    $.ajax({
+    if (p_name=="" || p_desc==""){
+        alert("Please fill in all details!");
+    } else if (p_photo==null){
+        alert("Please provide a photo of the product!");
+    }
+    else {
+        $.ajax({
     		url: 'https://mayz-pizza.herokuapp.com/api/products/',
     		type:"PUT",
     		contentType: "application/json; charset=utf-8",
@@ -56,8 +89,11 @@ function updateDetails(product_name){
                 } else {
                     alert(resp.status); 
                 }
-    		}
+    		},error:function(){
+                alert("Request Error!");
+            }
 		});
+    }
 }
 //function for clearing details
 function clDetails(){

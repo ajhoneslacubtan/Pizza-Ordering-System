@@ -6,6 +6,9 @@ create table if not exists USERS(
 	user_image text
 );
 
+-- Default admin user
+INSERT INTO users (user_name, user_pass, user_role, user_image) VALUES ('Admin', 'sha256$Z2MwD0oLSvGchtIa$6d393b7d8c63f2d87d638fd49a3546e44c2b7a57ec86b06a5df1a7112f5e6612', 'Admin', 'uploads/admin.jpg');
+
 create table if not exists ORDERS(
 	order_code varchar(15) primary key,
 	order_date timestamptz,
@@ -16,7 +19,7 @@ create table if not exists ORDERS(
 
 create table if not exists PRODUCTS(
 	product_code varchar(10) primary key,
-	product_name varchar(20),
+	product_name varchar(50),
 	product_describe text,
 	product_image text
 );
@@ -603,12 +606,14 @@ begin
 end;
 $$;
 
--- select ADD_PRODUCT('PZ-ACH', 'All Cheese', 'resource/pizza1.jpeg', 'This is a description', 160, 250, 1);
--- select ADD_PRODUCT('PZ-HAW', 'Hawaiian', 'resource/pizza2.jpeg', 'This is a description', 180, 300, 1);
--- select ADD_PRODUCT('PZ-PEP', 'Pepperoni', 'resource/pizza3.jpeg', 'This is a description', 180, 300, 1);
--- select ADD_PRODUCT('PZ-VEG', 'Veggie', 'resource/pizza4.jpeg', 'This is a description', 150, 240, 1);
--- select ADD_PRODUCT('PZ-BBQ', 'Barbeque', 'resource/pizza5.jpeg', 'This is a description', 210, 360, 1);
--- select ADD_PRODUCT('PZ-SUP', 'Supreme', 'resource/pizza6.jpeg', 'This is a description', 250, 400, 1);
+select ADD_PRODUCT('PZZ-AC', 'All Cheese', '/uploads/PZZ-AC.png', 'Topped with cheddar and mozarella cheese', 115, 215, 1);
+select ADD_PRODUCT('PZZ-HW', 'Hawaiian', '/uploads/PZZ-HW.png', 'Topped with cheddar, mozarella cheese, choice of chicken hotdog/chicken ham slices, mushroom, white onions, pineapple, and bell pepper', 150, 235, 1);
+select ADD_PRODUCT('PZZ-BP', 'Beef Pepperoni', '/uploads/PZZ-BP.png', 'Topped with cheddar, mozarella cheese, and beef pepperoni', 150, 235, 1);
+select ADD_PRODUCT('PZZ-TD', 'Tuna Delight', '/uploads/PZZ-TD.png', 'Topped with cheddar, mozarella cheese, tuna flakes, white onions, and black olives', 135, 215, 1);
+select ADD_PRODUCT('PZZ-CH', 'Chicken Hotdog', '/uploads/PZZ-CH.png', 'Topped with cheddar, mozarella cheese, and chicken hotdog slices', 135, 215, 1);
+select ADD_PRODUCT('PZZ-HC', 'Chicken Ham and Cheese', '/uploads/PZZ-HC.png', 'Topped with cheddar, mozarella cheese, and chicken ham slices', 135, 215, 1);
+select ADD_PRODUCT('PZZ-BM', 'Beef and Mushroom', '/uploads/PZZ-BM.png', 'Topped with cheddar, mozarella cheese, beef, mushroom, white onions, and black olives', 135, 215, 1);
+select ADD_PRODUCT('MIS-DH', 'Dough 3-in-1 set', '/uploads/MIS-DH.png', '3 pieces plain 12" dough or 9" dough', 100, 150, 1);
 
 -- select ADD_ORDER('00001', 'Person 1', 560);
 -- select ADD_ORDER_DETAILS('00001', 'PZ-ACH', '9', 1);
