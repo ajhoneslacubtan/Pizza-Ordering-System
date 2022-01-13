@@ -20,3 +20,7 @@ RENAME the `settings_template.py` to `settings.py` and fill-in the necessary con
 ## Run
 
 `python run.py` to run the web application.
+
+Default login credentials:
+Username: **Admin**
+Password: **test**
