@@ -10,5 +10,5 @@ DB_PORT = ''
 
 # Server settings
 
-HOST = '' # e.g. '8000'
-PORT = '' # e.g. 'localhost'
+HOST = 'localhost' # e.g. '8000'
+PORT = '8000' # e.g. 'localhost'

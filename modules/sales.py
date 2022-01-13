@@ -203,20 +203,28 @@ def sales(ordersData: dict, orderDetailsData: dict, productsData: list) -> dict:
     sales['tsgraph'] = {'glabels': glabels, 'gdata': gdata}
     
     # Top 5 sales this month
-    result = top_this_month(orderDetailsData['order_details'], productsData)
-    for i in result:
-        clabels.append(i[0])
-        cdata.append(i[1])
+    try:
+        result = top_this_month(orderDetailsData['order_details'], productsData)
+        for i in result:
+            clabels.append(i[0])
+            cdata.append(i[1])
+    except TypeError:
+        clabels.append('')
+        cdata.append(0)
 
     sales['top_this_month'] = {'labels': clabels, 'data': cdata}
 
     # Top 5 sales all time
 
-    result = top_all_time(orderDetailsData['order_details'], productsData)
+    try:
+        result = top_all_time(orderDetailsData['order_details'], productsData)
 
-    for i in result:
-        alabels.append(i[0])
-        adata.append(i[1])
+        for i in result:
+            alabels.append(i[0])
+            adata.append(i[1])
+    except TypeError:
+        alabels.append('')
+        adata.append(0)
     
     sales['top_all_time'] = {'labels': alabels, 'data': adata}
 
@@ -240,7 +248,10 @@ def sales(ordersData: dict, orderDetailsData: dict, productsData: list) -> dict:
 
     # Sales by size
 
-    sales['sold_sizes'] = get_sold_sizes(orderDetailsData)
+    try:
+        sales['sold_sizes'] = get_sold_sizes(orderDetailsData)
+    except TypeError:
+        sales['sold_sizes'] = {'9': 0, '12': 0}
 
     sales['status'] = 'OK'
 
