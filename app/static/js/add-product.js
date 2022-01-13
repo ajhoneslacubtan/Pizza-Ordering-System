@@ -50,6 +50,7 @@ function addProduct(){
                     alert(resp.status); 
                 }
     		},error:function(){
+                
                 alert("Request Error!");
             }
 		});
