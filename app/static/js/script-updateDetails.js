@@ -18,7 +18,9 @@ function getDetails(product_name){
 				{
 					alert(resp.status);
 				}
-    		}
+    		},error:function(){
+                alert("Request Error!");
+            }
 		}); 
 }
 //function for reading a file
@@ -55,7 +57,9 @@ function updateDetails(product_name){
                 } else {
                     alert(resp.status); 
                 }
-    		}
+    		},error:function(){
+                alert("Request Error!");
+            }
 		});
 }
 //function for clearing details

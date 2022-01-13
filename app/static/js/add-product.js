@@ -32,8 +32,9 @@ function addProduct(){
                 } else {
                     alert(resp.status); 
                 }
-                //alert("Product succesfully added.");
-    		}
+    		},error:function(){
+                alert("Request Error!");
+            }
 		});
 }
 
