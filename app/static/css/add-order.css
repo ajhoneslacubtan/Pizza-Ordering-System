@@ -320,20 +320,20 @@
 
 #order-list-panel input#add-order {
   background: #FEE146;
-  border-radius: 15px;
+  border-radius: 30px;
   width: 64%;
-  height: 40px;
+  height: fit-content;
   margin-left: 18%;
   margin-top: 8%;
   margin-bottom: 5%;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 15px;
   font-style: normal;
   font-weight: bold;
-  line-height: 25px;
   letter-spacing: 0em;
   text-align: center;
   visibility: hidden;
+  border-width: 0pt;
 }
 
 #order-list-panel input#add-order.active {
@@ -367,7 +367,7 @@
 .menu-title h3 {
   color: #FEE146;
   font-family: 'Poppins', sans-serif;
-  font-size: 150%;
+  font-size: 4vw;
   font-style: normal;
   font-weight: bolder;
   letter-spacing: 0em;
@@ -388,7 +388,7 @@
   font-family: 'Poppins', sans-serif;
   font-style: normal;
   font-weight: bold;
-  font-size: 3vw;
+  font-size: 2.5vw;
   line-height: 46px;
   color: #FEE146;
 }
@@ -397,7 +397,7 @@
   font-family: 'Poppins', sans-serif;
   font-style: normal;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 2.5vw;
   line-height: 46px;
   color: #FCA162;
 }
