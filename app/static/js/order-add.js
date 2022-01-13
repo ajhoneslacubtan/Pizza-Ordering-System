@@ -117,7 +117,7 @@ function displayOrderDetails(order_list){
 
         var pzimage = document.createElement('img');
         pzimage.setAttribute('class', 'pz_img');
-        pzimage.setAttribute('src', '/' + prod_image);
+        pzimage.setAttribute('src', prod_image);
         row_item_div.append(pzimage);
         var pzname = document.createElement('span');
         pzname.setAttribute('class', 'pz_name');
