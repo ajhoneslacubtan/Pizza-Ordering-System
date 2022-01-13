@@ -1,7 +1,26 @@
 var p_photo;
+
+$(document).ready(function(){
+    // Prepare the preview for profile picture
+        $("#wizard-picture").change(function(){
+            readURL(this);
+        });
+    });
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
+        }
+        reader.readAsDataURL(input.files[0]);
+        readFile();
+    }
+}
+
 //function for getting the current details of the product
 function getDetails(product_name){
-    document.getElementById('details_pop').style.display = 'block';
     $.ajax({
     		url: 'http://localhost:8000/api/products/' + product_name,
     		type:"GET",
@@ -13,6 +32,9 @@ function getDetails(product_name){
                     document.getElementById("product_name").value = product.product_name;
                     document.getElementById("code_name").value = product.product_code;
                     document.getElementById("desc_name").value = product.product_describe;
+                    document.getElementById("desc_name").value = product.product_describe;
+                    document.getElementById("wizardPicturePreview").src = product.product_image;
+                    document.getElementById('details_pop').style.display = 'block';
                     
 				} else
 				{
@@ -26,12 +48,15 @@ function getDetails(product_name){
 //function for reading a file
 function readFile(){ 
     var file = document.querySelector('input[type=file]')['files'][0];
-    var reader = new FileReader();
+    var lainreader = new FileReader();
     var baseString;
-    reader.onloadend = function () {
-        baseString = reader.result;
+
+    lainreader.onloadend = function () {
+        baseString = lainreader.result;
+        p_photo = baseString;
     };
-    p_photo = reader.readAsDataURL(file);
+
+    lainreader.readAsDataURL(file);
 }
 //function for updating the details of the product
 function updateDetails(product_name){
@@ -54,6 +79,7 @@ function updateDetails(product_name){
                 if (resp.status == 'OK'){
                     alert("Product details successfully updated.");
                     document.getElementById('details_pop').style.display = 'none';
+                    loadProducts();
                 } else {
                     alert(resp.status); 
                 }
@@ -69,5 +95,7 @@ function clDetails(){
 }
 //function for back button
 function detailBack(){
+    clDetails();
+    document.getElementById("code_name").value = "";
     document.getElementById("details_pop").style.display = "none";
 }

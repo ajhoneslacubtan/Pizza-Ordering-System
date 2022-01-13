@@ -1,3 +1,4 @@
+// function to validate the form
 function checkPassword(form) {
     password1 = form.newpassword.value;
     password2 = form.confirmPassword.value;

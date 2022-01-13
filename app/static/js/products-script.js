@@ -82,6 +82,7 @@ function displayProducts(resp){
 
                         var pizza_image = document.createElement('img');
                         pizza_image.setAttribute('class','pizza-image');
+                        pizza_image.setAttribute('src', product.product_image + '');
                         product_div.append(pizza_image);
 
                         var pizza_title = document.createElement('heading');
@@ -145,13 +146,14 @@ function displayProducts(resp){
                              document.getElementById(product.product_code+'pizza-'+product.product_size).classList.add('notavail');
                         }
                         
-                        var desclabel = document.createElement("Label");
+                        var desclabel = document.createElement("Span");
                         desclabel.setAttribute('class','pizza-descriptionlbl');
                         desclabel.innerHTML = 'Description:';
                         product_div.append(desclabel);
 
-                        var pizza_description = document.createElement('p');
+                        var pizza_description = document.createElement('textarea');
                         pizza_description.setAttribute('class','pizza-description');
+                        pizza_description.setAttribute('readonly','readonly');
                         pizza_description.innerHTML = product.product_describe;
                         product_div.append(pizza_description);
 

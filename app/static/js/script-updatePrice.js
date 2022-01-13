@@ -1,7 +1,6 @@
 //function for getting the current price of the product
 function getProduct(product_name)
 {
-    document.getElementById("price_pop").style.display = "block";
     $.ajax({
     		url: 'http://localhost:8000/api/products/' + product_name,
     		type:"GET",
@@ -20,6 +19,7 @@ function getProduct(product_name)
                             document.getElementById("button-inch12").onclick = function(){updatePrice("inch12", product.product_code)};
                         }
                     }
+                    document.getElementById("price_pop").style.display = "block";
                     
 				} else
 				{

@@ -4,23 +4,21 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>isend-3</title>
+    <title>QPOS | Products</title>
+    <link rel="icon" href="/img/qpos-icon.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxanium&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&amp;display=swap">
-    <link rel="stylesheet" href="/css/Roboto.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
     <link rel="stylesheet" href="/fonts/fontawesome5-overrides.min.css">
-    <link rel="stylesheet" href="/css/add-order.css">
     <link rel="stylesheet" href="/css/add-product.css">
     <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/Page%20Content.css">
     <link rel="stylesheet" href="/css/products-style.css">
     <link rel="stylesheet" href="/css/sidebar-menu.css">
     <link rel="stylesheet" href="/css/update-availability.css">
@@ -28,45 +26,52 @@
     <link rel="stylesheet" href="/css/update-price-style.css">
 </head>
 
-<body><div class="banner"><img id="banner-icon" class="banner-images" src="/img//img/Ellipse%206.png"><img id="name" class="banner-images" src="/img//img/MAYZ%20HOMEMADE.png">
+<body>
+    <div class="banner">
+        <img id="banner-icon" class="banner-images" src="/img/Ellipse%206.png">
+        <img id="name" class="banner-images" src="/img/MAYZ%20HOMEMADE.png">
         <div class="right_banner"><div class="datetime">
-    <div class="time">
-        <span id="hour">00</span> :
-        <span id="minutes">00</span>  
-        <span id="period">AM</span>
+            <div class="time">
+                <span id="hour">00</span> :
+                <span id="minutes">00</span>  
+                <span id="period">AM</span>
+            </div>
+            <div class="date">
+                <span id="dayname">Day</span>, 
+                <span id="daynum">00</span> 
+                <span id="month">Month</span>, 
+                <span id="year">Year</span>
+            </div>
+        </div>
+        <div id="user" onclick="userToggle();">
+            <img class="avatar" src="{{ url_for('static', filename=user_image) }}" />
+            <div class="user_details">
+                <span class="user-name" id="username">{{ user_name }}</span>
+                <div class="user-role">
+                    <span>{{ user_role }}</span>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="date">
-        <span id="dayname">Day</span>, 
-        <span id="daynum">00</span> 
-        <span id="month">Month</span>, 
-        <span id="year">Year</span>
-    </div>
-</div><div id="user" onclick="userToggle();"><img class="avatar" src="{{ url_for('static', filename=user_image) }}" />
-    <div class="user_details"><span class="user-name" id="username">{{ user_name }}</span>
-        <div class="user-role"><span>{{ user_role }}</span></div>
-    </div>
-</div></div>
-    <!-- Start: dropdown for user -->
+<!-- Start: dropdown for user -->
         <div class="user-settings">
-            <div><span>Username</span>
-                <div><span>User Role</span></div>
-            </div><ul>
-    <li>
-        <a href="/users/">
-        <i class="fas fa-user-circle user-icon"></i><span class="text">Users</span>
-        </a></li>
-    <li>
-        <a href="/changepassword/">
-        <i class="material-icons user-icon">vpn_key</i>
-        <span class="text">Change Password</span>
-        </a></li>
-    <li>
-        <a href="#">
-        <i class="fa fa-sign-out user-icon"></i><span class="text">Log Out</span>
-        </a></li>
-</ul>
+            <div>
+                <span>{{ user_name }}</span>
+                <div><span>{{ user_role }}</span></div>
+            </div>
+            <ul>
+                <li>
+                    <a href="/users/"><i class="fas fa-user-circle user-icon"></i><span class="text">Users</span></a>
+                </li>
+                <li>
+                    <a href="/changepassword/"><i class="material-icons user-icon">vpn_key</i><span class="text">Change Password</span></a>
+                </li>
+                <li>
+                    <a href="/logout"><i class="fa fa-sign-out user-icon"></i><span class="text">Log Out</span></a>
+                </li>
+            </ul>
         </div><!-- End: dropdown for user -->
-</div>
+    </div>
 
 <!-- Start: Sidebar Menu -->
  <div id="wrapper">
@@ -80,54 +85,111 @@
             </ul>
         </div><!-- End: SideBar -->
         <div id="search-add-div" class="page-content-wrapper">
-            <img id="products-img" src="/img/265270147_319060616769214_9011006984687270033_n.png">
-            <a href="/add_products_page/"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" id="add-icon">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12ZM12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4Z" fill="currentColor"></path>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M13 7C13 6.44772 12.5523 6 12 6C11.4477 6 11 6.44772 11 7V11H7C6.44772 11 6 11.4477 6 12C6 12.5523 6.44772 13 7 13H11V17C11 17.5523 11.4477 18 12 18C12.5523 18 13 17.5523 13 17V13H17C17.5523 13 18 12.5523 18 12C18 11.4477 17.5523 11 17 11H13V7Z" fill="currentColor"></path>
-            </svg></a>
-            <input type="search" id="sear-in"><i class="fa fa-search" id="search-icon"></i>
+            <div class="container" id="show-prod-header">
+                <div class="row">
+                    <div class="col-md-7 off-set-md-0" id=prod-img>
+                        <img id="products-img" src="/img/265270147_319060616769214_9011006984687270033_n.png">
+                    </div>
+                    <div class="col-md-5 off-set-md-0" id="add-search">
+                        <a href="/add_products_page/"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" id="add-icon">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12ZM12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4Z" fill="currentColor"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M13 7C13 6.44772 12.5523 6 12 6C11.4477 6 11 6.44772 11 7V11H7C6.44772 11 6 11.4477 6 12C6 12.5523 6.44772 13 7 13H11V17C11 17.5523 11.4477 18 12 18C12.5523 18 13 17.5523 13 17V13H17C17.5523 13 18 12.5523 18 12C18 11.4477 17.5523 11 17 11H13V7Z" fill="currentColor"></path>
+                        </svg>
+                        </a>
+                        <input type="search" id="sear-in">
+                        <i class="fa fa-search" id="search-icon"></i>
+                    </div>
+                 </div>
+            </div>
             <div id="product-panel" class="product-panel"></div>
-            
             <!-- Start: Pop-up Div -->
-            
+        
             <div id="price_pop" class="update-container">
-                <div class="update-top"><button class="b-update"><img class="b-image" src="/img/back-button.png" onclick="backButton()"/></button><input id="prod_name" class="form-control-plaintext product-update" type="text" value="Plain Text Value" readonly /></div>
-                <div class="update-div"><img class="uprice-heading" src="/img/uprice-heading.png" />
-                    <div class="option-price"><i class="material-icons yellow-icon">local_pizza</i><label class="form-label yellow-inch">9&#39;&#39;</label><input id="inch9" class="form-control-plaintext price-inch" type="text" value="Plain Text Value" /><button id="button-inch9" class="btn btn-primary button-inch9" type="button">UPDATE</button></div>
-                    <div class="option-price"><i class="material-icons orange-icon">local_pizza</i><label class="form-label orange-inch">12&#39;&#39;</label><input id="inch12" class="form-control-plaintext price-inch" type="text" value="Plain Text Value" /><button id="button-inch12" class="btn btn-primary button-inch12" type="button">UPDATE</button></div>
+                <div class="update-top">
+                    <button class="b-update"><img class="b-image" src="/img/back-button.png" onclick="backButton()"/></button>
+                    <input id="prod_name" class="form-control-plaintext product-update" type="text" readonly />
+                </div>
+                <div class="update-div">
+                    <img class="uprice-heading" src="/img/uprice-heading.png" />
+                    <div class="option-price">
+                        <i class="material-icons yellow-icon">local_pizza</i><label class="form-label yellow-inch">9&#39;&#39;</label>
+                        <input id="inch9" class="form-control-plaintext price-inch" type="text" placeholder="Enter price"/>
+                        <button id="button-inch9" class="btn btn-primary button-inch9" type="button">UPDATE</button>
+                    </div>
+                    <div class="option-price">
+                        <i class="material-icons orange-icon">local_pizza</i><label class="form-label orange-inch">12&#39;&#39;</label>
+                        <input id="inch12" class="form-control-plaintext price-inch" type="text" placeholder="Enter price"/>
+                        <button id="button-inch12" class="btn btn-primary button-inch12" type="button">UPDATE</button>
+                    </div>
                 </div>
             </div>
 
 
             <div id="details_pop" class="details_container">
-                <div class="update-top"><button class="b-update"><img class="b-image" src="/img/back-button.png" onclick="detailBack()"/></button><input id="produ_name" class="form-control-plaintext product-update" type="text" value="Plain Text Value" readonly /></div>
-                <div class="upd-div"><img class="udetails_heading" src="/img/update%20details.png" />
-                    <div class="nc_line"><label class="form-label user">Name :  </label><input id="product_name" class="form-control-plaintext input_line" type="text" value="Plain Text Value" /></div>
-                    <div class="nc_line"><label class="form-label user">Code  :  </label><input id="code_name" class="form-control-plaintext input_line" type="text" value="Plain Text Value" readonly /></div>
+                <div class="update-top">
+                    <button class="b-update"><img class="b-image" src="/img/back-button.png" onclick="detailBack()"/></button>
+                    <input id="produ_name" class="form-control-plaintext product-update" type="text" readonly />
+                </div>
+                <div class="upd-div">
+                    <img class="udetails_heading" src="/img/update%20details.png" />
+                    <div class="nc_line"><label class="form-label user">Name :  </label>
+                        <input id="product_name" class="form-control-plaintext input_line" type="text" placeholder="Enter product name"/>
+                    </div>
+                    <div class="nc_line"><label class="form-label user">Code  :  </label>
+                        <input id="code_name" class="form-control-plaintext input_line" type="text" readonly />
+                    </div>
                     <div class="container desc_pic">
                         <div class="row">
-                            <div class="col-md-6"><label class="form-label user">Description :  </label><textarea id="desc_name"></textarea></div>
-                            <div class="col-md-6"><label class="form-label user">Photo :  <input class="temp" type="file" onchange="readFile()" /></label><img id="product_pic" /></div>
+                            <div class="col-md-6">
+                                <label class="form-label user">Description :  </label>
+                                <textarea id="desc_name" placeholder="Enter product description"></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="picture-container">
+                                    <div class="picture">
+                                        <img src="https://lh3.googleusercontent.com/LfmMVU71g-HKXTCP_QWlDOemmWg4Dn1rJjxeEsZKMNaQprgunDTtEuzmcwUBgupKQVTuP0vczT9bH32ywaF7h68mF-osUSBAeM6MxyhvJhG6HKZMTYjgEv3WkWCfLB7czfODidNQPdja99HMb4qhCY1uFS8X0OQOVGeuhdHy8ln7eyr-6MnkCcy64wl6S_S6ep9j7aJIIopZ9wxk7Iqm-gFjmBtg6KJVkBD0IA6BnS-XlIVpbqL5LYi62elCrbDgiaD6Oe8uluucbYeL1i9kgr4c1b_NBSNe6zFwj7vrju4Zdbax-GPHmiuirf2h86eKdRl7A5h8PXGrCDNIYMID-J7_KuHKqaM-I7W5yI00QDpG9x5q5xOQMgCy1bbu3St1paqt9KHrvNS_SCx-QJgBTOIWW6T0DHVlvV_9YF5UZpN7aV5a79xvN1Gdrc7spvSs82v6gta8AJHCgzNSWQw5QUR8EN_-cTPF6S-vifLa2KtRdRAV7q-CQvhMrbBCaEYY73bQcPZFd9XE7HIbHXwXYA=s200-no" class="picture-src" id="wizardPicturePreview" title="">
+                                        <input type="file" id="wizard-picture" name="file" class="">
+                                    </div>
+                                    <h6 class="pt-2" style="color: #D0ED84">Choose Picture</h6>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div id="pick_pic" class="desc_pic"></div>
-                    <div class="buttons_update_details"><button class="btn btn-primary bottom_buttons" type="button" onclick="updateDetails(product_name)">Confirm</button><button class="btn btn-primary bottom_buttons" type="button">Clear</button></div>
+                    <div class="buttons_update_details">
+                        <button class="btn btn-primary bottom_buttons" type="button" onclick="updateDetails(product_name)">Confirm</button>
+                        <button class="btn btn-primary bottom_buttons" type="button">Clear</button>
+                    </div>
                 </div>
             </div>
 
 
             <div id="avail_pop" class="update-container">
-                <div class="update-top"><button class="b-update"><img class="b-image" src="/img/back-button.png" onclick="availBack()"/></button><input id="avail_prod_name" class="form-control-plaintext product-update" type="text" value="Plain Text Value" readonly /></div>
-                <div class="update-div"><img class="uavail_heading" src="/img/prod_availbility.png" />
+                <div class="update-top">
+                    <button class="b-update"><img class="b-image" src="/img/back-button.png" onclick="availBack()"/></button>
+                    <input id="avail_prod_name" class="form-control-plaintext product-update" type="text" readonly />
+                </div>
+                <div class="update-div">
+                    <img class="uavail_heading" src="/img/prod_availbility.png" />
                     <div></div>
-                    <div id="9pContainer" class="option-price"><i class="material-icons yellow-icon">local_pizza</i><label id="label_inch" class="form-label yellow-inch">9&#39;&#39;</label><select id="avail9" class="avail_options">
+                    <div id="9pContainer" class="option-price">
+                        <i class="material-icons yellow-icon">local_pizza</i>
+                        <label id="label_inch" class="form-label yellow-inch">9&#39;&#39;</label>
+                        <select id="avail9" class="avail_options">
                             <option value="Available">Available</option>
                             <option value="Unavailable">Unavailable</option>
-                        </select><button id="avail_button-inch9" class="btn btn-primary button-inch9" type="button">UPDATE</button></div>
-                    <div id="12pContainer" class="option-price"><i class="material-icons orange-icon">local_pizza</i><label id="label_inch" class="form-label orange-inch">12&#39;&#39;</label><select id="avail12" class="avail_options">
+                        </select>
+                        <button id="avail_button-inch9" class="btn btn-primary button-inch9" type="button">UPDATE</button>
+                    </div>
+                    <div id="12pContainer" class="option-price">
+                        <i class="material-icons orange-icon">local_pizza</i>
+                        <label id="label_inch" class="form-label orange-inch">12&#39;&#39;</label>
+                        <select id="avail12" class="avail_options">
                             <option value="Available">Available</option>
                             <option value="Unavailable">Unavailable</option>
-                        </select><button id="avail_button-inch12" class="btn btn-primary button-inch12" type="button">UPDATE</button></div>
+                        </select>
+                        <button id="avail_button-inch12" class="btn btn-primary button-inch12" type="button">UPDATE</button>
+                    </div>
                 </div>
             </div>
             
@@ -135,11 +197,11 @@
             
         </div>
     </div><!-- End: Sidebar Menu -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/add-product.js"></script>
     <script src="/js/jQuery-2.1.4.min.js"></script>
+    <script src="/js/add-product.js"></script>
     <script src="/js/products-script.js"></script>
-    <script src="/js/script.js"></script>
     <script src="/js/script-updateAvailability.js"></script>
     <script src="/js/script-updateDetails.js"></script>
     <script src="/js/script-updatePrice.js"></script>

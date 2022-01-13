@@ -1,7 +1,7 @@
 from app import app
-from settings import API_HOST, API_PORT
+from settings import HOST, PORT
 
 if __name__ == '__main__':
     app.debug=True
-    app.run(host=API_HOST, port=API_PORT)
+    app.run(host=HOST, port=PORT)
     app.run()

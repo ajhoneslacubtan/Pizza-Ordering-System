@@ -1,7 +1,6 @@
 //function to getting the current availability of the product
 function getAvailability(product_name)
 {
-    document.getElementById("avail_pop").style.display = "block";
     $.ajax({
     		url: 'http://localhost:8000/api/products/' + product_name,
     		type:"GET",
@@ -20,6 +19,7 @@ function getAvailability(product_name)
                             document.getElementById("avail_button-inch12").onclick = function(){updateAvailability(product.product_code,"avail12",'12')};
                         }
                     }
+                    document.getElementById("avail_pop").style.display = "block";
                     
 				} else
 				{
