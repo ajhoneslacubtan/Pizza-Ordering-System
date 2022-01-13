@@ -8,6 +8,7 @@ DB_PASSWORD = ''
 DB_HOST = ''
 DB_PORT = ''
 
-# API settings
-API_HOST = ''
-API_PORT = ''
+# Server settings
+
+HOST = '' # e.g. '8000'
+PORT = '' # e.g. 'localhost'

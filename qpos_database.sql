@@ -1,6 +1,6 @@
 create table if not exists USERS(
 	user_id serial8 primary key,
-	user_name varchar(50),
+	user_name varchar(50) unique not null,
 	user_pass varchar(100),
 	user_role varchar(5),
 	user_image text
@@ -34,7 +34,7 @@ create table if not exists ORDER_DETAILS(
 );
 create table if not exists PROD_PRICE_AVAILABILITY(
 	product_code varchar(10),
-	user_id varchar(10),
+	user_id bigint,
 	product_price float,
 	product_avail boolean,
 	product_size varchar(5),
@@ -47,7 +47,7 @@ create table if not exists PROD_PRICE_AVAILABILITY(
 );
 -- -- USE CASE ON PRODUCTS ---
 
-CREATE OR REPLACE FUNCTION ADD_PRODUCT(par_product_code varchar, product_name varchar, product_image text, product_describe text, price_9in float, price_12in float, u_id varchar) RETURNS json
+CREATE OR REPLACE FUNCTION ADD_PRODUCT(par_product_code varchar, product_name varchar, product_image text, product_describe text, price_9in float, price_12in float, u_id bigint) RETURNS json
 	LANGUAGE plpgsql
 	AS $$
 declare
@@ -104,7 +104,7 @@ $$;
 -- select UPDATE_PRODUCT('PZ-HW', 'Hawaiian', 'This is a pizza', 'res/img/hw.jpeg');
 -- select UPDATE_PRODUCT('PZ-HW', 'Hawaiian', 'This is a pizza (Updated)', 'res/img/hw.jpeg');
 
-CREATE OR REPLACE FUNCTION UPDATE_PRODUCT_STATUS(p_code varchar, u_id varchar, p_avail boolean, p_size varchar) RETURNS json
+CREATE OR REPLACE FUNCTION UPDATE_PRODUCT_STATUS(p_code varchar, u_id bigint, p_avail boolean, p_size varchar) RETURNS json
 	LANGUAGE plpgsql
 	AS $$
 declare
@@ -138,7 +138,7 @@ $$;
 
 -- select UPDATE_PRODUCT_STATUS('PZ-HW', 'admin', FALSE, '9');
 
-CREATE OR REPLACE FUNCTION UPDATE_PRODUCT_PRICE(p_code varchar, u_id varchar, p_price float, p_size varchar) RETURNS json
+CREATE OR REPLACE FUNCTION UPDATE_PRODUCT_PRICE(p_code varchar, u_id bigint, p_price float, p_size varchar) RETURNS json
 	LANGUAGE plpgsql
 	AS $$
 declare
@@ -298,7 +298,7 @@ begin
 				) tm on t.product_code = tm.product_code and t.date_modified = tm.MaxDate and t.product_size = tm.product_size
 	LEFT JOIN PRODUCTS 
 		ON PRODUCTS.product_code= t.product_code
-	WHERE PRODUCTS.product_name LIKE keyword;
+	WHERE lower(PRODUCTS.product_name) LIKE lower(keyword);
 	for loc_prod_record in select * from table_products loop
 		loc_prod_json = loc_prod_json ||
 						json_build_object(
@@ -455,11 +455,13 @@ CREATE OR REPLACE FUNCTION GET_ORDER_DETAILS(ord_code varchar) RETURNS json
 	AS $$
 declare
 	detail_order record;
+	loc_order record;
 	loc_record record;
 	loc_json_arr json[];
 	loc_size int default 0;
 	loc_id text;
 begin
+	select into loc_order * from ORDERS where order_code = ord_code;
 	select into loc_id order_code from ORDERS where order_code = ord_code;
 	if loc_id is not null then
 		CREATE TEMP TABLE details ON COMMIT DROP AS
@@ -489,7 +491,11 @@ begin
 		return json_build_object(
 			'status', 'OK',
 			'size', loc_size,
-			'order_details', loc_json_arr
+			'ord_code', loc_order.order_code,
+			'order_status', loc_order.order_status,
+			'customer_name', loc_order.customer_name,
+			'order_total', loc_order.total_price,
+			'product', loc_json_arr
 		);
 	else
 		return json_build_object(
@@ -596,3 +602,46 @@ begin
 	);
 end;
 $$;
+
+-- select ADD_PRODUCT('PZ-ACH', 'All Cheese', 'resource/pizza1.jpeg', 'This is a description', 160, 250, 1);
+-- select ADD_PRODUCT('PZ-HAW', 'Hawaiian', 'resource/pizza2.jpeg', 'This is a description', 180, 300, 1);
+-- select ADD_PRODUCT('PZ-PEP', 'Pepperoni', 'resource/pizza3.jpeg', 'This is a description', 180, 300, 1);
+-- select ADD_PRODUCT('PZ-VEG', 'Veggie', 'resource/pizza4.jpeg', 'This is a description', 150, 240, 1);
+-- select ADD_PRODUCT('PZ-BBQ', 'Barbeque', 'resource/pizza5.jpeg', 'This is a description', 210, 360, 1);
+-- select ADD_PRODUCT('PZ-SUP', 'Supreme', 'resource/pizza6.jpeg', 'This is a description', 250, 400, 1);
+
+-- select ADD_ORDER('00001', 'Person 1', 560);
+-- select ADD_ORDER_DETAILS('00001', 'PZ-ACH', '9', 1);
+-- select ADD_ORDER_DETAILS('00001', 'PZ-SUP', '12', 1);
+
+-- select ADD_ORDER('00002', 'Person 2', 480);
+-- select ADD_ORDER_DETAILS('00002', 'PZ-VEG', '12', 2);
+
+-- select ADD_ORDER('00003', 'Person 3', 250);
+-- select ADD_ORDER_DETAILS('00003', 'PZ-ACH', '12', 1);
+
+-- select ADD_ORDER('00004', 'Person 4', 1220);
+-- select ADD_ORDER_DETAILS('00004', 'PZ-BBQ', '12', 2);
+-- select ADD_ORDER_DETAILS('00004', 'PZ-ACH', '12', 2);
+
+-- select ADD_ORDER('00005', 'Person 5', 210);
+-- select ADD_ORDER_DETAILS('00005', 'PZ-BBQ', '9', 1);
+
+-- select ADD_ORDER('00006', 'Person 6', 160);
+-- select ADD_ORDER_DETAILS('00006', 'PZ-ACH', '9', 1);
+
+-- select ADD_ORDER('00007', 'Person 7', 210);
+-- select ADD_ORDER_DETAILS('00007', 'PZ-BBQ', '9', 1);
+
+-- select ADD_ORDER('00008', 'Person 8', 580);
+-- select ADD_ORDER_DETAILS('00008', 'PZ-PEP', '9', 1);
+-- select ADD_ORDER_DETAILS('00008', 'PZ-BBQ', '12', 1);
+
+-- select ADD_ORDER('00009', 'Person 9', 180);
+-- select ADD_ORDER_DETAILS('00009', 'PZ-PEP', '9', 1);
+
+-- select UPDATE_ORDER_STATUS('00001', 'COMPLETED');
+-- select UPDATE_ORDER_STATUS('00002', 'COMPLETED');
+-- select UPDATE_ORDER_STATUS('00003', 'COMPLETED');
+-- select UPDATE_ORDER_STATUS('00004', 'PREPARING');
+-- select UPDATE_ORDER_STATUS('00005', 'PREPARING');

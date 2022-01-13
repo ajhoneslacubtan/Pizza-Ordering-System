@@ -1,35 +1,12 @@
-body {
-  overflow-x: hidden;
-  background-color: #353231;
+#show-prod-header {
+  width: 90%;
+  margin: 2% auto 0% auto;
 }
 
-/* width */
-
-::-webkit-scrollbar {
-  width: 10px;
-  margin-right: 10px;
-}
-
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px #353231;
-  border-radius: 8px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #FDA765;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #fda765bb;
-}
-
-.page-content-wrapper {
-  display: inline-block;
-  position: static;
-  margin-top: 60px;
-  overflow-x: hidden;
-  /*height: calc(100vh-60px;*/
+#add-search{
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 1%;
 }
 
 .product-panel {
@@ -73,12 +50,10 @@ body {
 }
 
 .pizza-image {
-  content: url("../../assets/img/OIP-removebg-preview.png");
   display: block;
   margin-top: 2%;
   margin: 5% auto 3% auto;
   width: 80px;
-  background-color: aqua;
   border-radius: 100%;
   height: 80px;
 }
@@ -106,6 +81,7 @@ body {
 }
 
 .pizza-price {
+  background-color: #9C9C94;
   color: #2c2827;
   display: block;
   border-radius: 10%;
@@ -124,16 +100,19 @@ body {
   display: block;
   margin: auto;
   font-family: 'Montserrat';
-  font-style: normal;
   font-weight: bold;
   text-align: center;
   width: 20px;
+  color: #9C9C94;
 }
 
 .pizza-descriptionlbl {
   font-family: 'Montserrat';
   font-size: 13px;
   font-weight: bold;
+  width: 90%;
+  display: block;
+  margin: auto;
 }
 
 .pizza-pricelbl {
@@ -191,14 +170,6 @@ body {
   color: grey;
 }
 
-.pizza-size {
-  color: #9C9C94;
-}
-
-.pizza-price {
-  background-color: #9C9C94;
-}
-
 .product-div button {
   text-decoration: none;
   cursor: pointer;
@@ -248,12 +219,16 @@ body {
 }
 
 .pizza-description {
-  font-family: Montserrat;
-  font-style: normal;
+  font-family: 'Montserrat';
   font-weight: bold;
   line-height: 17px;
   color: #FFFFFF;
   font-size: 12px;
+  background-color: transparent;
+  margin:2% auto 4% auto;
+  display: block;
+  border:none;
+  resize: none;
 }
 
 .update-avail {
@@ -380,8 +355,8 @@ body {
 }
 
 #products-img {
-  height: 3.1vw;
-  margin: 4vh 1vw 1vh 1vw;
+  margin-left: -25px;
+  height: 100%;
 }
 
 #price-img {
@@ -399,15 +374,18 @@ body {
 
 #add-icon {
   color: #fbde46;
-  font-size: 30px;
+  font-size: 35px;
+  align-self: center;
+  margin-right: 2%;
 }
 
 #sear-in {
   border-color: #fbde46;
   background-color: #353231;
-  border-radius: 2vh;
-  width: 20vw;
-  height: 30px;
+  border-radius: 30px;
+  width: 65%;
+  height: 35px;
+  margin-right: 2%;
 }
 
 #search-icon {
@@ -415,3 +393,17 @@ body {
   font-size: 20px;
 }
 
+@media (max-width:768px) {
+  #sear-in{
+    width: 78%;
+  }
+  #add-search{
+    margin-top: 2%;
+    margin-bottom: 4%;
+  }
+  #products-img{
+    display: block;
+    margin: 4% auto 5% auto;
+    height: 50px;
+  }
+}

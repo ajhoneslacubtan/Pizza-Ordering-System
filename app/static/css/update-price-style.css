@@ -143,7 +143,33 @@
   font-weight: 700;
 }
 
+@media (min-width:992px) {
+  .page-content-wrapper {
+    margin-left: 225px;
+    width: calc(100vw - 225px);
+  }
+}
+
+@media (max-width:574px) {
+  .page-content-wrapper {
+    margin-left: 70px;
+    width: calc(100vw - 70px);
+  }
+}
+
+@media (min-width:575px) and (max-width:991px) {
+  .page-content-wrapper {
+    margin-left: 90px;
+    width: calc(100vw - 90px);
+    overflow-x: hidden;
+  }
+}
+
 #price_pop {
   display: none;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  background: #353231;
 }
 

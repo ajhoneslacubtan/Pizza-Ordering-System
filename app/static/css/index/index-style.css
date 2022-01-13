@@ -1,9 +1,13 @@
+body{ 
+  background: #353231;
+  overflow-x: hidden;
+}
+
 .page-content-wrapper {
   background: #353231;
   display: flex;
   flex-flow: column;
   flex-grow: 1;
-  height: calc(100vh - 60px);
   align-items: center;
   justify-content: center;
   margin-top: 60px;

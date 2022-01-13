@@ -1,5 +1,6 @@
 body, html {
   height: 100%;
+
 }
 
 .bg {
@@ -11,7 +12,7 @@ body, html {
 }
 
 .row {
-  padding-top: 23%;
+  padding-top: 12%;
 }
 
 #title {
@@ -36,6 +37,7 @@ body, html {
 }
 
 #mayz {
+  margin-top: 7rem;
   margin-left: -0.8rem;
 }
 
