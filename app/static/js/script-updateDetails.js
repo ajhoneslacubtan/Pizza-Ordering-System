@@ -64,7 +64,13 @@ function updateDetails(product_name){
     var p_code =  document.getElementById("code_name").value;
     var p_desc =  document.getElementById("desc_name").value;
     
-    $.ajax({
+    if (p_name=="" || p_desc==""){
+        alert("Please fill in all details!");
+    } else if (p_photo==null){
+        alert("Please provide a photo of the product!");
+    }
+    else {
+        $.ajax({
     		url: 'http://localhost:8000/api/products/',
     		type:"PUT",
     		contentType: "application/json; charset=utf-8",
@@ -87,6 +93,7 @@ function updateDetails(product_name){
                 alert("Request Error!");
             }
 		});
+    }
 }
 //function for clearing details
 function clDetails(){
